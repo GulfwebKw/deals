@@ -6,6 +6,8 @@ use App\Freelancer;
 use App\Http\Controllers\Admin\Common;
 use App\Time_piece;
 use App\TimeCalender;
+use Carbon\Carbon;
+use Carbon\CarbonPeriod;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -184,6 +186,48 @@ class calendarController extends Controller
         return $this->apiResponse(200, ['data' => ['dates' => $dates], 'message' => [trans('api.slotDelete')]]);
     }
 
+
+
+
+    public function getDaysStatus(Request $request)
+    {
+        $freelancer = Auth::user();
+        if ( $request->has(['year' ,'month'])) {
+            $startDate = date('Y-m-1 0:0:0', strtotime($request->year . '-' . $request->month . '-1'));
+            $EndDate = date('Y-m-t 23:59:59', strtotime($request->year . '-' . $request->month . '-1'));
+        } else {
+            $startDate = date('Y-m-d 0:0:0');
+            $EndDate = date('Y-m-t 23:59:59', Carbon::now()->addDays(60)->timestamp );
+        }
+        $periods = CarbonPeriod::create($startDate, $EndDate);
+        $results = [];
+        foreach ( $periods as $period ){
+            $results[$period->format('Y-m-d')] = [
+                'date' => $period->format('Y-m-d'),
+                'day' => $period->format('d'),
+                'weekNumber' => $period->format('N'),
+                'weekDay' => $period->format('l'),
+                'weekDayShort' => $period->format('D'),
+                'status' => 'closed'
+            ];
+        }
+        $freeDate = TimeCalender::where('freelancer_id' , $freelancer->id)
+            ->whereBetween('date', [$startDate , $EndDate])
+            ->where('status', 'free')
+            ->groupBy('date')
+            ->get();
+        $allDate = TimeCalender::where('freelancer_id' , $freelancer->id)
+            ->whereBetween('date', [$startDate , $EndDate])
+            ->groupBy('date')
+            ->get();
+        foreach ( $allDate as $date ){
+            $results[$date->date]['status'] = 'busy';
+        }
+        foreach ( $freeDate as $date ){
+            $results[$date->date]['status'] = 'free';
+        }
+        return $this->apiResponse(200, ['data' => ['days' => array_values($results)], 'message' => []]);
+    }
 
     private function prepare_time_slots($starttime, $endtime, $duration)
     {
