@@ -1,0 +1,3686 @@
+{
+	"info": {
+		"_postman_id": "4796fd20-c3f0-4363-9658-c8e8422670fd",
+		"name": "deals",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "page",
+			"item": [
+				{
+					"name": "countries",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_Url}}countries",
+							"host": [
+								"{{Base_Url}}countries"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_faq",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_Url}}faq",
+							"host": [
+								"{{Base_Url}}faq"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_refund_policy",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_Url}}refund-policy",
+							"host": [
+								"{{Base_Url}}refund-policy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_terms_and_conditions",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_Url}}terms-conditions",
+							"host": [
+								"{{Base_Url}}terms-conditions"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "service",
+			"item": [
+				{
+					"name": "list",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.globals.get(\"token\"));\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{link}}service",
+							"host": [
+								"{{link}}service"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.globals.get(\"token\"));\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{link}}service/30",
+							"host": [
+								"{{link}}service"
+							],
+							"path": [
+								"30"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.globals.get(\"token\"));\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{link}}service/28",
+							"host": [
+								"{{link}}service"
+							],
+							"path": [
+								"28"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "store",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.globals.get(\"token\"));\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "test api",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "1000",
+									"type": "text"
+								},
+								{
+									"key": "short_desc",
+									"value": "short description",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/Hp/Pictures/test.png"
+								},
+								{
+									"key": "category_id",
+									"value": "16",
+									"type": "text"
+								},
+								{
+									"key": "highlight",
+									"value": "0",
+									"description": "0/1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{link}}service",
+							"host": [
+								"{{link}}service"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.globals.get(\"token\"));\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "_method",
+									"value": "PUT",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "test api update",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "1000",
+									"type": "text"
+								},
+								{
+									"key": "short_desc",
+									"value": "short description update",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/Hp/Pictures/test.png"
+								},
+								{
+									"key": "highlight",
+									"value": "0",
+									"description": "0/1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{link}}service/29",
+							"host": [
+								"{{link}}service"
+							],
+							"path": [
+								"29"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cancel booked service",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{link}}order/30/service",
+							"host": [
+								"{{link}}order"
+							],
+							"path": [
+								"30",
+								"service"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "not available in booked service",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{link}}order/30/service/not-available",
+							"host": [
+								"{{link}}order"
+							],
+							"path": [
+								"30",
+								"service",
+								"not-available"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reschedule booked service",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "_method",
+									"value": "PUT",
+									"type": "text"
+								},
+								{
+									"key": "slot_id",
+									"value": "20",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{link}}order/30/service",
+							"host": [
+								"{{link}}order"
+							],
+							"path": [
+								"30",
+								"service"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "highlight",
+			"item": [
+				{
+					"name": "list",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.globals.get(\"token\"));\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{link}}highlight",
+							"host": [
+								"{{link}}highlight"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.globals.get(\"token\"));\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{link}}highlight/3",
+							"host": [
+								"{{link}}highlight"
+							],
+							"path": [
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.globals.get(\"token\"));\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{link}}highlight/3",
+							"host": [
+								"{{link}}highlight"
+							],
+							"path": [
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "store",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.globals.get(\"token\"));\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "title 1 ",
+									"type": "text"
+								},
+								{
+									"key": "file[0]",
+									"type": "file",
+									"src": "/C:/Users/Hp/Pictures/test.png"
+								},
+								{
+									"key": "file[1]",
+									"type": "file",
+									"src": "/C:/Users/Hp/Pictures/test.png"
+								},
+								{
+									"key": "file[2]",
+									"type": "file",
+									"src": "/C:/Users/Hp/Pictures/test.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{link}}highlight",
+							"host": [
+								"{{link}}highlight"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.globals.get(\"token\"));\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "_method",
+									"value": "PUT",
+									"type": "text"
+								},
+								{
+									"key": "title",
+									"value": "test api update",
+									"type": "text"
+								},
+								{
+									"key": "file[0]",
+									"type": "file",
+									"src": "/C:/Users/Hp/Pictures/test.png"
+								},
+								{
+									"key": "file[1]",
+									"type": "file",
+									"src": "/C:/Users/Hp/Pictures/test.png"
+								},
+								{
+									"key": "file[2]",
+									"type": "file",
+									"src": "/C:/Users/Hp/Pictures/test.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{link}}highlight/2",
+							"host": [
+								"{{link}}highlight"
+							],
+							"path": [
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "quotation",
+			"item": [
+				{
+					"name": "list",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{link}}quotation",
+							"host": [
+								"{{link}}quotation"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{link}}quotation/11",
+							"host": [
+								"{{link}}quotation"
+							],
+							"path": [
+								"11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{link}}quotation/6",
+							"host": [
+								"{{link}}quotation"
+							],
+							"path": [
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "store",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "client_name",
+									"value": "client name",
+									"type": "text"
+								},
+								{
+									"key": "date",
+									"value": "2022-1-25",
+									"type": "text"
+								},
+								{
+									"key": "payment_type",
+									"value": "Installment",
+									"type": "text"
+								},
+								{
+									"key": "address_id",
+									"value": "12",
+									"type": "text"
+								},
+								{
+									"key": "latitude",
+									"value": "10.0",
+									"type": "text"
+								},
+								{
+									"key": "longitude",
+									"value": "20.0",
+									"type": "text"
+								},
+								{
+									"key": "area",
+									"value": "test area",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "test address",
+									"type": "text"
+								},
+								{
+									"key": "location_type",
+									"value": "Home",
+									"type": "text"
+								},
+								{
+									"key": "services[0][name]",
+									"value": "name service 1",
+									"type": "text"
+								},
+								{
+									"key": "services[0][description]",
+									"value": "description service 1",
+									"type": "text"
+								},
+								{
+									"key": "services[0][quantity]",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "services[0][price]",
+									"value": "1000",
+									"type": "text"
+								},
+								{
+									"key": "services[0][file]",
+									"type": "file",
+									"src": "/C:/Users/Hp/Pictures/test.png"
+								},
+								{
+									"key": "services[1][name]",
+									"value": "name service 2",
+									"type": "text"
+								},
+								{
+									"key": "services[1][description]",
+									"value": "description service 2",
+									"type": "text"
+								},
+								{
+									"key": "services[1][quantity]",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "services[1][price]",
+									"value": "1000",
+									"type": "text"
+								},
+								{
+									"key": "services[1][file]",
+									"type": "file",
+									"src": "/C:/Users/Hp/Pictures/test.png"
+								},
+								{
+									"key": "installment[]",
+									"value": "20",
+									"type": "text"
+								},
+								{
+									"key": "installment[]",
+									"value": "20",
+									"type": "text"
+								},
+								{
+									"key": "installment[]",
+									"value": "60",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{link}}quotation",
+							"host": [
+								"{{link}}quotation"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "_method",
+									"value": "PUT",
+									"type": "text"
+								},
+								{
+									"key": "user_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "client_name",
+									"value": "client name",
+									"type": "text"
+								},
+								{
+									"key": "date",
+									"value": "2022-1-25",
+									"type": "text"
+								},
+								{
+									"key": "payment_type",
+									"value": "Installment",
+									"type": "text"
+								},
+								{
+									"key": "address_id",
+									"value": "12",
+									"description": "0/1",
+									"type": "text"
+								},
+								{
+									"key": "latitude",
+									"value": "10.0",
+									"type": "text"
+								},
+								{
+									"key": "longitude",
+									"value": "20.0",
+									"type": "text"
+								},
+								{
+									"key": "area",
+									"value": "test area",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "test address",
+									"type": "text"
+								},
+								{
+									"key": "location_type",
+									"value": "Home",
+									"type": "text"
+								},
+								{
+									"key": "services[0][name]",
+									"value": "name service 1",
+									"type": "text"
+								},
+								{
+									"key": "services[0][description]",
+									"value": "description service 1",
+									"type": "text"
+								},
+								{
+									"key": "services[0][quantity]",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "services[0][price]",
+									"value": "1000",
+									"type": "text"
+								},
+								{
+									"key": "services[0][file]",
+									"type": "file",
+									"src": "/C:/Users/Hp/Pictures/test.png"
+								},
+								{
+									"key": "services[1][name]",
+									"value": "name service 2",
+									"type": "text"
+								},
+								{
+									"key": "services[1][description]",
+									"value": "description service 2",
+									"type": "text"
+								},
+								{
+									"key": "services[1][quantity]",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "services[1][price]",
+									"value": "1000",
+									"type": "text"
+								},
+								{
+									"key": "services[1][file]",
+									"type": "file",
+									"src": "/C:/Users/Hp/Pictures/test.png"
+								},
+								{
+									"key": "installment[]",
+									"value": "20",
+									"type": "text"
+								},
+								{
+									"key": "installment[]",
+									"value": "20",
+									"type": "text"
+								},
+								{
+									"key": "installment[]",
+									"value": "60",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{link}}quotation/4",
+							"host": [
+								"{{link}}quotation"
+							],
+							"path": [
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "workshop",
+			"item": [
+				{
+					"name": "list",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.globals.get(\"token\"));\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{link}}workshop",
+							"host": [
+								"{{link}}workshop"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.globals.get(\"token\"));\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{link}}workshop/8",
+							"host": [
+								"{{link}}workshop"
+							],
+							"path": [
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.globals.get(\"token\"));\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{link}}workshop/7",
+							"host": [
+								"{{link}}workshop"
+							],
+							"path": [
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "store",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.globals.get(\"token\"));\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/Hp/Pictures/test.png"
+								},
+								{
+									"key": "name",
+									"value": "test api",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "short description",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "1000",
+									"type": "text"
+								},
+								{
+									"key": "total_persons",
+									"value": "16",
+									"type": "text"
+								},
+								{
+									"key": "is_active",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "date",
+									"value": "2022-01-28",
+									"type": "text"
+								},
+								{
+									"key": "from_time",
+									"value": "20:00",
+									"type": "text"
+								},
+								{
+									"key": "to_time",
+									"value": "21:00",
+									"type": "text"
+								},
+								{
+									"key": "area_id",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "street",
+									"value": "street",
+									"type": "text"
+								},
+								{
+									"key": "block",
+									"value": "block",
+									"type": "text"
+								},
+								{
+									"key": "building_name",
+									"value": "bulding_name",
+									"type": "text"
+								},
+								{
+									"key": "floor",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "apartment_no",
+									"value": "ten",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{link}}workshop",
+							"host": [
+								"{{link}}workshop"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.globals.get(\"token\"));\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "_method",
+									"value": "PUT",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "test api update",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "short description update",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "1000",
+									"type": "text"
+								},
+								{
+									"key": "total_persons",
+									"value": "16",
+									"type": "text"
+								},
+								{
+									"key": "is_active",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "date",
+									"value": "2022-01-28",
+									"type": "text"
+								},
+								{
+									"key": "from_time",
+									"value": "20:00",
+									"type": "text"
+								},
+								{
+									"key": "to_time",
+									"value": "21:00",
+									"type": "text"
+								},
+								{
+									"key": "area_id",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "street",
+									"value": "street",
+									"type": "text"
+								},
+								{
+									"key": "block",
+									"value": "block",
+									"type": "text"
+								},
+								{
+									"key": "building_name",
+									"value": "bulding_name",
+									"type": "text"
+								},
+								{
+									"key": "floor",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "apartment_no",
+									"value": "ten",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/Hp/Pictures/test.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{link}}workshop/7",
+							"host": [
+								"{{link}}workshop"
+							],
+							"path": [
+								"7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Address",
+			"item": [
+				{
+					"name": "list",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.globals.get(\"token\"));\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{link}}address",
+							"host": [
+								"{{link}}address"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.globals.get(\"token\"));\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{link}}address/12",
+							"host": [
+								"{{link}}address"
+							],
+							"path": [
+								"12"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.globals.get(\"token\"));\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{link}}address/14",
+							"host": [
+								"{{link}}address"
+							],
+							"path": [
+								"14"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "store",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.globals.get(\"token\"));\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "full_name",
+									"value": "test api",
+									"type": "text"
+								},
+								{
+									"key": "block",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "street",
+									"value": "street",
+									"type": "text"
+								},
+								{
+									"key": "avenue",
+									"value": "avenue",
+									"type": "text"
+								},
+								{
+									"key": "house_apartment",
+									"value": "house",
+									"type": "text"
+								},
+								{
+									"key": "floor",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "lat",
+									"value": "10.0",
+									"type": "text"
+								},
+								{
+									"key": "lng",
+									"value": "10.0",
+									"type": "text"
+								},
+								{
+									"key": "country_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "city_id",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "area_id",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "address",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "phone",
+									"type": "text"
+								},
+								{
+									"key": "mobile",
+									"value": "mobile",
+									"type": "text"
+								},
+								{
+									"key": "disposable",
+									"value": "0",
+									"description": "0/1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{link}}address",
+							"host": [
+								"{{link}}address"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.globals.get(\"token\"));\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "_method",
+									"value": "PUT",
+									"type": "text"
+								},
+								{
+									"key": "full_name",
+									"value": "test api update",
+									"type": "text"
+								},
+								{
+									"key": "block",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "street",
+									"value": "street",
+									"type": "text"
+								},
+								{
+									"key": "avenue",
+									"value": "avenue",
+									"type": "text"
+								},
+								{
+									"key": "house_apartment",
+									"value": "house",
+									"type": "text"
+								},
+								{
+									"key": "floor",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "lat",
+									"value": "10.0",
+									"type": "text"
+								},
+								{
+									"key": "lng",
+									"value": "10.0",
+									"type": "text"
+								},
+								{
+									"key": "country_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "city_id",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "area_id",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "address",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "phone",
+									"type": "text"
+								},
+								{
+									"key": "mobile",
+									"value": "mobile",
+									"type": "text"
+								},
+								{
+									"key": "disposable",
+									"value": "0",
+									"description": "0/1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{link}}address/12",
+							"host": [
+								"{{link}}address"
+							],
+							"path": [
+								"12"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "set areas",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.globals.get(\"token\"));\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "area_id[0]",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "area_id[1]",
+									"value": "7",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{link}}areas",
+							"host": [
+								"{{link}}areas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get areas",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.globals.get(\"token\"));\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{link}}areas",
+							"host": [
+								"{{link}}areas"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "calendar",
+			"item": [
+				{
+					"name": "list",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.globals.get(\"token\"));\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{link}}calendar",
+							"host": [
+								"{{link}}calendar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.globals.get(\"token\"));\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{link}}calendar/44",
+							"host": [
+								"{{link}}calendar"
+							],
+							"path": [
+								"44"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show date",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.globals.get(\"token\"));\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{link}}calendar/2022-02-19",
+							"host": [
+								"{{link}}calendar"
+							],
+							"path": [
+								"2022-02-19"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.globals.get(\"token\"));\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{link}}calendar/2",
+							"host": [
+								"{{link}}calendar"
+							],
+							"path": [
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "store",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.globals.get(\"token\"));\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "details[0][date]",
+									"value": "2022-02-19",
+									"type": "text"
+								},
+								{
+									"key": "details[0][time][0][start_time]",
+									"value": "10:10",
+									"type": "text"
+								},
+								{
+									"key": "details[0][time][0][end_time]",
+									"value": "12:10",
+									"type": "text"
+								},
+								{
+									"key": "details[0][time][0][buffer]",
+									"value": "15",
+									"type": "text"
+								},
+								{
+									"key": "details[0][time][1][start_time]",
+									"value": "12:25",
+									"type": "text"
+								},
+								{
+									"key": "details[0][time][1][end_time]",
+									"value": "14:30",
+									"type": "text"
+								},
+								{
+									"key": "details[0][time][1][buffer]",
+									"value": "60",
+									"type": "text"
+								},
+								{
+									"key": "details[1][date]",
+									"value": "2022-02-20",
+									"type": "text"
+								},
+								{
+									"key": "details[1][time][0][start_time]",
+									"value": "10:10",
+									"type": "text"
+								},
+								{
+									"key": "details[1][time][0][end_time]",
+									"value": "12:10",
+									"type": "text"
+								},
+								{
+									"key": "details[1][time][0][buffer]",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "details[1][time][1][start_time]",
+									"value": "12:10",
+									"type": "text"
+								},
+								{
+									"key": "details[1][time][1][end_time]",
+									"value": "15:10",
+									"type": "text"
+								},
+								{
+									"key": "details[1][time][1][buffer]",
+									"value": "10",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{link}}calendar",
+							"host": [
+								"{{link}}calendar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.globals.get(\"token\"));\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "_method",
+									"value": "PUT",
+									"type": "text"
+								},
+								{
+									"key": "start_period",
+									"value": "2022-01-19",
+									"type": "text"
+								},
+								{
+									"key": "end_period",
+									"value": "2022-01-20",
+									"type": "text"
+								},
+								{
+									"key": "details[0][date]",
+									"value": "2022-01-19",
+									"type": "text"
+								},
+								{
+									"key": "details[0][time][0][start_time]",
+									"value": "10:10",
+									"type": "text"
+								},
+								{
+									"key": "details[0][time][0][end_time]",
+									"value": "12:10",
+									"type": "text"
+								},
+								{
+									"key": "details[0][time][0][buffer]",
+									"value": "60",
+									"type": "text"
+								},
+								{
+									"key": "details[0][time][1][start_time]",
+									"value": "15:0",
+									"type": "text"
+								},
+								{
+									"key": "details[0][time][1][end_time]",
+									"value": "20:0",
+									"type": "text"
+								},
+								{
+									"key": "details[0][time][1][buffer]",
+									"value": "60",
+									"type": "text"
+								},
+								{
+									"key": "details[1][date]",
+									"value": "2022-01-20",
+									"type": "text"
+								},
+								{
+									"key": "details[1][time][0][start_time]",
+									"value": "10:10",
+									"type": "text"
+								},
+								{
+									"key": "details[1][time][0][end_time]",
+									"value": "12:10",
+									"type": "text"
+								},
+								{
+									"key": "details[1][time][0][buffer]",
+									"value": "60",
+									"type": "text"
+								},
+								{
+									"key": "details[1][time][1][start_time]",
+									"value": "15:0",
+									"type": "text"
+								},
+								{
+									"key": "details[1][time][1][end_time]",
+									"value": "20:0",
+									"type": "text"
+								},
+								{
+									"key": "details[1][time][1][buffer]",
+									"value": "60",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/Hp/Pictures/test.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{link}}calendar/29",
+							"host": [
+								"{{link}}calendar"
+							],
+							"path": [
+								"29"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list of order and events of date",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.globals.get(\"token\"));\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "date",
+									"value": "2022-02-19",
+									"description": "optional",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{link}}events",
+							"host": [
+								"{{link}}events"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "orders",
+			"item": [
+				{
+					"name": "list",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.globals.get(\"token\"));\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{link}}orders",
+							"host": [
+								"{{link}}orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "earn per month",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.globals.get(\"token\"));\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "period",
+									"value": "day",
+									"description": "day / month / year",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{link}}earn",
+							"host": [
+								"{{link}}earn"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cancel meeting",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{link}}meeting/30",
+							"host": [
+								"{{link}}meeting"
+							],
+							"path": [
+								"30"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reschedule meeting",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "_method",
+									"value": "PUT",
+									"type": "text"
+								},
+								{
+									"key": "slot_id",
+									"value": "20",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{link}}meeting/30",
+							"host": [
+								"{{link}}meeting"
+							],
+							"path": [
+								"30"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "category",
+			"item": [
+				{
+					"name": "list freelancer category",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.globals.get(\"token\"));\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{link}}category",
+							"host": [
+								"{{link}}category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list parent categories",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.globals.get(\"token\"));\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept-language",
+								"value": "en",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{link}}get-parent-categories",
+							"host": [
+								"{{link}}get-parent-categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list sub categories",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.globals.get(\"token\"));\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept-language",
+								"value": "en",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id",
+									"value": "14",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{link}}get-sub-category",
+							"host": [
+								"{{link}}get-sub-category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.globals.get(\"token\"));\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "category_id[0]",
+									"value": "12",
+									"type": "text"
+								},
+								{
+									"key": "category_id[1]",
+									"value": "13",
+									"type": "text"
+								},
+								{
+									"key": "category_id[2]",
+									"value": "14",
+									"type": "text"
+								},
+								{
+									"key": "category_id[3]",
+									"value": "15",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{link}}category",
+							"host": [
+								"{{link}}category"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "notfication",
+			"item": [
+				{
+					"name": "list",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.globals.get(\"token\"));\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{link}}notification",
+							"host": [
+								"{{link}}notification"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "messages",
+			"item": [
+				{
+					"name": "get messages",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{link}}get-messages",
+							"host": [
+								"{{link}}get-messages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "block user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{link}}block-message/2",
+							"host": [
+								"{{link}}block-message"
+							],
+							"path": [
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "report user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{link}}report-message/2",
+							"host": [
+								"{{link}}report-message"
+							],
+							"path": [
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "clear chat",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{link}}clear-chat/2",
+							"host": [
+								"{{link}}clear-chat"
+							],
+							"path": [
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get user messages",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user_id",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{link}}get-user-messages",
+							"host": [
+								"{{link}}get-user-messages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "send user messages",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "message_type",
+									"value": "message",
+									"type": "text"
+								},
+								{
+									"key": "lat",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "lng",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": [],
+									"disabled": true
+								},
+								{
+									"key": "message",
+									"value": "ddddddddddddddddddddddddd",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{link}}store-message",
+							"host": [
+								"{{link}}store-message"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "profile",
+			"item": [
+				{
+					"name": "update profile",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.globals.get(\"token\"));\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "_method",
+									"value": "PUT",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "test api update",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "939393939",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "soheil@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "birthday",
+									"value": "2022-10-25",
+									"type": "text"
+								},
+								{
+									"key": "gender",
+									"value": "female",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/Hp/Pictures/test.png"
+								},
+								{
+									"key": "link",
+									"value": "http://google.com",
+									"type": "text"
+								},
+								{
+									"key": "bio",
+									"value": "bio text",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{link}}profile",
+							"host": [
+								"{{link}}profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update offline",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.globals.get(\"token\"));\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "_method",
+									"value": "PUT",
+									"type": "text"
+								},
+								{
+									"key": "offline",
+									"value": "1",
+									"description": "0 / 1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{link}}profile",
+							"host": [
+								"{{link}}profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update get quotation",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.globals.get(\"token\"));\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "_method",
+									"value": "PUT",
+									"type": "text"
+								},
+								{
+									"key": "quotation",
+									"value": "1",
+									"description": "0 / 1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{link}}profile",
+							"host": [
+								"{{link}}profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update get meeting",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "_method",
+									"value": "PUT",
+									"type": "text"
+								},
+								{
+									"key": "set_a_meeting",
+									"value": "1",
+									"description": "0 / 1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{link}}profile",
+							"host": [
+								"{{link}}profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update location tyoe",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "_method",
+									"value": "PUT",
+									"type": "text"
+								},
+								{
+									"key": "location_type",
+									"value": "any",
+									"description": "my / any / both",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{link}}profile",
+							"host": [
+								"{{link}}profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sub info",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{link}}subscription",
+							"host": [
+								"{{link}}subscription"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const responseJson = pm.response.json();\r",
+									"pm.globals.set(\"token\", responseJson.data.access_token);\r",
+									"pm.collectionVariables.set(\"token\", responseJson.data.access_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "soheil@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "12345678",
+									"type": "text"
+								},
+								{
+									"key": "remmber",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{link}}login",
+							"host": [
+								"{{link}}login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const responseJson = pm.response.json();\r",
+									"pm.globals.set(\"token\", responseJson.data.access_token);\r",
+									"pm.collectionVariables.set(\"token\", responseJson.data.access_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{link}}logout",
+							"host": [
+								"{{link}}logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"var Header = require('postman-collection').Header",
+					"pm.request.headers.add(new Header('Accept: application/json'));",
+					"pm.request.headers.add(new Header('accept-language: en'));"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "Base_Url",
+			"value": "https://v1.dealsco.app/api/",
+			"type": "string"
+		},
+		{
+			"key": "link",
+			"value": "https://v1.dealsco.app/api/freelancer/",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6Ijg3NjlkZmRjZTczYmExZjIyODBkNjg5ZTkyYjA0NzRmOWZjMDNkMGExZjQzNzQxNmQyYTE0MWM0Y2Y2Y2ZiYmJmMWQ5YzFkN2U0Yzk5ZWY5In0.eyJhdWQiOiI1IiwianRpIjoiODc2OWRmZGNlNzNiYTFmMjI4MGQ2ODllOTJiMDQ3NGY5ZmMwM2QwYTFmNDM3NDE2ZDJhMTQxYzRjZjZjZmJiYmYxZDljMWQ3ZTRjOTllZjkiLCJpYXQiOjE2NDMxOTgyMjQsIm5iZiI6MTY0MzE5ODIyNCwiZXhwIjoxNjc0NzM0MjI0LCJzdWIiOiIyNSIsInNjb3BlcyI6W119.McCy79wfDSiyq6uP2hFDAaSM9sJASvbAcyG2f02A8xu7KRZtZMk4qh5VCn9m6WZoMnFdZIAo5F70mPzfhMYbkyCYGTUh1pqCHKYTceIZ28Qhkn8_UAXKpIyYtqT-Uo7LPYhUEPctean45tRQ64TIxrvD3p0PACUUD5DbniuSO8iA0R0DhoWGOrWQguE1KLSbfS02FHrR_ansfk1kyloho2a8kIWyRP1WWbL-xVuih4l-O_fAlRnDuAfjuocr9VLPNo0L8oItD-bn7R9hzLiMg-T9kWrNrQ_X-ydnWqNAPAuUhILeBxBOWXjLEaqKJrowuQuHytyXWvQW_VxUoXNbeMS9d8dWjXQZFWKBdHFc0lzIATVlVFoJ-5TLk7r2wOTnvC-FrK-HNqwlXdYg1Kylbk4OG2X_Rfnk2bDMcddKGdpE_Bsjdq5IgqOSIuH2iBfJYDLnLuzxGGsVhXSKS4NBLH7JwGs1jw1WblEGy5JUVtMc08EWaO9u3ksK0qChTEm1KaUoSolD-Hyx8wNJkHa-Fm4PgK1GMjYozbaEk4iPCsLHlMw59MVK0DAymc7yS1rMDztCFIF1T5mq_8yNbmFT49RnJkMv_1-lUwYUQd-NSEqpcOan2dlCa3Kb0rw3qqZKJ3rztuI6-zPBE1bxh6xHDRbmpuiI7pAVoOQtbfcvfrE"
+		},
+		{
+			"key": "link",
+			"value": "http://127.0.0.1:8000/api/freelancer/",
+			"type": "string"
+		},
+		{
+			"key": "Base_Url",
+			"value": "http://127.0.0.1:8000/api/",
+			"type": "string"
+		},
+		{
+			"key": "Accept-Language",
+			"value": "en",
+			"type": "string"
+		}
+	]
+}

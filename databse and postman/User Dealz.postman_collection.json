@@ -1,0 +1,2345 @@
+{
+	"info": {
+		"_postman_id": "91f79ecd-65c2-4f58-9a64-cca654937834",
+		"name": "User Dealz",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "category",
+			"item": [
+				{
+					"name": "ParentCategories",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": " {{Accept-Language}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": " {{Accept}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": " {{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": " {{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{Base_Url}}user/get-parent-categories",
+							"host": [
+								"{{Base_Url}}user"
+							],
+							"path": [
+								"get-parent-categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sub_Category",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": " {{Accept-Language}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": " {{Accept}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": " {{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": " {{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"8\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_Url}}user/get-sub-category",
+							"host": [
+								"{{Base_Url}}user"
+							],
+							"path": [
+								"get-sub-category"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "slide show",
+			"item": [
+				{
+					"name": "SlideShowItems",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": " {{Accept-Language}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": " {{Accept}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": " {{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": " {{Authorization}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{Base_Url}}user/get-slideshows",
+							"host": [
+								"{{Base_Url}}user"
+							],
+							"path": [
+								"get-slideshows"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "work shop",
+			"item": [
+				{
+					"name": "WorkShops",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": " {{Accept-Language}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": " {{Accept}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": " {{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": " {{Authorization}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{Base_Url}}user/get-workshops",
+							"host": [
+								"{{Base_Url}}user"
+							],
+							"path": [
+								"get-workshops"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_single_workshop",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": " {{Accept-Language}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": " {{Accept}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": " {{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": " {{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n   \"id\":\"14\"\r\n }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_Url}}user/get-single-workshop",
+							"host": [
+								"{{Base_Url}}user"
+							],
+							"path": [
+								"get-single-workshop"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "book",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": " {{Accept-Language}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": " {{Accept}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": " {{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": " {{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "workshop_id",
+									"value": "14",
+									"type": "text"
+								},
+								{
+									"key": "people",
+									"value": "10",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{Base_Url}}user/workshop-book",
+							"host": [
+								"{{Base_Url}}user"
+							],
+							"path": [
+								"workshop-book"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "check workshop order",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": " {{Accept-Language}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": " {{Accept}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": " {{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": " {{Authorization}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{Base_Url}}user/order/30/workshop",
+							"host": [
+								"{{Base_Url}}user"
+							],
+							"path": [
+								"order",
+								"30",
+								"workshop"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cancel workshop",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": " {{Accept-Language}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": " {{Accept}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": " {{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": " {{Authorization}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{Base_Url}}user/order/30/workshop",
+							"host": [
+								"{{Base_Url}}user"
+							],
+							"path": [
+								"order",
+								"30",
+								"workshop"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "message",
+			"item": [
+				{
+					"name": "Get_User_Messages",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": " {{Accept-Language}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": " {{Accept}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": " {{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": " {{Authorization}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{Base_Url}}user/get-messages",
+							"host": [
+								"{{Base_Url}}user"
+							],
+							"path": [
+								"get-messages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get_freelancer-User_Messages",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": " {{Accept-Language}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": " {{Accept}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": " {{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": " {{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"freelancer_id\":\"{{freelancer_id}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_Url}}user/get-freelancer-messages",
+							"host": [
+								"{{Base_Url}}user"
+							],
+							"path": [
+								"get-freelancer-messages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Store_Message",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": " {{Accept-Language}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": " {{Accept}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": " {{Content-Type}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": " {{Authorization}}",
+								"type": "text"
+							},
+							{
+								"key": "message_type",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "freelancer_id",
+									"value": "23",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "user",
+									"type": "text"
+								},
+								{
+									"key": "message",
+									"value": "Test Message1",
+									"type": "text"
+								},
+								{
+									"key": "message_type",
+									"value": "4",
+									"description": "1:message, 2:location, 3:voice, 4:image, 5:file, 6:quotation",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/Public/Pictures/Sample Pictures/Desert.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{Base_Url}}user/store-message",
+							"host": [
+								"{{Base_Url}}user"
+							],
+							"path": [
+								"store-message"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						},
+						"description": "message_type can be 'message' or 'location' or 'file'"
+					},
+					"response": []
+				},
+				{
+					"name": "new_quotation",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": " {{Accept-Language}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": " {{Accept}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": " {{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": " {{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"freelancer_id\":{{freelancer_id}},\r\n    \"description\":\"mehrandish\",\r\n    \"budget\":\"10\",\r\n    \"date\":\"2022-10-25\",\r\n    \"time\":\"10:20\",\r\n    \"place\":\"home\",\r\n    \"payment_type\":\"Full payment\"\r\n \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_Url}}user/quotation",
+							"host": [
+								"{{Base_Url}}user"
+							],
+							"path": [
+								"quotation"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get freelancer quotation",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": " {{Accept-Language}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": " {{Accept}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": " {{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": " {{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"freelancer_id\":{{freelancer_id}},\r\n    \"description\":\"mehrandish\",\r\n    \"budget\":\"10\",\r\n    \"date\":\"2022-10-25\",\r\n    \"time\":\"10:20\",\r\n    \"place\":\"home\",\r\n    \"payment_type\":\"Full payment\"\r\n \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_Url}}user/quotation/4",
+							"host": [
+								"{{Base_Url}}user"
+							],
+							"path": [
+								"quotation",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "address",
+			"item": [
+				{
+					"name": "set_user_address",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var id = pm.response.json().data.newAddress.id\r",
+									"pm.globals.set('user_address_id', id)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": " {{Accept-Language}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": " {{Accept}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": " {{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": " {{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "     {\r\n            \"full_name\":\"address1\",\r\n            \"block\":\"1\",\r\n            \"street\":\"test\",\r\n            \"avenue\":\"test\",\r\n            \"house_apartment\":\"test\",\r\n            \"floor\":\"test\",\r\n            \"lat\":\"test\",\r\n            \"lng\":\"test\",\r\n            \"country_id\":\"2\",\r\n            \"city_id\":\"3\",\r\n            \"area_id\":\"5\",\r\n            \"address\":\"test\",\r\n            \"phone\":\"09307199929\",\r\n            \"mobile\":\"09307199929\"\r\n            } \r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_Url}}user/addresses",
+							"host": [
+								"{{Base_Url}}user"
+							],
+							"path": [
+								"addresses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_user_addresses",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var id = pm.response.json().data.address[0].id\r",
+									"pm.globals.set('user_address_id', id)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": " {{Accept-Language}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": " {{Accept}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": " {{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": " {{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_Url}}user/addresses",
+							"host": [
+								"{{Base_Url}}user"
+							],
+							"path": [
+								"addresses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_user_address",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": " {{Accept-Language}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": " {{Accept}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": " {{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": " {{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_Url}}user/addresses/{{user_address_id}}",
+							"host": [
+								"{{Base_Url}}user"
+							],
+							"path": [
+								"addresses",
+								"{{user_address_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update_user_address",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": " {{Accept-Language}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": " {{Accept}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": " {{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": " {{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "     {\r\n            \"full_name\":\"address1\",\r\n            \"block\":\"1\",\r\n            \"street\":\"test\",\r\n            \"avenue\":\"test\",\r\n            \"house_apartment\":\"test\",\r\n            \"floor\":\"test\",\r\n            \"lat\":\"test\",\r\n            \"lng\":\"test\",\r\n            \"country_id\":\"2\",\r\n            \"city_id\":\"3\",\r\n            \"area_id\":\"5\",\r\n            \"address\":\"test\",\r\n            \"phone\":\"09307199929\",\r\n            \"mobile\":\"09307199929\"\r\n            } \r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_Url}}user/addresses/{{user_address_id}}",
+							"host": [
+								"{{Base_Url}}user"
+							],
+							"path": [
+								"addresses",
+								"{{user_address_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "bookmarks",
+			"item": [
+				{
+					"name": "Get_Bookmarks",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": " {{Accept-Language}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": " {{Accept}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": " {{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": " {{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_Url}}user/bookmarks",
+							"host": [
+								"{{Base_Url}}user"
+							],
+							"path": [
+								"bookmarks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Set_Bookmarks",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": " {{Accept-Language}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": " {{Accept}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": " {{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": " {{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_Url}}user/bookmarks/{{freelancer_id}}",
+							"host": [
+								"{{Base_Url}}user"
+							],
+							"path": [
+								"bookmarks",
+								"{{freelancer_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "freelancer",
+			"item": [
+				{
+					"name": "list freelancer of category",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var id = pm.response.json().data.address[0].id\r",
+									"pm.globals.set('address_id', id)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": " {{Accept-Language}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": " {{Accept}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": " {{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": " {{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "price_filter",
+									"value": "asc",
+									"description": "asc / dese",
+									"type": "text"
+								},
+								{
+									"key": "rate_filter",
+									"value": "4",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{Base_Url}}user/category/14/freelancers",
+							"host": [
+								"{{Base_Url}}user"
+							],
+							"path": [
+								"category",
+								"14",
+								"freelancers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_freelancer_addresses",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var id = pm.response.json().data.address[0].id\r",
+									"pm.globals.set('address_id', id)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": " {{Accept-Language}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": " {{Accept}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": " {{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": " {{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_Url}}user/freelancer/{{freelancer_id}}/address",
+							"host": [
+								"{{Base_Url}}user"
+							],
+							"path": [
+								"freelancer",
+								"{{freelancer_id}}",
+								"address"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get single freelancer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var id = pm.response.json().data.address[0].id\r",
+									"pm.globals.set('address_id', id)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": " {{Accept-Language}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": " {{Accept}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": " {{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": " {{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id",
+									"value": "25",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{Base_Url}}user/get-single-freelancer/",
+							"host": [
+								"{{Base_Url}}user"
+							],
+							"path": [
+								"get-single-freelancer",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "set_freelancer_rate",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": " {{Accept-Language}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": " {{Accept}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": " {{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": " {{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "     {\r\n            \"order_id\":\"29\",\r\n            \"service_id\":\"26\",\r\n            \"rate\":\"5\"\r\n            } \r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_Url}}user/freelancer/{{freelancer_id}}/rate",
+							"host": [
+								"{{Base_Url}}user"
+							],
+							"path": [
+								"freelancer",
+								"{{freelancer_id}}",
+								"rate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_freelancer_date_slots",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": " {{Accept-Language}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": " {{Accept}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": " {{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": " {{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"freelancer_id\":\"25\",\r\n    \"date\":\"2022/02/19\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_Url}}user/slots",
+							"host": [
+								"{{Base_Url}}user"
+							],
+							"path": [
+								"slots"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "page",
+			"item": [
+				{
+					"name": "countries",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept-language",
+								"value": " {{Accept-Language}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_Url}}countries",
+							"host": [
+								"{{Base_Url}}countries"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_faq",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept-language",
+								"value": " {{Accept-Language}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_Url}}faq",
+							"host": [
+								"{{Base_Url}}faq"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_refund_policy",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept-language",
+								"value": " {{Accept-Language}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_Url}}refund-policy",
+							"host": [
+								"{{Base_Url}}refund-policy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_terms_and_conditions",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept-language",
+								"value": " {{Accept-Language}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_Url}}terms-conditions",
+							"host": [
+								"{{Base_Url}}terms-conditions"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "service",
+			"item": [
+				{
+					"name": "booking-service",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": " {{Accept-Language}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": " {{Accept}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": " {{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": " {{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"services\": [\r\n        {\r\n            \"service_id\": \"31\",\r\n            \"slot_id\":44,\r\n            \"freelancer_location_id\": \"21\",\r\n            \"people\": \"1\"\r\n        },\r\n        {\r\n            \"service_id\": \"30\",\r\n            \"date\": \"2021-12-28\",\r\n            \"time\": \"10:22:06\",\r\n            \"people\": \"1\",\r\n            \"user_location_id\": \"30\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_Url}}user/service-book",
+							"host": [
+								"{{Base_Url}}user"
+							],
+							"path": [
+								"service-book"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "check service order",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": " {{Accept-Language}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": " {{Accept}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": " {{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": " {{Authorization}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{Base_Url}}user/order/79/service",
+							"host": [
+								"{{Base_Url}}user"
+							],
+							"path": [
+								"order",
+								"79",
+								"service"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "searching",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": " {{Accept-Language}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": " {{Accept}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": " {{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": " {{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n    \"type\":\"service\",\r\n    \"data\":\"s\"\r\n }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_Url}}user/search",
+							"host": [
+								"{{Base_Url}}user"
+							],
+							"path": [
+								"search"
+							]
+						},
+						"description": "type can be freelancer or service or workshop"
+					},
+					"response": []
+				},
+				{
+					"name": "cancel service",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": " {{Accept-Language}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": " {{Accept}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": " {{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": " {{Authorization}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{Base_Url}}user/order/30/service",
+							"host": [
+								"{{Base_Url}}user"
+							],
+							"path": [
+								"order",
+								"30",
+								"service"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "deals",
+			"item": [
+				{
+					"name": "orders",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": " {{Accept-Language}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": " {{Accept}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": " {{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": " {{Authorization}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{Base_Url}}user/orders",
+							"host": [
+								"{{Base_Url}}user"
+							],
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_my_deals Copy",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": " {{Accept-Language}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": " {{Accept}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": " {{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": " {{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_Url}}user/my-deals",
+							"host": [
+								"{{Base_Url}}user"
+							],
+							"path": [
+								"my-deals"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "meeting",
+			"item": [
+				{
+					"name": "set_metting",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": " {{Accept-Language}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": " {{Accept}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": " {{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": " {{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n    \"freelancer_id\":25,\r\n    \"slot_id\":45,\r\n    \"freelancer_location_id\":null,\r\n    \"user_location_id\":30\r\n }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_Url}}user/meetings",
+							"host": [
+								"{{Base_Url}}user"
+							],
+							"path": [
+								"meetings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cancel meeting",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": " {{Accept-Language}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": " {{Accept}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": " {{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": " {{Authorization}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{Base_Url}}user/meeting/30",
+							"host": [
+								"{{Base_Url}}user"
+							],
+							"path": [
+								"meeting",
+								"30"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reschedule meeting",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": " {{Accept-Language}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": " {{Accept}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": " {{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": " {{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "_method",
+									"value": "PUT",
+									"type": "text"
+								},
+								{
+									"key": "slot_id",
+									"value": "20",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{Base_Url}}user/meeting/30",
+							"host": [
+								"{{Base_Url}}user"
+							],
+							"path": [
+								"meeting",
+								"30"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": " {{Accept-Language}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": " {{Accept}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": " {{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": " {{Authorization}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \r\n    \"first_name\":\"ss\",\r\n    \"last_name\":\"ss\",\r\n    \"gender\":\"male\",\r\n    \"email\":\"\",\r\n    \"mobile\":\"965677722237\",\r\n    \"password\":\"12345678\",\r\n    \"password_confirmation\":\"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_Url}}user/register",
+							"host": [
+								"{{Base_Url}}user"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change_password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": " {{Accept-Language}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": " {{Accept}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": " {{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": " {{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_Url}}user/change-password?email_mobile=09307199929&code=20898&password=12345678&password_confirmation=12345678",
+							"host": [
+								"{{Base_Url}}user"
+							],
+							"path": [
+								"change-password"
+							],
+							"query": [
+								{
+									"key": "email_mobile",
+									"value": "09307199929"
+								},
+								{
+									"key": "code",
+									"value": "20898"
+								},
+								{
+									"key": "password",
+									"value": "12345678"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "12345678"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send_changepassword_otp",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": " {{Accept-Language}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": " {{Accept}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": " {{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": " {{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_Url}}user/send-changepassword-otp?email_mobile=96567772237",
+							"host": [
+								"{{Base_Url}}user"
+							],
+							"path": [
+								"send-changepassword-otp"
+							],
+							"query": [
+								{
+									"key": "email_mobile",
+									"value": "96567772237"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Code_validation",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": " {{Accept-Language}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": " {{Accept}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": " {{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": " {{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_Url}}user/code-validation?email_mobile=96567772237&code=20898",
+							"host": [
+								"{{Base_Url}}user"
+							],
+							"path": [
+								"code-validation"
+							],
+							"query": [
+								{
+									"key": "email_mobile",
+									"value": "96567772237"
+								},
+								{
+									"key": "code",
+									"value": "20898"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_profile_details",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": " {{Accept-Language}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": " {{Accept}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": " {{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": " {{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_Url}}user/get-profile-details",
+							"host": [
+								"{{Base_Url}}user"
+							],
+							"path": [
+								"get-profile-details"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list notfication",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": " {{Accept-Language}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": " {{Accept}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": " {{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": " {{Authorization}}",
+								"type": "text"
+							},
+							{
+								"key": "per-page",
+								"value": "20",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_Url}}user/notification",
+							"host": [
+								"{{Base_Url}}user"
+							],
+							"path": [
+								"notification"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "set_contactus",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": " {{Accept-Language}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": " {{Accept}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": " {{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": " {{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"first_name\":\"soheil\",\r\n    \"last_name\":\"mehrandish\",\r\n    \"email\":\"so@gmail.com\",\r\n    \"mobile\":\"09307199929\",\r\n    \"subject\":\"asdsadas\",\r\n    \"message\":\"test1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_Url}}user/contactus",
+							"host": [
+								"{{Base_Url}}user"
+							],
+							"path": [
+								"contactus"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var token = pm.response.json().data.access_token",
+									"pm.globals.set('Authorization', 'Bearer '+ token)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": " {{Accept-Language}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": " {{Accept}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": " {{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": " {{Authorization}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email_mobile\":\"09307199929\",\r\n    \"password\":\"12345678\"\r\n}"
+						},
+						"url": {
+							"raw": "{{Base_Url}}user/login",
+							"host": [
+								"{{Base_Url}}user"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": " {{Accept-Language}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": " {{Accept}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": " {{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": " {{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_Url}}user/logout",
+							"host": [
+								"{{Base_Url}}user"
+							],
+							"path": [
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

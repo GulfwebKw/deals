@@ -1,0 +1,66 @@
+{
+	"id": "9f8b08cd-93dd-4a4e-88d3-a9eb80de6def",
+	"values": [
+		{
+			"key": "Base_Url",
+			"value": "http://v1.dealsco.app/api/",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "Accept-Language",
+			"value": "en",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "Accept",
+			"value": "application/json",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "Content-Type",
+			"value": "application/json",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "Authorization",
+			"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImUxYjlkZTcyOTg4OTEwYzBmZmE5MmY3NjA5ODI0MWZhZTY2MTRkMWM0YzAzODJhZjE4ZjM1ZWIwNWFlYTQyOTIxZmNmNTQyZjY4M2JjNDg5In0.eyJhdWQiOiI1IiwianRpIjoiZTFiOWRlNzI5ODg5MTBjMGZmYTkyZjc2MDk4MjQxZmFlNjYxNGQxYzRjMDM4MmFmMThmMzVlYjA1YWVhNDI5MjFmY2Y1NDJmNjgzYmM0ODkiLCJpYXQiOjE2NDE2MjYzODgsIm5iZiI6MTY0MTYyNjM4OCwiZXhwIjoxNjczMTYyMzg4LCJzdWIiOiIyOSIsInNjb3BlcyI6W119.PosM6HEGcvgjz-AueXsX72HqKR3OlPRFsBQpv87_GiEXXbwpE-Ty3dOQ-Ot7ZoLFWr8r7Q0rdafdG9MpK49yItM_gpyamQGRy93egG4ZrMQ0XN8a4REChq5IxpTb0cW-BX3DEyqWHcp2CveMVm8OOmRA5BH9-9CLxd3bpzIKogIRrQqQI4c4TQdG6As7WchD5PcQhn1moY3R7yhpnfWqcMW3_OzvENhtDvNRfq48GxjLaAJIBfhGVfy8Id77njZ9hvUqNKYHOmCERvI6LYTdgSFNaipVCiXtBtaRge2-KEK-52GBS1do_aZ1AZe08QXpjvEkEKouSTrcxSnPUcGCIQMtAaPg4ojsHdlEX5gwvp3DfYcxUXdsNoW2klmr9WCF8N5JB2OJqSdVo7VRRVFMHho5SPxLWjfxcvq18Lmbbtyyi0shr2ChZu7VA7krL6rUEZ3tD1GIuYU9X7J6uNUeq9j7WvJPYCtpNtPKG4TaprBo-Q_UpDFf7ijAgB3jUm_Sr-ER-8l9w85qbqp0LyOyJljCPFeg6vhInW-dz8E1gm4_JYLElOJBGFmuWCy41zJm4v85F2NrA9zFE5AcShcILwA1vVu2pA3z6vUn9WznleNhUkNoGZo2jHhrk_fyVC4OqWtHwrl3zdk7SoJW3-h3HbTytG2JnhEPsQIt3U6JZDI",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "freelancer_id",
+			"value": "23",
+			"enabled": true
+		},
+		{
+			"key": "address_id",
+			"value": "7",
+			"enabled": true
+		},
+		{
+			"key": "user_address_id",
+			"value": "14",
+			"enabled": true
+		},
+		{
+			"key": "token",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "Base_Url",
+			"value": "http://127.0.0.1:8000/api/",
+			"type": "default",
+			"enabled": false
+		}
+	],
+	"name": "Globals",
+	"_postman_variable_scope": "globals",
+	"_postman_exported_at": "2022-03-05T12:42:37.016Z",
+	"_postman_exported_using": "Postman/9.14.1"
+}
