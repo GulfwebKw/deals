@@ -158,7 +158,7 @@ return [
     'getOrderDate' => 'Freelancer can not get order for :date !',
     'hasFreeTime' => 'Freelancer has free time on :date !',
     'notOrderNow' => 'can not order now!',
-    'deactivateWorkshop' => 'workshop is deactivate!',
+    'deactivateWorkshop' => 'Workshop is deactivated.',
     'workshopFull' => 'workshop is full reserved!',
     'canNotCancelService' => 'Can not cancel service for less than 12 hour!',
     'canNotCancelWorkshop' => 'Can not cancel workshop for less than 12 hour!',
