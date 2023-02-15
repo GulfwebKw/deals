@@ -171,6 +171,7 @@ Route::middleware(['auth:api_freelancer' , 'isFreelancerHasActivePackage'])->pre
     Route::get('get-parent-categories', 'CategoryController@getParentCategory');
     Route::post('get-sub-category', 'CategoryController@getSubCategories');
     Route::get('notification', 'NotificationController@index');
+    Route::get('status', 'NotificationController@status');
     Route::apiResource('workshop', 'WorkshopController');
     Route::PUT('profile', 'ProfileController@update');
     Route::get('profile', 'ProfileController@profile');
