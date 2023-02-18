@@ -197,7 +197,7 @@ class calendarController extends Controller
             $EndDate = date('Y-m-t 23:59:59', strtotime($request->year . '-' . $request->month . '-1'));
         } else {
             $startDate = date('Y-m-d 0:0:0');
-            $EndDate = date('Y-m-t 23:59:59', Carbon::now()->addDays(60)->timestamp );
+            $EndDate = date('Y-m-d 23:59:59', Carbon::now()->addDays(60)->timestamp );
         }
         $periods = CarbonPeriod::create($startDate, $EndDate);
         $results = [];

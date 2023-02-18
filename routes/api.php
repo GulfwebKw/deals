@@ -156,7 +156,7 @@ Route::middleware(['auth:api_freelancer' , 'isFreelancerHasActivePackage'])->pre
     Route::post('logout','AuthController@logoutApi');
     Route::apiResource('service', 'ServiceController');
     Route::apiResource('calendar', 'calendarController');
-    Route::any('calendar/status', 'calendarController@getDaysStatus');
+    Route::any('calendar_status', 'calendarController@getDaysStatus');
     Route::post('calendarV2', 'calendarController@storeV2');
     Route::apiResource('address', 'AddressController');
     Route::get('get-messages', 'MessagesController@getMessages');
