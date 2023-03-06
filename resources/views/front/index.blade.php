@@ -168,7 +168,7 @@
                                             <img src="{{asset('uploads/categories/'.$category->image)}}">
                                             <img src="{{asset('uploads/categories/'.$category->image)}}">
                                         </div>
-                                        <h4>{{$category->translate($lang)->title}}
+                                        <h4>{{optional($category->translate($lang))->title}}
                                         </h4>
                                     </li>
                                 @endforeach
@@ -206,9 +206,9 @@
                                                     <h1>{{$slider->display_number}}</h1>
                                                 </div>
                                                 <div class="step">
-                                                    <h4>{{$slider->display_number . '. ' . $slider->translate($lang)->title}}</h4>
-                                                    <h5>{{$slider->step . '. ' .$slider->translate($lang)->sub_title}}</h5>
-                                                    <div class="text-dark">{{$slider->translate($lang)->description}}</div>
+                                                    <h4>{{$slider->display_number . '. ' . optional($slider->translate($lang))->title}}</h4>
+                                                    <h5>{{$slider->step . '. ' .optional($slider->translate($lang))->sub_title}}</h5>
+                                                    <div class="text-dark">{{optional($slider->translate($lang))->description}}</div>
                                                 </div>
                                             </li>
 
