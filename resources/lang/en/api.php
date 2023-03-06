@@ -163,7 +163,7 @@ return [
     'canNotCancelService' => 'Can not cancel service for less than 12 hour!',
     'canNotCancelWorkshop' => 'Can not cancel workshop for less than 12 hour!',
     'CancelWorkshop' => 'Your workshop cancellation is successful.',
-    'PackageExpired' => 'Package expired!',
+    'PackageExpired' => 'Your Package has been expired. Please login to your account from website and renew your package first.',
     'slotTime' => 'slot should between :min and :max min!',
     'errorSaveTime' => 'Error happened in save times!',
     'slotInSlot' => 'can not make slot on other slot!',
