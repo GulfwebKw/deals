@@ -52,8 +52,8 @@ class Freelancer extends Authenticatable
     {
         if ($data) {
             $query
-                ->join('freelancer_services' , 'freelancers.id' ,'freelancer_services.freelancer_id')
-                ->select('freelancers.*', DB::raw('AVG(freelancer_services.price) as AvgPrice'))
+                ->leftJoin('freelancer_services' , 'freelancers.id' ,'freelancer_services.freelancer_id')
+                ->select('freelancers.*', DB::raw('IFNULL(AVG(freelancer_services.price),0) as AvgPrice'))
                 ->orderBy('AvgPrice',$data)
                 ->groupby('freelancers.id');
         }
