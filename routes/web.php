@@ -72,6 +72,7 @@ Route::namespace('Admin')->prefix('gwc')->group(function () {
 
 //Admin authentication
     Route::get('/', 'AdminAuthController@index');
+    Route::get('/javascript:;', function() { return redirect()->back(); } );
     Route::post('/login', 'AdminAuthController@login')->name('adminLogin');
     Route::post('/logout', 'AdminAuthController@logout')->name('adminLogout');
 
