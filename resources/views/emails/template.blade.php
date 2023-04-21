@@ -12,7 +12,7 @@
         <tbody>
         <tr>
             <td height="100" align="center" style="border-bottom:1px #CCCCCC solid;">@if($settingInfo->email_logo)<img
-                        src="{{url('uploads/logo/'.$settingInfo->email_logo)}}" style="max-height:100px;"
+                        src="{{url('uploads/settings/'.$settingInfo->email_logo)}}" style="max-height:100px;"
                         alt="{{$settingInfo->name_en}}"/>@endif</td>
         </tr>
         <tr>
