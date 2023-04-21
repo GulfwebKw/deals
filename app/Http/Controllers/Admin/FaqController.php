@@ -95,7 +95,8 @@ class FaqController extends Controller
             'question_ar' => 'required|string',
             'answer_en' => 'required',
             'answer_ar' => 'required',
-            
+            'active_for' => 'required',
+
         ]);
 
        
@@ -105,6 +106,7 @@ class FaqController extends Controller
         $resource->question_ar = $request->input('question_ar');
         $resource->answer_en = $request->input('answer_en');
         $resource->answer_ar = $request->input('answer_ar');
+        $resource->active_for = $request->input('active_for');
         $resource->is_active = !empty($request->input('is_active')) ? '1' : '0';
         $resource->display_order = !empty($request->input('display_order')) ? $request->input('display_order') : '0';
        
@@ -162,7 +164,8 @@ class FaqController extends Controller
             'question_ar' => 'required|string',
             'answer_en' => 'required',
             'answer_ar' => 'required',
-          
+            'active_for' => 'required',
+
         ]);
 
         $resource = $this->model::find($id);
@@ -173,6 +176,7 @@ class FaqController extends Controller
         $resource->question_ar = $request->input('question_ar');
         $resource->answer_en = $request->input('answer_en');
         $resource->answer_ar = $request->input('answer_ar');
+        $resource->active_for = $request->input('active_for');
         $resource->is_active = !empty($request->input('is_active')) ? '1' : '0';
         $resource->display_order = !empty($request->input('display_order')) ? $request->input('display_order') : '0';
 

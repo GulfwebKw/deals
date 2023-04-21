@@ -5,14 +5,11 @@
         <thead>
         <tr>
             <th width="10">#</th>
-            <th>{{__('adminMessage.question_en')}}</th>
-            <th>{{__('adminMessage.question_ar')}}</th>
-            <th>{{__('adminMessage.answer_en')}}</th>
-            <th>{{__('adminMessage.answer_ar')}}</th>
+            <th>Question En</th>
+            <th>Question Ar</th>
+            <th>For</th>
             <th>{{__('adminMessage.displayorder')}}</th>
-           
             <th width="10">{{__('adminMessage.status')}}</th>
-            <th width="100">{{__('adminMessage.createdat')}}</th>
             <th width="10">{{__('adminMessage.actions')}}</th>
         </tr>
         </thead>
@@ -31,11 +28,14 @@
                         {!! $resource->question_ar !!}
                     </td>
                     <td>
-                        {{ Illuminate\Support\Str::limit(strip_tags($resource->answer_en)) }}
+                        {!! $resource->active_for !!}
                     </td>
-                    <td>
-                        {{ Illuminate\Support\Str::limit(strip_tags($resource->answer_ar)) }}
-                    </td>
+{{--                    <td>--}}
+{{--                        {{ Illuminate\Support\Str::limit(strip_tags($resource->answer_en)) }}--}}
+{{--                    </td>--}}
+{{--                    <td>--}}
+{{--                        {{ Illuminate\Support\Str::limit(strip_tags($resource->answer_ar)) }}--}}
+{{--                    </td>--}}
                     <td>
                         {!! $resource->display_order !!}
                     </td>
@@ -49,9 +49,9 @@
                             </label>
                         </span>
                     </td>
-                    <td>
-                        {!! $resource->created_at !!}
-                    </td>
+{{--                    <td>--}}
+{{--                        {!! $resource->created_at !!}--}}
+{{--                    </td>--}}
                     <td class="kt-datatable__cell">
                         <span style="overflow: visible; position: relative; width: 80px;">
                             <div class="dropdown">

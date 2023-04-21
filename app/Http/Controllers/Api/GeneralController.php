@@ -4,9 +4,12 @@ namespace App\Http\Controllers\Api;
 
 use App\Country;
 use App\Faq;
+use App\Freelancer;
 use App\Singlepage;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class GeneralController extends Controller
 {
@@ -73,14 +76,22 @@ class GeneralController extends Controller
     public function faq()
     {
         $lang = request()->header('accept-language');
-        $resources = Faq::where('is_active', 1)->get()->map(function ($q) use ($lang){
-            return[
-                'question'=> $q['question_'.$lang],
-                'answer'=>  $q['answer_'.$lang],
-                'is_active'=>  $q->is_active,
-                'created_at'=>  $q->created_at,
-            ];
-        });
+        $resources = Faq::where('is_active', 1)
+            ->orderBy('display_order')
+            ->when(Auth::check() , function($query) {
+                if ( Auth::user() instanceof Freelancer )
+                    $query->where('active_for' , '!=' , 'User');
+                if ( Auth::user() instanceof User )
+                    $query->where('active_for' , '!=' , 'Freelancer');
+            })->get()->map(function ($q) use ($lang){
+                return[
+                    'question'=> $q['question_'.$lang],
+                    'answer'=>  $q['answer_'.$lang],
+                    'answer_raw'=>  htmlspecialchars(strip_tags($q['answer_'.$lang])),
+                    'is_active'=>  $q->is_active,
+                    'created_at'=>  $q->created_at,
+                ];
+            });
         return $this->apiResponse(200, ['data' => ['resources' => $resources], 'message' => []]);
     }
 }

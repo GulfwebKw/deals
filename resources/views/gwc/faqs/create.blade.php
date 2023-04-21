@@ -63,6 +63,14 @@
                                     'lastOrder' => $lastOrder
                                 ]) @endcomponent
                             </div>
+                            <div class="col-3">
+                                <label>Active For</label>
+                                <select name="active_for" class="form-control" required >
+                                    <option value="Both">Both</option>
+                                    <option value="User">User</option>
+                                    <option value="Freelancer">Freelancer</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>

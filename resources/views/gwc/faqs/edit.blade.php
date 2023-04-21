@@ -73,6 +73,14 @@
                                 'lastOrder' => $resource->display_order
                                 ]) @endcomponent
                             </div>
+                            <div class="col-3">
+                                <label>Active For</label>
+                                <select name="active_for" class="form-control" required >
+                                    <option value="Both" @if( $resource->active_for == "Both" ) selected @endif>Both</option>
+                                    <option value="User" @if( $resource->active_for == "User" ) selected @endif>User</option>
+                                    <option value="Freelancer" @if( $resource->active_for == "Freelancer" ) selected @endif>Freelancer</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>
