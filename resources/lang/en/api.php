@@ -106,6 +106,7 @@ return [
         "product_translation" => "The requested information was not found.",
         "shipping_translation" => "The requested information was not found."
     ],
+    'slotIsNotFree' => 'You can’t change a booked time slot',
     'incorrectLogin' => 'Email Or Password is Incorrect',
     'incorrectLogin2' => 'Mobile Or Password is Incorrect',
     'incorrectMobile' => 'Mobile number is incorrect',

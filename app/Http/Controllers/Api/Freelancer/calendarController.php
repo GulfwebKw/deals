@@ -8,6 +8,7 @@ use App\Time_piece;
 use App\TimeCalender;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -157,7 +158,11 @@ class calendarController extends Controller
         if (strtotime($request->end_time) - strtotime($request->start_time) < $this->minSlotTime * 60 or strtotime($request->end_time) - strtotime($request->start_time) > $this->maxSlotTime * 60) {
             return $this->apiResponse(400, ['data' => [], 'message' => [trans('api.slotTime', ['min' => $this->minSlotTime, 'max' => $this->maxSlotTime])]]);
         }
-        $timeCalender = $user->calendar()->where('status', 'free')->findOrFail($id);
+        try {
+            $timeCalender = $user->calendar()->where('status', 'free')->findOrFail($id);
+        } catch (ModelNotFoundException $exception ) {
+            return $this->apiResponse(400, ['data' => [], 'message' => [trans('api.slotIsNotFree')]]);
+        }
         $timeCalender->date = $request->date;
         $timeCalender->start_time = $request->start_time;
         $timeCalender->end_time = $request->end_time;
