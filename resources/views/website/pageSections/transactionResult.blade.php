@@ -1,10 +1,10 @@
 <div class="login-register-area pt-60 pb-65">
     <div class="container">
-        <div class="row">
+        <div class="row1">
             <div class="col-lg-7 col-md-12 ml-auto mr-auto">
                 <div class="login-register-wrapper">
                     <div class="login-register-tab-list nav">
-                        <h4 style="color:#fff;"> PAYMENT DETAILS </h4>
+                        <h4 style="color:#ffb731;"> PAYMENT DETAILS </h4>
                     </div>
                     <div class="tab-content">
                         <p class="text-center">
@@ -14,7 +14,7 @@
                                 <img src="{{ asset('site_assets/img/fail.svg') }}" alt="" style="width:150px; height:auto; margin:30px 0 30px 0;">
                             @endif
                         </p>
-                        <h1 class="text-center white_text" style="font-size:50px; font-weight:400;">
+                        <h1 class="text-center text-yellow" style="font-size:50px; font-weight:400;">
                             @if($order->result == 'CAPTURED')
                                 Thank You
                             @else
@@ -24,10 +24,10 @@
                         <br/>
                         <p class="text-center white_text">
 
-                            Date : {{ date('Y-m-d') }}
+                            <label class="text-yellow">Date :</label> {{ date('Y-m-d') }}
                             <br/>
 
-                            Transaction Status :
+                            <label class="text-yellow">Transaction Status :</label>
                             @if($order->result == 'CAPTURED')
                                 <font style="color:#57cc24;">
                                     Successful
@@ -41,14 +41,14 @@
                             @endif
                             <br/>
 
-                            Trasaction Track Id :
+                            <label class="text-yellow">Trasaction Track Id :</label>
                             {{ $order->order_track }}
                             <br/>
 
-                            Payment Method : Knet
+                            <label class="text-yellow">Payment Method :</label> Knet
                             <br/>
 
-                            Amount :
+                            <label class="text-yellow">Amount :</label>
                             <font style="color:#df2121;">
                                 KD {{ $order->amount }}
                             </font>
