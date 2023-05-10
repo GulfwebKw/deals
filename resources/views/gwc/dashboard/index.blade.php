@@ -315,6 +315,30 @@
 <!-- js files -->
 @include('gwc.js.dashboard')
 
+
+<script src="https://sdk.pushy.me/web/1.0.8/pushy-sdk.js"></script>
+<script>
+
+    // Register visitor's browser for push notifications
+    Pushy.register({ appId: "{{ $settings['pushy_app_id'] }}"  })
+        .then(function(deviceToken) {
+            // Print device token to console
+            console.log("Pushy device token: " + deviceToken);
+
+            // Send the token to your backend server via an HTTP GET request
+            //fetch('https://your.api.hostname/register/device?token=' + deviceToken);
+
+            fetch('https://v1.dealsco.app/api/push-admin-token/' + deviceToken + '/' + '{{ auth('admin')->id() }}')
+                .then(response => console.log(`TOKEN ${response.ok ? '' : 'NOT'} SAVED!`))
+
+            // Succeeded, optionally do something to alert the user
+        })
+        .catch(function(err) {
+            // Handle registration errors
+            console.error(err);
+        });
+</script>
+
 @if(!empty($gaAccesstoken))
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script>

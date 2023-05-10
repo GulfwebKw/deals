@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers\Api\Freelancer;
 
+use App\Http\Controllers\Admin\webPushController;
 use App\Http\Controllers\Common;
+use App\PushDevices;
+use App\Settings;
+use App\WebPushMessage;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -54,6 +58,13 @@ class WorkshopController extends Controller
         ]);
 
         $workshops = $user->workshops()->create($request->except('file'));
+
+        $OTPTokens = PushDevices::where('device' , 'admin')->get()->pluck('token')->unique();
+        $WebPushs = new WebPushMessage;
+        $WebPushs->title = 'Deals';
+        $WebPushs->message = 'New workshop pending for approve.';
+        $WebPushs->action_url = asset('gwc/workshops/approval');
+        webPushController::sendWebPushy($OTPTokens, $WebPushs );
         return $this->apiResponse(200, ['data' => ['workshop' => $workshops ], 'message' => []]);
     }
 

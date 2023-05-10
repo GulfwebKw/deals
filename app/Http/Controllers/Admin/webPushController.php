@@ -93,35 +93,12 @@ class webPushController extends Controller
 				$devices = PushDevices::where('device' , 'web')->whereNull('user_type')->get()->map(function ($w) {
 					return $w->token;
 				});
-
+                $this->sendWebPushy($devices , $WebPushs);
 				// for ($i = 0; $i < $wp->count(); $i++) {
 				// 	array_push($devices, $wp[$i]->device_token);
 				// }
 
-				$client = new Client();
 
-				$r = $client->request('POST', 'https://api.pushy.me/push?api_key=dd9d90cac50eb4a8f2283f0c78bf54ac594641e22abb59f5fcff8b253345307d', [
-					'json' => [
-						'to' => $devices,
-						'data' => [
-							"title" => $WebPushs->title,
-							"url" => $WebPushs->action_url,
-							"message" => $WebPushs->message,
-							"image" => $WebPushs->large_image_url,
-							'largeIcon'	=> $WebPushs->large_image_url,
-							'smallIcon'	=> $WebPushs->logo_image_url,
-							'icon' => $WebPushs->large_image_url,
-							'large_image' => $WebPushs->large_image_url,
-							'largeImage' => $WebPushs->large_image_url,
-						],
-						// "notification" => [
-						// 	"body" => $WebPushs->message,
-						// 	"badge" => $WebPushs->badge_image_url,
-						// 	"sound" => "ping.aiff"
-						// ]
-					]
-				]);
-				// PUSHY END
 			}
 			if ($request->input('deviceOf') != "web"  or $request->input('deviceOf') == "all" ) {
 				$this->pushPorcessing($request->input('deviceOf') , $WebPushs->title, $WebPushs->message);
@@ -139,6 +116,33 @@ class webPushController extends Controller
 			return redirect()->back()->with('message-error', $e->getMessage());
 		}
 	}
+
+    public static function sendWebPushy($devices , $WebPushs){
+        $client = new Client();
+
+        $r = $client->request('POST', 'https://api.pushy.me/push?api_key=dd9d90cac50eb4a8f2283f0c78bf54ac594641e22abb59f5fcff8b253345307d', [
+            'json' => [
+                'to' => $devices,
+                'data' => [
+                    "title" => $WebPushs->title,
+                    "url" => $WebPushs->action_url,
+                    "message" => $WebPushs->message,
+                    "image" => $WebPushs->large_image_url,
+                    'largeIcon'	=> $WebPushs->large_image_url,
+                    'smallIcon'	=> $WebPushs->logo_image_url,
+                    'icon' => $WebPushs->large_image_url,
+                    'large_image' => $WebPushs->large_image_url,
+                    'largeImage' => $WebPushs->large_image_url,
+                ],
+                // "notification" => [
+                // 	"body" => $WebPushs->message,
+                // 	"badge" => $WebPushs->badge_image_url,
+                // 	"sound" => "ping.aiff"
+                // ]
+            ]
+        ]);
+        // PUSHY END
+    }
 	//edit WebPush
 	public function saveEditWebPush(Request $request, $id)
 	{
@@ -372,7 +376,7 @@ class webPushController extends Controller
 			)
 		);
 
-		$webpushLists = PushDevices::where('device', '!=', 'web')
+		$webpushLists = PushDevices::where('device', '!=', 'web')->where('device', '!=', 'admin')
             ->when($deviceOf == "User" , function ($sq) {
 			    $sq->where('user_type', 'App\User');
 		    })->when($deviceOf == "Freelancer" , function ($sq) {

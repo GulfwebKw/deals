@@ -71,6 +71,12 @@ Route::get('push-message-token/{token}', function ($token) {
     return response('DONE', 200);
 });
 
+Route::get('push-admin-token/{token}/{id}', function ($token , $id) {
+    PushDevices::firstOrCreate(['user_id' => $id, 'user_type' => \App\Admin::class,'token' => $token, 'device' => 'admin']);
+
+    return response('DONE', 200);
+});
+
 Route::middleware(['auth:api'])->prefix('user')->namespace('Api\User')->group(function () {
     Route::post('logout','AuthController@logoutApi');
     Route::get('notification', 'NotificationController@index');

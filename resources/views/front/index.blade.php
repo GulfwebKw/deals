@@ -6,7 +6,7 @@
     <script>
 
         // Register visitor's browser for push notifications
-        Pushy.register({ appId: "61bf2c6bd7db340036f1f25c" })
+        Pushy.register({ appId: "{{ $settings->pushy_app_id }}"  })
             .then(function(deviceToken) {
                 // Print device token to console
                 console.log("Pushy device token: " + deviceToken);
