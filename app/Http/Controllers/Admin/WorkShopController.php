@@ -42,6 +42,8 @@ class WorkShopController extends Controller
         $this->data['listPermission'] = 'workshops' . '-list';
         $this->data['createPermission'] = 'workshops' . '-create';
         $this->data['editPermission'] = 'workshops' . '-edit';
+        $this->data['approvedPermission'] = 'workshops' . '-approved';
+        $this->data['rejectPermission'] = 'workshops' . '-reject';
         $this->data['deletePermission'] = 'workshops' . '-delete';
         $this->data['url'] = '/gwc/workshops/';
         $this->data['imageFolder'] = '/uploads/freelancer_workshops';
@@ -61,14 +63,14 @@ class WorkShopController extends Controller
     public function index(Request $request)
     {
         $resources = $this->model::with('freelancer')->when($request->query('q') , function($query) use($request) {
-    
+
             $search =  $request->query('q');
             $query->whereHas('freelancer',function($q) use($search){
-                    $q->Where('name' , 'like' , '%'.$search.'%');
+                $q->Where('name' , 'like' , '%'.$search.'%');
             })
-              ->orWhereHas('translation',function($que) use($search){
-               $que->Where('name' , 'like' , '%'.$search.'%');
-            });
+                ->orWhereHas('translation',function($que) use($search){
+                    $que->Where('name' , 'like' , '%'.$search.'%');
+                });
         })->orderByDesc('id')->paginate($this->settings->item_per_page_back);
         return view('gwc.' . $this->data['path'] . '.index', [
             'data' => $this->data,
@@ -101,10 +103,10 @@ class WorkShopController extends Controller
     {
         foreach ($request->images as $image) {
             if (File::exists(public_path('uploads/junk/' . $image))){
-            rename(public_path('uploads/junk/' . $image), public_path('uploads/' . $this->path . '/' . $image));
+                rename(public_path('uploads/junk/' . $image), public_path('uploads/' . $this->path . '/' . $image));
             }
         }
-       $workshop =  FreelancerWorkshop::create([
+        $workshop =  FreelancerWorkshop::create([
             'freelancer_id' => $id,
             'time' => $request->time,
             'total_persons' => $request->total_persons,
@@ -269,13 +271,55 @@ class WorkShopController extends Controller
 
     public function details($id)
     {
-      $resource =   FreelancerWorkshop::whereId($id)->with('freelancer')->first();
+        $resource =   FreelancerWorkshop::whereId($id)->with('freelancer')->first();
 
         return view('gwc.workshops.view', [
             'data' => $this->data,
             'settings' => $this->settings,
             'resource' => $resource,
         ]);
+    }
+
+    public function approval(Request $request)
+    {
+        $count = FreelancerWorkshop::where('is_approved' , 'pending')->count();
+        $this->title = "Pending workshop";
+        $this->data['headTitle'] = $this->title;
+        $this->data['portletTitle'] = $this->title;
+        $this->data['subheader2'] = $this->title . ' List ( Pending: '.$count.' item)';
+        $this->data['listTitle'] = 'List ' . $this->title;
+        $resources =   FreelancerWorkshop::when($request->query('q') , function($query) use($request) {
+            $search =  $request->query('q');
+            $query->whereHas('freelancer',function($q) use($search){
+                $q->Where('name' , 'like' , '%'.$search.'%');
+            })
+                ->orWhereHas('translation',function($que) use($search){
+                    $que->Where('name' , 'like' , '%'.$search.'%');
+                });
+        })->where('is_approved' , 'pending')->with('freelancer' , 'area')
+            ->orderByDesc('id')->paginate($this->settings->item_per_page_back);
+
+        return view('gwc.workshops.approval', [
+            'data' => $this->data,
+            'settings' => $this->settings,
+            'resources' => $resources,
+        ]);
+    }
+
+    public function approved($id)
+    {
+        $resource =   FreelancerWorkshop::query()->find($id);
+        if ( $resource )
+            $resource->update(['is_approved' => 'approved']);
+        return redirect()->back()->with('message-success', 'Workshop approved successfully.');
+    }
+
+    public function reject($id)
+    {
+        $resource =   FreelancerWorkshop::query()->find($id);
+        if ( $resource )
+            $resource->update(['is_approved' =>  'reject']);
+        return redirect()->back()->with('message-success', 'Workshop reject successfully.');
     }
 
 }

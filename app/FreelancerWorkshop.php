@@ -3,6 +3,7 @@
 namespace App;
 
 use Astrotomic\Translatable\Translatable;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 class FreelancerWorkshop extends Eloquent
@@ -11,6 +12,21 @@ class FreelancerWorkshop extends Eloquent
     public $translationModel = 'App\FreelancerWorkshopTranslation';
     public $translatedAttributes = ['name', 'description'];
     protected $guarded = ['id'];
+
+
+    protected static function boot()
+    {
+        parent::boot();
+        static::addGlobalScope('isApproved', function (Builder $builder) {
+            if (auth('api_freelancer')->check() ) {
+                $builder->where(function($query) use ($builder) {
+                    $query->where($builder->getModel()->qualifyColumn('is_approved'), 'approved')
+                        ->orWhere('freelancer_id' , auth('api_freelancer')->id() );
+                });
+            } elseif ( ! auth('admin')->check() )
+                $builder->where($builder->getModel()->qualifyColumn('is_approved'), 'approved');
+        });
+    }
 
     public function failerMessage($ids , $model = null){
         return trans('api.models.'. str_replace('App\\' , '' , get_class($this)) );
