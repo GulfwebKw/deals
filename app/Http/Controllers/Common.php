@@ -330,7 +330,7 @@ class Common extends Controller
 
     /////////////////////////////////////////End My Fatoorah ////////////////////////////
     /////////////////////////////send push notification///////////////////////////////
-    public static function sendMobilePush($settingInfo,$token, $title, $message, $type = 'regular')
+    public static function sendMobilePush($isUser , $settingInfo,$token, $title, $message, $type = 'regular')
     {
 
         $data = array
@@ -359,7 +359,12 @@ class Common extends Controller
 
 
         // Insert your Secret API Key here
-        $apiKey = $settingInfo->pushy_api_token;
+        if ( $isUser  == true )
+            $apiKey = '45723a0b4af4ceec2b8bb242519b4e65a3d631417e144562c05504fcb8216af9';
+        elseif ( $isUser == false )
+            $apiKey = '529fb9db4b8e18e8a22ed963efa1656c74adc12f72bbf6b66225ada35a6fadf6';
+
+//        $apiKey = $settingInfo->pushy_api_token;
 
         // Default post data to provided options or empty array
         $post = $options ?: array();
@@ -394,6 +399,7 @@ class Common extends Controller
 
         // Actually send the push
         $result = curl_exec($ch);
+        \Illuminate\Support\Facades\Log::info($result);
 
         // Display errors
         if (curl_errno($ch)) {

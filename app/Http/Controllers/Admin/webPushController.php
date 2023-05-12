@@ -386,7 +386,7 @@ class webPushController extends Controller
 		if (!empty($webpushLists) && count($webpushLists) > 0) {
 			$token = [];
 			foreach ($webpushLists as $webpushList) {
-                $token[] = $webpushList->token;
+                $token[$webpushList->user_type][] = $webpushList->token;
 			}
 			if (!empty($token)) {
 				$this->sendMobilePushFinal($data, $token, $options);
@@ -396,64 +396,65 @@ class webPushController extends Controller
 	///send push notification vis pushy
 	public  function sendMobilePushFinal($data, $to, $options)
 	{
-		$settingInfo = Settings::where("keyname", "setting")->first();
-		if (!empty($settingInfo->pushy_api_token)) {
+        foreach ( $to as $platform => $tokens ) {
 
-			// Insert your Secret API Key here
-			$apiKey = $settingInfo->pushy_api_token;
+            // Insert your Secret API Key here
+            if ( $platform  == 'App\User' )
+                $apiKey = '45723a0b4af4ceec2b8bb242519b4e65a3d631417e144562c05504fcb8216af9';
+            elseif ( $platform == 'App\Freelancer' )
+                $apiKey = '529fb9db4b8e18e8a22ed963efa1656c74adc12f72bbf6b66225ada35a6fadf6';
 
-			// Default post data to provided options or empty array
-			$post = $options ?: array();
+            // Default post data to provided options or empty array
+            $post = $options ?: array();
 
-			// Set notification payload and recipients
-			$post['to'] = $to;
-			$post['data'] = $data;
-			$post['content_available'] = TRUE;
+            // Set notification payload and recipients
+            $post['to'] = $tokens;
+            $post['data'] = $data;
+            $post['content_available'] = TRUE;
 
-			// Set Content-Type header since we're sending JSON
-			$headers = array(
-				'Content-Type: application/json'
-			);
+            // Set Content-Type header since we're sending JSON
+            $headers = array(
+                'Content-Type: application/json'
+            );
 
-			// Initialize curl handle
-			$ch = curl_init();
+            // Initialize curl handle
+            $ch = curl_init();
 
-			// Set URL to Pushy endpoint
-			curl_setopt($ch, CURLOPT_URL, 'https://api.pushy.me/push?api_key=' . $apiKey);
+            // Set URL to Pushy endpoint
+            curl_setopt($ch, CURLOPT_URL, 'https://api.pushy.me/push?api_key=' . $apiKey);
 
-			// Set request method to POST
-			curl_setopt($ch, CURLOPT_POST, true);
+            // Set request method to POST
+            curl_setopt($ch, CURLOPT_POST, true);
 
-			// Set our custom headers
-			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+            // Set our custom headers
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
-			// Get the response back as string instead of printing it
-			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            // Get the response back as string instead of printing it
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-			// Set post data as JSON
-			curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($post, JSON_UNESCAPED_UNICODE));
+            // Set post data as JSON
+            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($post, JSON_UNESCAPED_UNICODE));
 
-			// Actually send the push
-			$result = curl_exec($ch);
+            // Actually send the push
+            $result = curl_exec($ch);
 
-			// Display errors
-			if (curl_errno($ch)) {
-				echo curl_error($ch);
-			}
+            // Display errors
+            if (curl_errno($ch)) {
+                echo curl_error($ch);
+            }
 
-			// Close curl handle
-			curl_close($ch);
+            // Close curl handle
+            curl_close($ch);
 
-			// Debug API response
-			$jsonresul    = json_decode($result, true);
-			if (!empty($jsonresul['success']) && $jsonresul['success'] == 1) {
-				return 1;
-			} else {
-				return 0;
-			}
-			return 0;
-		}
-		return 0;
+            // Debug API response
+            $jsonresul = json_decode($result, true);
+            if (!empty($jsonresul['success']) && $jsonresul['success'] == 1) {
+                return 1;
+            } else {
+                return 0;
+            }
+            return 0;
+        }
 	}
 
 	//cron job for order push

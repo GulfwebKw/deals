@@ -30,8 +30,10 @@ class NotificationSavedListener
     public function handle(NotificationSavedEvent $event)
     {
         $notification = $event->notification;
+        $isUser = false;
         if ( $notification instanceof UserNotification) {
             $user = $notification->user;
+            $isUser = true ;
         } else
             $user = $notification->freelancer ;
 
@@ -43,6 +45,6 @@ class NotificationSavedListener
         $OTPS = $user->pushNotification()->get();
         $OTPTokens = $OTPS->pluck('token')->unique();
         foreach ( $OTPTokens as $OTPToken)
-            Common::sendMobilePush($settingInfo,$OTPToken, 'Deals', $notification->description_en );
+            Common::sendMobilePush($isUser , $settingInfo,$OTPToken, 'Deals', $notification->description_en );
     }
 }
