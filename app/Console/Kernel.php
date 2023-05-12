@@ -56,7 +56,14 @@ class Kernel extends ConsoleKernel
 
         $schedule->call(function () {
             PushDevices::whereNull('token')->orwhere('token' , "")->delete();
-        })->daily()->at('3:00');
+            DB::delete ('DELETE c1 FROM `push_devices` c1
+INNER JOIN push_devices c2 
+WHERE
+    c1.id > c2.id AND 
+    c1.`user_id` = c2.user_id AND 
+    c1.`user_type` = c2.user_type AND 
+    c1.`token` = c2.token;');
+        })->daily()->at('3:30');
 
         $schedule->call(function () {
             $from = Carbon::now()->addDay()->toDateString();
