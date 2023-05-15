@@ -399,7 +399,7 @@ class Common extends Controller
 
         // Actually send the push
         $result = curl_exec($ch);
-        \Illuminate\Support\Facades\Log::info($result);
+        \Illuminate\Support\Facades\Log::info($result , [$isUser ,$token, $title, $message, $type ] );
 
         // Display errors
         if (curl_errno($ch)) {

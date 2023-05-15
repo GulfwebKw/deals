@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\User;
 
 use App\Freelancer;
+use App\FreelancerNotification;
 use App\Http\Controllers\Admin\Common;
 use App\Quotation;
 use App\User;
@@ -86,6 +87,7 @@ class UserQuotationController extends Controller
             'freelancerRead' => 0,
         ]);
 
+        FreelancerNotification::add($user->id,$request->freelancer_id,['receiveNotification' ,'' , '' ],'receiveNotification',['user_id' => $user->id]);
 
 
         return $this->apiResponse(200, ['data' => ['quotation' => $quotations], 'message' => [trans('api.sendQuotation')]]);
