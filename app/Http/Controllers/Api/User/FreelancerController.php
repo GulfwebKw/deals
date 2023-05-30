@@ -96,7 +96,8 @@ class FreelancerController extends Controller
         }
 
         $startDate = date('Y-m-1 0:0:0' , strtotime($request->year.'-'.$request->month.'-1'));
-        $EndDate = date('Y-m-t 23:59:59' , strtotime($request->year.'-'.$request->month.'-1'));
+//        $EndDate = date('Y-m-t 23:59:59' , strtotime($request->year.'-'.$request->month.'-1'));
+        $EndDate = Carbon::parse($request->year.'-'.$request->month.'-1')->addMonth()->endOfMonth()->format('Y-m-d 23:59:59');
         $periods = CarbonPeriod::create($startDate, $EndDate);
         $results = [];
         foreach ( $periods as $period ){
