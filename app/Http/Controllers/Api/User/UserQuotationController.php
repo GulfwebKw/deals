@@ -66,13 +66,13 @@ class UserQuotationController extends Controller
         ]);
 
 
-        $messageBody = sprintf("New quotation receive.\nBudget: %s\nPlace: %s\nDate & Time: %s %s\nQuantity: %s\Description: %s",
+        $messageBody = sprintf("New quotation receive.\nBudget: %s\nDescription: %s\nQuantity: %s\nDate & Time: %s %s\nPlace: %s",
             number_format($request->budget) ,
-            $request->place,
+            $request->description,
+            $request->quantity ?? "1",
             Carbon::parse($request->date)->format('Y M d'),
             Carbon::parse($request->time)->format('H:i'),
-            $request->quantity ?? "1",
-            $request->description
+            $request->place
         );
         $user->messages()->create([
             'type' => 'user',
