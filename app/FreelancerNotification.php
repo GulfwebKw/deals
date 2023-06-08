@@ -20,6 +20,7 @@ class FreelancerNotification extends Model
         'bookingWorkshop' => 'img/deals_n.png',
         'bookingMeeting' => 'img/deals_n.png',
         'bookingService' => 'img/deals_n.png',
+        'billPaid' => 'img/deals_n.png',
         'cancellationMeeting' => 'img/close_n.png',
     ];
     private static $descriptionValue = [
@@ -66,6 +67,10 @@ class FreelancerNotification extends Model
         'reschedule' => [
             'en' => '<p>Your booking with <strong>:name</strong> on the <strong>:time</strong> on <strong>:date</strong> was <strong>rescheduled</strong> by the :name to <strong>:newDate</strong> on the <strong>:newTime</strong>.</p>',
             'ar' => '<p>تمت إعادة جدولة حجزك باستخدام <strong>:name</strong> في <strong>:time</strong> في <strong>:date</strong> بواسطة :name في <strong>:newDate</strong> في <strong>:newTime</strong>. </p>',
+        ],
+        'billPaid' => [
+            'en' => '<p><strong>:name</strong> is paid a bill of <strong>:amount</strong> towards <strong>:description</strong>.</p>',
+            'ar' => '<p><strong>:name</strong> يدفع فاتورة <strong>:amount</strong> تجاه <strong>:description</strong>.</p>',
         ],
     ];
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\Freelancer;
 
 use App\Http\Controllers\Common;
+use App\UserNotification;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -95,7 +96,9 @@ class BillController extends Controller
             'userRead' => 0,
             'freelancerRead' => 1,
         ]);
-            
+
+        UserNotification::add($request->user_id, $user->id, ['newBill', $request->description, number_format($request->amount) , $request->expire_at], 'newBill', ['bill_uuid' => $bill->uuid , 'bill_id' => $bill->id]);
+
         return $this->apiResponse(200, ['data' => ['bill' => $bill ], 'message' => [trans('api.billMade')]]);
     }
 

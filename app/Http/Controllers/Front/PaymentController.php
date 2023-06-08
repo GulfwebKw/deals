@@ -288,6 +288,7 @@ class PaymentController
                     $order->payment_status = 'paid';
                     $order->error = $decryptedResponse->message;
                     $order->save();
+                    FreelancerNotification::add($order->user_id, $order->freelancer_id, ['billPaid', $order->user->Fullname, number_format($order->amount) , $order->description ], 'billPaid', ['bill_uuid' => $order->uuid , 'bill_id' => $order->id]);
                 }
             }
         }

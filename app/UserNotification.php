@@ -12,6 +12,7 @@ class UserNotification extends Model
     private $defaultValue = ['id' ,'freelancer_id','image','description_en', 'description_ar','user_id','data','created_at','updated_at'];
     private $imageValue = [
         'waitingList' => 'img/history_n.png',
+        'newBill' => 'img/history_n.png',
         'cancellationWithPay' => 'img/close_n.png',
         'cancellation' => 'img/close_n.png',
         'reminder' => 'img/history_n.png',
@@ -52,6 +53,10 @@ class UserNotification extends Model
         'cancellationMeetingByFreelancer' => [
             'en' => "<p>Your appointment with <strong>:name</strong> on the <strong>:time</strong> on <strong>:date</strong> was <strong>Cancelled</strong> by the :name. Search for another freelancer now!</p>",
             'ar' => "<p> موعدك مع <strong>:name</strong> في <strong>:time</strong> في <strong>:date</strong> تم <strong> إلغاؤه </strong> بواسطة :name. ابحث عن مترجم آخر الآن! </p>",
+        ],
+        'newBill' => [
+            'en' => "<p>Your invoice for <strong>:name</strong> totaling <strong>:price</strong> KD is now available. Kindly ensure timely settlement before the <strong>:date</strong></p>",
+            'ar' => "<p>الفاتورة الخاصة بك عن <strong>:name</strong> المجموع <strong>:price</strong> دينار كويتي متاح الآن. يرجى التأكد من التسوية في الوقت المناسب قبل <strong>:date</strong></p>",
         ],
     ];
 
