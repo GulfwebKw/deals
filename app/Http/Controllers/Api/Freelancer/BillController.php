@@ -97,7 +97,7 @@ class BillController extends Controller
             'freelancerRead' => 1,
         ]);
 
-        UserNotification::add($request->user_id, $user->id, ['newBill', $request->description, number_format($request->amount) , $request->expire_at], 'newBill', ['bill_uuid' => $bill->uuid , 'bill_id' => $bill->id]);
+        UserNotification::add($request->user_id, $user->id, ['newBill', $request->description, $request->expire_at , ['price' => number_format($request->amount) ] ], 'newBill', ['bill_uuid' => $bill->uuid , 'bill_id' => $bill->id]);
 
         return $this->apiResponse(200, ['data' => ['bill' => $bill ], 'message' => [trans('api.billMade')]]);
     }
