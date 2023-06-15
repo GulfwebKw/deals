@@ -34,7 +34,7 @@ class NotificationController extends Controller
         $settingInfo = Settings::where("keyname", "setting")->first();
         $pageNumber = $request->hasHeader('per-page') ? (int) $request->header('per-page') : $settingInfo->item_per_page_back ;
         $user = Auth::user();
-        $notifications = $user->notification()->orderByDesc('is_read')->orderByDesc('id')->paginate($pageNumber);
+        $notifications = $user->notification()->orderBy('is_read')->orderByDesc('id')->paginate($pageNumber);
         $user->notification()->whereIn('id' , $notifications->pluck('id') )->update(['is_read' => 1 ]);
         return $this->apiResponse(200, ['data' => ['notifications' => $notifications], 'message' => []]);
     }
