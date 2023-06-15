@@ -540,6 +540,7 @@ class BookingController extends Controller
         } else {
             $order->payment_status = "cancel";
             $order->save();
+            FreelancerNotification::add($order->user_id,$order->workshop->freelancer_id,['workshopCancel' , $order->user->Fullname ],'workshopCancel',['workshop_id' => $order->workshop->id]);
         }
         return $this->apiResponse(200, ['data' => ['workshop' => $order], 'message' => [trans('api.CancelWorkshop')]]);
     }

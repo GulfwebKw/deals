@@ -276,6 +276,7 @@ class PaymentController
                     $order->payment_status = 'paid';
                     $order->error = $decryptedResponse->message;
                     $order->save();
+                    FreelancerNotification::add($order->user_id,$order->workshop->freelancer_id,['workshopBooked' , $order->user->Fullname ],'workshopBooked',['workshop_id' => $order->workshop->id]);
                     if ( $order->workshop->available == 0 ){
                         FreelancerNotification::add($order->user_id,$order->workshop->freelancer_id,['bookingWorkshop' , '' , $order->workshop->date .' '.$order->workshop->from_time ],'bookingWorkshop',['workshop_id' => $order->workshop->id]);
                     }

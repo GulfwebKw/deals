@@ -20,8 +20,10 @@ class FreelancerNotification extends Model
         'bookingWorkshop' => 'img/deals_n.png',
         'bookingMeeting' => 'img/deals_n.png',
         'bookingService' => 'img/deals_n.png',
+        'workshopBooked' => 'img/deals_n.png',
         'billPaid' => 'img/deals_n.png',
         'cancellationMeeting' => 'img/close_n.png',
+        'workshopCancel' => 'img/close_n.png',
     ];
     private static $descriptionValue = [
         'cancellation' => [
@@ -71,6 +73,14 @@ class FreelancerNotification extends Model
         'billPaid' => [
             'en' => '<p><strong>:name</strong> is paid a bill of <strong>:amount</strong> towards <strong>:description</strong>.</p>',
             'ar' => '<p><strong>:name</strong> يدفع فاتورة <strong>:amount</strong> تجاه <strong>:description</strong>.</p>',
+        ],
+        'workshopBooked' => [
+            'en' => '<p>A workshop has been booked by a <strong>:name</strong>.</p>',
+            'ar' => '<p>تم حجز ورشة عمل من قبل <strong>:name</strong>.</p>',
+        ],
+        'workshopCancel' => [
+            'en' => '<p>A workshop has been canceled by <strong>:name</strong>.</p>',
+            'ar' => '<p>تم إلغاء ورشة عمل بواسطة  <strong>:name</strong>.</p>',
         ],
     ];
 
