@@ -193,6 +193,7 @@ Route::middleware(['auth:api_freelancer' , 'isFreelancerHasActivePackage'])->pre
     Route::get('orders', 'DealsController@orders');
     Route::post('earn', 'DealsController@earn');
     Route::delete('meeting/{id}', 'DealsController@cancelMeeting');
+    Route::delete('meeting/{id}/not-available', 'DealsController@notavailableMeeting');
     Route::PUT('meeting/{id}', 'DealsController@rescheduleMeeting');
     Route::delete('order/{id}/service', 'DealsController@cancelService');
     Route::delete('order/{id}/service/not-available', 'DealsController@notavailable');

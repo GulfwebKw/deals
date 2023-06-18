@@ -363,6 +363,28 @@ class DealsController extends Controller
         return $this->apiResponse(200, ['data' => [], 'message' => [trans('api.freelancer.cancellation.meeting')]]);
     }
 
+    public function notavailableMeeting($id)
+    {
+        $user = Auth::user();
+        $order = Meeting::where('freelancer_id', $user->id)
+            ->with(['slot', 'user'])
+            ->findOrfail($id);
+
+        if (\Carbon\Carbon::now()->addHours(12)->gte(Carbon::parse($order->date . ' ' . $order->time)->format('Y-m-d H:i:s'))) {
+            return $this->apiResponse(400, ['data' => [], 'message' => [trans('api.canNotSetMeeting12H')]]);
+        }
+        $timeSlot = $order->slot;
+        if ($timeSlot != null) {
+            if ($timeSlot->delete()) {
+                $order->delete();
+            }
+        } else
+            $order->delete();
+        UserNotification::add($order->user_id, $order->freelancer_id, ['cancellationMeetingByFreelancer', $user->name, $order->date . ' ' . $order->time], 'cancellationMeetingByFreelancer', ['meeting_id' => $order->id]);
+        FreelancerNotification::add($order->user_id, $order->freelancer_id, ['cancellationMeetingMySelf', $order->user->fullname, $order->date . ' ' . $order->time], 'cancellationMeetingMySelf', ['meeting_id' => $order->id]);
+        return $this->apiResponse(200, ['data' => [], 'message' => [trans('api.freelancer.cancellation.meeting')]]);
+    }
+
     public function rescheduleMeeting(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
