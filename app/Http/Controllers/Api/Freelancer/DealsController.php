@@ -32,13 +32,13 @@ class DealsController extends Controller
         config(['translatable.locale' => request()->header('accept-language')]);
         $locale = request()->header('accept-language');
 
-        $data_workshops = UserWorkShopsResource::collection($user->workshops()
-            ->when($request->has('date'), function ($query) use ($request) {
-                $query->whereDate('date', '>=', Carbon::parse($request->date));
-            }, function ($query) {
-                $query->whereDate('date', '>',  Carbon::yesterday());
-            })
-            ->get())->resolve();
+//        $data_workshops = UserWorkShopsResource::collection($user->workshops()
+//            ->when($request->has('date'), function ($query) use ($request) {
+//                $query->whereDate('date', '>=', Carbon::parse($request->date));
+//            }, function ($query) {
+//                $query->whereDate('date', '>',  Carbon::yesterday());
+//            })
+//            ->get())->resolve();
         $data_service = UserServicesResource::collection(ServiceUserOrders::where('freelancer_id', $user->id)
             ->whereIn('status', ['booked', 'freelancer_reschedule', 'user_reschedule', 'admin_reschedule'])
             ->when($request->has('date'), function ($query) use ($request) {
@@ -61,7 +61,8 @@ class DealsController extends Controller
                 });
             })
             ->with(['user', 'slot'])->get())->resolve();
-        $datas = array_merge($data_workshops, $data_service, $data_Meeting);
+//        $datas = array_merge($data_workshops, $data_service, $data_Meeting);
+        $datas = array_merge( $data_service, $data_Meeting);
         usort($datas, function ($a, $b) {
             $t1 = strtotime($a['date']);
             $t2 = strtotime($b['date']);
