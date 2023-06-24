@@ -17,6 +17,7 @@ class UserNotification extends Model
         'cancellation' => 'img/close_n.png',
         'reminder' => 'img/history_n.png',
         'reschedule' => 'img/history_n.png',
+        'newMessage' => 'img/deals_n.png',
         'cancellationMySelf' => 'img/close_n.png',
         'cancellationMeeting' => 'img/close_n.png',
         'cancellationMeetingByFreelancer' => 'img/close_n.png',
@@ -57,6 +58,11 @@ class UserNotification extends Model
         'newBill' => [
             'en' => "<p>Your invoice for <strong>:name</strong> totaling <strong>:price</strong> KD is now available. Kindly ensure timely settlement before the <strong>:date</strong></p>",
             'ar' => "<p>الفاتورة الخاصة بك عن <strong>:name</strong> المجموع <strong>:price</strong> دينار كويتي متاح الآن. يرجى التأكد من التسوية في الوقت المناسب قبل <strong>:date</strong></p>",
+        ],
+
+        'newMessage' => [
+            'en' => '<p>You have a new message from <strong>:name</strong>.</p>',
+            'ar' => '<p>لديك رسالة جديدة من <strong>:name</strong>.</p>',
         ],
     ];
 

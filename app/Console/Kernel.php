@@ -3,6 +3,7 @@
 namespace App\Console;
 
 use App\Console\Commands\expiredWaitingList;
+use App\Console\Commands\sendMessageNotification;
 use App\Freelancer;
 use App\Meeting;
 use App\FreelancerWorkshop;
@@ -108,6 +109,7 @@ WHERE
 
         $schedule->call(new clearUnpayWorkshop())->everyThirtyMinutes();
         $schedule->call(new clearUnpayService())->everyThirtyMinutes();
+        $schedule->call(new sendMessageNotification())->everyThirtyMinutes();
         $schedule->call(new completeService())->daily()->at('3:45');
         $schedule->call(new expiredWaitingList())->daily()->at('00:01');
     }

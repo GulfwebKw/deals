@@ -10,8 +10,10 @@ use App\FreelancerWorkshop;
 use App\Http\Controllers\Admin\Common;
 use App\Settings;
 use App\Slideshow;
+use App\UserNotification;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
@@ -100,7 +102,7 @@ class MessagesController extends Controller
             ->where(['freelancer_id'=> Auth::id(), 'user_id'=>$request->user_id , 'freelancer_delete' => 0 ])
             ->orderByDesc('created_at')
             ->paginate($pageNumber);
-        FreelancerUserMessage::where(['freelancer_id'=> Auth::id(), 'user_id'=>$request->user_id ])->orderByDesc('created_at')->limit(5)->update(['freelancerRead' => 1 ]);
+        FreelancerUserMessage::where(['freelancer_id'=> Auth::id(), 'user_id'=>$request->user_id ])->orderByDesc('created_at')->where('freelancerRead' , 0 )->update(['freelancerRead' => 1 , 'isPushSend' => 1 ]);
         return $this->apiResponse(200, ['data' => ['block' =>$block ,'messages' => $resources], 'message' => []]);
     }
 
@@ -139,6 +141,7 @@ class MessagesController extends Controller
                 'freelancerRead' => 1,
             ]);
             $listMessages = FreelancerUserMessage::selectRaw('freelancer_user_messages.*')->selectRaw('0 as `block`')->with('freelancer:id,name,image', 'user:id,first_name,last_name,image')->find($listMessages->id);
+            UserNotification::add($request->user_id,Auth::id(),['newMessage' , $user->name ],'newMessage',['new_message'  => true , 'freelancer_id' => Auth::id()]);
         }else
             return $this->apiResponse(422, ['data' => [], 'message' => [trans('api.anythingNotFound')]]);
 

@@ -21,6 +21,7 @@ class FreelancerNotification extends Model
         'bookingMeeting' => 'img/deals_n.png',
         'bookingService' => 'img/deals_n.png',
         'workshopBooked' => 'img/deals_n.png',
+        'newMessage' => 'img/deals_n.png',
         'billPaid' => 'img/deals_n.png',
         'cancellationMeeting' => 'img/close_n.png',
         'workshopCancel' => 'img/close_n.png',
@@ -81,6 +82,10 @@ class FreelancerNotification extends Model
         'workshopCancel' => [
             'en' => '<p>A workshop has been canceled by <strong>:name</strong>.</p>',
             'ar' => '<p>تم إلغاء ورشة عمل بواسطة  <strong>:name</strong>.</p>',
+        ],
+        'newMessage' => [
+            'en' => '<p>You have a new message from <strong>:name</strong>.</p>',
+            'ar' => '<p>لديك رسالة جديدة من <strong>:name</strong>.</p>',
         ],
     ];
 

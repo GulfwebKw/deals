@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\User;
 
 use App\Category;
 use App\Freelancer;
+use App\FreelancerNotification;
 use App\FreelancerServices;
 use App\FreelancerUserMessage;
 use App\FreelancerWorkshop;
@@ -12,6 +13,7 @@ use App\Settings;
 use App\Slideshow;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
@@ -91,7 +93,7 @@ class MessagesController extends Controller
         $settingInfo = Settings::where("keyname", "setting")->first();
         $pageNumber = $request->hasHeader('per-page') ? (int) $request->header('per-page') : $settingInfo->item_per_page_back ;
         $resources = FreelancerUserMessage::selectRaw('freelancer_user_messages.*')->selectRaw((int) $block .' as `block`')->with('freelancer:id,name,image', 'user:id,first_name,last_name,image')->where(['user_id'=> Auth::id(), 'freelancer_id'=>$request->freelancer_id , 'user_delete' => 0])->orderByDesc('created_at')->paginate($pageNumber);
-        FreelancerUserMessage::where(['user_id'=> Auth::id(), 'freelancer_id'=>$request->freelancer_id ])->orderByDesc('created_at')->limit(5)->update(['userRead' => 1 ]);
+        FreelancerUserMessage::where(['user_id'=> Auth::id(), 'freelancer_id'=>$request->freelancer_id ])->orderByDesc('created_at')->where('userRead' , 0 )->update(['userRead' => 1 , 'isPushSend' => 1]);
         return $this->apiResponse(200, ['data' => ['block' =>$block ,'messages' => $resources], 'message' => []]);
     }
 
@@ -130,6 +132,7 @@ class MessagesController extends Controller
                 'freelancerRead' => 0,
             ]);
             $listMessages = FreelancerUserMessage::selectRaw('freelancer_user_messages.*')->selectRaw('0 as `block`')->with('freelancer:id,name,image', 'user:id,first_name,last_name,image')->find($listMessages->id);
+            FreelancerNotification::add(Auth::id(),$request->freelancer_id,['newMessage' , $user->Fullname ],'newMessage',['new_message'  => true , 'user_id' => Auth::id()]);
         }else
             return $this->apiResponse(422, ['data' => [], 'message' => [trans('api.anythingNotFound')]]);
 
