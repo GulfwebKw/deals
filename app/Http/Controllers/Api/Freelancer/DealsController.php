@@ -251,7 +251,7 @@ class DealsController extends Controller
             $order->refund = $order->refund + $service->price;
             $order->save();
             UserNotification::add($order->user_id, $service->freelancer_id, ['cancellationWithPay', $user->name, $service->date . ' ' . $service->time], 'cancellationWithPay', ['service_id' => $service->id]);
-            FreelancerNotification::add($order->user_id, $service->freelancer_id, ['cancellationServiceMySelf', $user->name, $service->date . ' ' . $service->time], 'cancellationServiceMySelf', ['service_id' => $service->id]);
+            FreelancerNotification::add($order->user_id, $service->freelancer_id, ['cancellationServiceMySelf', $order->user->Fullname, $service->date . ' ' . $service->time], 'cancellationServiceMySelf', ['service_id' => $service->id]);
         } catch (\Exception $e) {
             DB::rollBack();
             return $this->apiResponse(500, ['data' => [], 'message' => [$e->getMessage()]]);
@@ -282,7 +282,7 @@ class DealsController extends Controller
             $order->refund = $order->refund + $service->price;
             $order->save();
             UserNotification::add($order->user_id, $service->freelancer_id, ['cancellationWithPay', $user->name, $service->date . ' ' . $service->time], 'cancellationWithPay', ['service_id' => $service->id]);
-            FreelancerNotification::add($order->user_id, $service->freelancer_id, ['cancellationServiceMySelf', $user->name, $service->date . ' ' . $service->time], 'cancellationServiceMySelf', ['service_id' => $service->id]);
+            FreelancerNotification::add($order->user_id, $service->freelancer_id, ['cancellationServiceMySelf', $order->user->Fullname, $service->date . ' ' . $service->time], 'cancellationServiceMySelf', ['service_id' => $service->id]);
         } catch (\Exception $e) {
             DB::rollBack();
             return $this->apiResponse(500, ['data' => [], 'message' => [$e->getMessage()]]);

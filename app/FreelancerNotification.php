@@ -60,7 +60,7 @@ class FreelancerNotification extends Model
             'ar' => '<p>مرحباً، لديك طلب عرض سعر جديد</p>',
         ],
         'cancellationServiceMySelf' => [
-            'en' => '<p>You have canceled you booking with <strong>:name</strong> on the <strong>:time</strong> on <strong>:date</strong>.</p>',
+            'en' => '<p>You have canceled your booking with <strong>:name</strong> on the <strong>:time</strong> on <strong>:date</strong>.</p>',
             'ar' => '<p>لقد ألغيت حجزك باستخدام <strong>:name</strong> في <strong>:time</strong> في <strong>:date</strong>. </p>',
         ],
         'cancellationMeetingMySelf' => [
