@@ -41,10 +41,10 @@ class sendMessageNotification extends Command
         Log::info('start sending message notification' , []);
         $settingInfo = Settings::where("keyname", "setting")->first();
         $users = FreelancerUserMessage::query()
-            ->selectRaw('sum(id) as sum, user_id')
+            ->selectRaw('count(id) as sum, user_id')
             ->where('type' , 'freelancer' )
             ->where('isPushSend' , 0 )
-            ->where('isPushSend' , 0 )
+            ->where('userRead' , 0 )
             ->where('created_at' , '>=' , \Illuminate\Support\Carbon::now()->subMinutes(30))
             ->groupBy(['user_id'])
             ->get();
@@ -55,6 +55,7 @@ class sendMessageNotification extends Command
             FreelancerUserMessage::query()
                 ->where('type' , 'freelancer' )
                 ->where('isPushSend' , 0 )
+                ->where('userRead' , 0 )
                 ->where('user_id' , $userM->user_id )
                 ->where('created_at' , '>=' , \Illuminate\Support\Carbon::now()->subMinutes(30))
                 ->update(['isPushSend' => 1] );
@@ -63,13 +64,14 @@ class sendMessageNotification extends Command
             $OTPS = $user->pushNotification()->get();
             $OTPTokens = $OTPS->pluck('token')->unique();
             foreach ( $OTPTokens as $OTPToken)
-                Common::sendMobilePush(true , $settingInfo,$OTPToken, 'Deals', '<p>You have '.number_format($userM->sum).' unread messages.</p>' );
+                Common::sendMobilePush(true , $settingInfo,$OTPToken, 'Deals', 'You have '.number_format($userM->sum).' unread messages.' );
 
         }
         $users = FreelancerUserMessage::query()
-            ->selectRaw('sum(id) as sum, freelancer_id')
+            ->selectRaw('count(id) as sum, freelancer_id')
             ->where('type' , 'user' )
             ->where('isPushSend' , 0 )
+            ->where('freelancerRead' , 0 )
             ->where('created_at' , '>=' , \Illuminate\Support\Carbon::now()->subMinutes(30))
             ->groupBy(['freelancer_id'])
             ->get();
@@ -84,12 +86,13 @@ class sendMessageNotification extends Command
             FreelancerUserMessage::query()
                 ->where('type' , 'user' )
                 ->where('isPushSend' , 0 )
+                ->where('freelancerRead' , 0 )
                 ->where('freelancer_id' , $userM->freelancer_id )
                 ->where('created_at' , '>=' , \Illuminate\Support\Carbon::now()->subMinutes(30))
                 ->update(['isPushSend' => 1] );
-
+            
             foreach ( $OTPTokens as $OTPToken)
-                Common::sendMobilePush(false , $settingInfo,$OTPToken, 'Deals', '<p>You have '.number_format($userM->sum).' unread messages.</p>' );
+                Common::sendMobilePush(false , $settingInfo,$OTPToken, 'Deals', 'You have '.number_format($userM->sum).' unread messages.' );
 
         }
         Log::info('finish sending' , []);
