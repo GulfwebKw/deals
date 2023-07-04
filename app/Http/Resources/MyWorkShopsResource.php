@@ -41,6 +41,20 @@ class MyWorkShopsResource extends JsonResource
                 'phone' => $this->workshop->freelancer->phone,
                 'block' => $block,
             ],
+            'address' => [
+                'name' => null,
+                'country' => $this->workshop->area->city->country['title_'.app()->getLocale()],
+                'area' => $this->workshop->area['title_'.app()->getLocale()],
+                'city' => $this->workshop->area->city['title_'.app()->getLocale()],
+                'block' => $this->workshop->block,
+                'street' => $this->workshop->street,
+                'avenue' => null,
+                'house_apartment' => $this->workshop->house_apartment,
+                'floor' => $this->workshop->floor,
+                'lat' => null,
+                'lng' => null,
+                'address' => null,
+            ],
         ];
     }
 }

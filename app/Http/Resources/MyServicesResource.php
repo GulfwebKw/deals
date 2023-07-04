@@ -15,6 +15,11 @@ class MyServicesResource extends JsonResource
      */
     public function toArray($request)
     {
+        $address = optional();
+        if ( $this->user_location_id != null )
+            $address = $this->user_location;
+        elseif ($this->freelancer_location_id != null)
+            $address = $this->freelancer_location;
 
         $block = false;
         if ( $this->service->freelancer->blockedUser()->where('user_id', Auth::id())->first() != null  )
@@ -41,6 +46,20 @@ class MyServicesResource extends JsonResource
                 'image' => $this->service->freelancer->image,
                 'phone' => $this->service->freelancer->phone,
                 'block' => $block,
+            ],
+            'address' => [
+                'name' => $address->full_name,
+                'country' => $address->country,
+                'area' => $address->area,
+                'city' => $address->city,
+                'block' => $address->block,
+                'street' => $address->street,
+                'avenue' => $address->avenue,
+                'house_apartment' => $address->house_apartment,
+                'floor' => $address->floor,
+                'lat' => $address->lat,
+                'lng' => $address->lng,
+                'address' => $address->address,
             ],
         ];
     }

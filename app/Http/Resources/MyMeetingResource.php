@@ -15,6 +15,11 @@ class MyMeetingResource extends JsonResource
      */
     public function toArray($request)
     {
+        $address = optional();
+        if ( $this->area_id != null )
+            $address = $this->userLocation;
+        if ($this->location_id != null)
+            $address = $this->location;
 
         $block = false;
         if ( $this->freelancer->blockedUser()->where('user_id', Auth::id())->first() != null  )
@@ -41,6 +46,20 @@ class MyMeetingResource extends JsonResource
                 'image' => $this->freelancer->image,
                 'phone' => $this->freelancer->phone,
                 'block' => $block,
+            ],
+            'address' => [
+                'name' => $address->full_name,
+                'country' => $address->country,
+                'area' => $address->area,
+                'city' => $address->city,
+                'block' => $address->block,
+                'street' => $address->street,
+                'avenue' => $address->avenue,
+                'house_apartment' => $address->house_apartment,
+                'floor' => $address->floor,
+                'lat' => $address->lat,
+                'lng' => $address->lng,
+                'address' => $address->address,
             ],
         ];
     }
