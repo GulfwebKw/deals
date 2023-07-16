@@ -17,9 +17,9 @@ class MyServicesResource extends JsonResource
     {
         $address = optional();
         if ( $this->user_location_id != null )
-            $address = $this->user_location;
+            $address = optional($this->user_location);
         elseif ($this->freelancer_location_id != null)
-            $address = $this->freelancer_location;
+            $address = optional($this->freelancer_location);
 
         $block = false;
         if ( $this->service->freelancer->blockedUser()->where('user_id', Auth::id())->first() != null  )

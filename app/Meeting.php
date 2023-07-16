@@ -24,11 +24,11 @@ class Meeting extends Model
 
     public function location()
     {
-        return $this->belongsTo(FreelancerAddress::class, 'location_id');
+        return $this->belongsTo(FreelancerAddress::class, 'location_id')->withTrashed();
     }
     public function userLocation()
     {
-        return $this->belongsTo(Address::class, 'area_id');
+        return $this->belongsTo(Address::class, 'area_id')->withTrashed();
     }
 
     public function failerMessage($ids , $model = null){

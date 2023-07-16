@@ -30,12 +30,12 @@ class ServiceUserOrders extends Model
     }
     
     public function freelancer_location(){
-        return $this->belongsTo(FreelancerAddress::class , 'freelancer_location_id');
+        return $this->belongsTo(FreelancerAddress::class , 'freelancer_location_id')->withTrashed();
         
     }
     
     public function user_location(){
-        return $this->belongsTo(Address::class , 'user_location_id');
+        return $this->belongsTo(Address::class , 'user_location_id')->withTrashed();
         
     }
 

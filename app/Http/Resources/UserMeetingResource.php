@@ -17,9 +17,9 @@ class UserMeetingResource extends JsonResource
     {
         $address = new Address();
         if ( $this->area_id != null )
-            $address = $this->userLocation;
+            $address = optional($this->userLocation);
         if ($this->location_id != null)
-            $address = $this->location;
+            $address = optional($this->location);
 
         return [
             'id' => $this->id,

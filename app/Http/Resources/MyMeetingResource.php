@@ -17,9 +17,9 @@ class MyMeetingResource extends JsonResource
     {
         $address = optional();
         if ( $this->area_id != null )
-            $address = $this->userLocation;
+            $address = optional($this->userLocation);
         if ($this->location_id != null)
-            $address = $this->location;
+            $address = optional($this->location);
 
         $block = false;
         if ( $this->freelancer->blockedUser()->where('user_id', Auth::id())->first() != null  )

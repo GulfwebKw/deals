@@ -24,7 +24,7 @@ class Quotation extends Model
 
     public function freelancerAddress()
     {
-        return $this->belongsTo(FreelancerAddress::class , 'address_id');
+        return $this->belongsTo(FreelancerAddress::class , 'address_id')->withTrashed();
     }
 
     public function services()

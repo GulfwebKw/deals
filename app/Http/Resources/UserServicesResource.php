@@ -17,9 +17,9 @@ class UserServicesResource extends JsonResource
     {
         $address = new Address();
         if ( $this->user_location_id != null )
-            $address = $this->user_location;
+            $address = optional($this->user_location);
         elseif ($this->freelancer_location_id != null)
-            $address = $this->freelancer_location;
+            $address = optional($this->freelancer_location);
 
         return [
             'id' => $this->id,
