@@ -127,8 +127,13 @@ class WorkshopController extends Controller
     public function destroy($id)
     {
         $user = Auth::user();
-        $user->workshops()->findOrFail($id)->delete();
-        return $this->apiResponse(200, ['data' => [], 'message' => []]);
+        $workshop = $user->workshops()->findOrFail($id);
+        if ( $workshop->reserved == 0 ) {
+            $workshop->delete();
+            return $this->apiResponse(200, ['data' => [], 'message' => [trans('api.freelancer.cancellation.workshop')]]);
+        } else {
+            return $this->apiResponse(400, ['data' => [], 'message' => [trans('api.freelancer.cancellation.workshopBooked')]]);
+        }
     }
 
 

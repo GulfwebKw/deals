@@ -23,6 +23,8 @@ return [
         ],
         'cancellation' => [
             'service' => 'Your service cancellation is successful.',
+            'workshopBooked' => 'You cannot delete a workshop once somebody has reserved it.',
+            'workshop' => 'Your workshop cancellation is successful.',
             'serviceFromUser' => 'your service cancellation is successful.',
             'meeting' => 'your meeting appointment cancellation is successful.',
         ],
