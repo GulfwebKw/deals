@@ -462,9 +462,9 @@ class BookingController extends Controller
         $service = ServiceUserOrders::whereIn('status' , ['booked' ,'freelancer_reschedule' ,'user_reschedule','admin_reschedule'])
             ->with(['timeSlot', 'order' , 'freelancer'])
             ->findOrfail($id);
-        if ( Carbon::now()->addHours(12)->gte( Carbon::parse($service->date .' '.$service->time)->format('Y-m-d H:i:s'))){
-            return $this->apiResponse(400, ['data' => [], 'message' => [trans('api.canNotCancelService')]]);
-        }
+//        if ( Carbon::now()->addHours(12)->gte( Carbon::parse($service->date .' '.$service->time)->format('Y-m-d H:i:s'))){
+//            return $this->apiResponse(400, ['data' => [], 'message' => [trans('api.canNotCancelService')]]);
+//        }
         $order = $service->order;
         if ( $order->user_id != $user->id )
             return $this->apiResponse(403, ['data' => [], 'message' => [trans('api.notAccess')]]);
@@ -480,7 +480,7 @@ class BookingController extends Controller
             }
             $service->status = "user_cancel";
             $service->save();
-            $order->refund = $order->refund + $service->price ;
+            $order->refund = $order->refund + ($service->price > 2.5 ? $service->price - 2.5 : 0 ) ;
             $order->save();
             FreelancerNotification::add($service->user_id,$service->freelancer_id,['cancellation' , $user->Fullname , $service->date .' '.$service->time ],'cancellation',['service_id' => $service->id]);
             UserNotification::add($service->user_id,$service->freelancer_id,['cancellationMySelf' , $service->freelancer->name , $service->date .' '.$service->time , [] , null , $user->Fullname ],'cancellationMySelf',['booking_id' => $service->id]);

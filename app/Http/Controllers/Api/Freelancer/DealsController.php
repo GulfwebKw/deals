@@ -233,9 +233,9 @@ class DealsController extends Controller
             ->whereIn('status', ['booked', 'freelancer_reschedule', 'user_reschedule', 'admin_reschedule'])
             ->with(['timeSlot', 'order'])
             ->findOrfail($id);
-        if (\Carbon\Carbon::now()->addHours(12)->gte(Carbon::parse($service->date . ' ' . $service->time)->format('Y-m-d H:i:s'))) {
-            return $this->apiResponse(400, ['data' => [], 'message' => [trans('api.canNotCancelService')]]);
-        }
+//        if (\Carbon\Carbon::now()->addHours(12)->gte(Carbon::parse($service->date . ' ' . $service->time)->format('Y-m-d H:i:s'))) {
+//            return $this->apiResponse(400, ['data' => [], 'message' => [trans('api.canNotCancelService')]]);
+//        }
         DB::beginTransaction();
         try {
             $timeSlot = $service->timeSlot;
@@ -267,9 +267,9 @@ class DealsController extends Controller
             ->whereIn('status', ['booked', 'freelancer_reschedule', 'user_reschedule', 'admin_reschedule'])
             ->with(['timeSlot', 'order'])
             ->findOrfail($id);
-        if (\Carbon\Carbon::now()->addHours(12)->gte(Carbon::parse($service->date . ' ' . $service->time)->format('Y-m-d H:i:s'))) {
-            return $this->apiResponse(400, ['data' => [], 'message' => [trans('api.canNotCancelService')]]);
-        }
+//        if (\Carbon\Carbon::now()->addHours(12)->gte(Carbon::parse($service->date . ' ' . $service->time)->format('Y-m-d H:i:s'))) {
+//            return $this->apiResponse(400, ['data' => [], 'message' => [trans('api.canNotCancelService')]]);
+//        }
         DB::beginTransaction();
         try {
             $timeSlot = $service->timeSlot;
