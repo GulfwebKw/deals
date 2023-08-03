@@ -146,6 +146,7 @@ class WorkshopController extends Controller
                 if ( isset($data['children_recursive']) and is_array($data['children_recursive']) and count($data['children_recursive']) > 0)
                     $datas[$index]['children_recursive'] = $this->deleteTranslations($data['children_recursive']);
                 unset($datas[$index]['translations']);
+                $datas[$index]['description'] = strip_tags($datas[$index]['description']);
             }
         }
         return $datas;

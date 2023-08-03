@@ -27,10 +27,10 @@ class WorkshopController extends Controller
                 ->where('offline' , 0 )
                 ->whereDate('expiration_date' , '>=', \Illuminate\Support\Carbon::now());
         }  )->orderByDesc('id')->paginate($pageNumber)->toArray();
-        $resources = $this->deleteTranslations($resources);
+        $resources['data'] = $this->deleteTranslations($resources['data']);
         return $this->apiResponse(200, ['data' => ['workshops' => $resources], 'message' => []]);
     }
-    
+
     public function getHighlightWorkShops(Request $request)
     {
         $settings = Settings::where("keyname", "setting")->first();
@@ -40,7 +40,7 @@ class WorkshopController extends Controller
         $resources = FreelancerWorkshop::with('freelancer' , 'area.city.country')->where('is_active' , 1 )->where('available' , '>' , 0 )->where('date', '>=', Date('Y-m-d'))->whereHas('freelancer' , function($query) {
             $query->where('is_active' , 1 )->where('offline' , 0 );
         }  )->orderByDesc('id')->paginate($pageNumber)->toArray();
-        $resources = $this->deleteTranslations($resources);
+        $resources['data'] = $this->deleteTranslations($resources['data']);
         return $this->apiResponse(200, ['data' => ['workshops' => $resources], 'message' => []]);
     }
 
@@ -60,6 +60,7 @@ class WorkshopController extends Controller
             foreach ($datas as $index => $data){
                 if ( isset($datas[$index]['translations']))
                     unset($datas[$index]['translations']);
+                $datas[$index]['description'] = strip_tags($datas[$index]['description']);
             }
         }
         return $datas;
