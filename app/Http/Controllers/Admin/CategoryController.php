@@ -115,13 +115,14 @@ class CategoryController extends Controller
         }
             $val = array_merge($val, ['display_order' => 'required|numeric|unique:categories,display_order',]);
         $cover_image = Common::uploadImage($request, 'image', $this->path, $this->image_big_w, $this->image_big_h, $this->image_thumb_w, $this->image_thumb_h);
+        $second_image = Common::uploadImage($request, 'second_image', $this->path, $this->image_big_w, $this->image_big_h, $this->image_thumb_w, $this->image_thumb_h);
         $request->validate($val);
         $category = new Category();
         $category->parent_id = $request->parent_id;
         $category->display_order = $request->display_order;
         $category->is_active = !empty($request->input('is_active')) ? '1' : '0';
         $category->slug = make_slug($request->title_en);
-        $category->image = $cover_image;
+        $category->second_image = $second_image;
         $category->save();
         foreach ($this->langs as $lang) {
             if ($request->input('title_' . $lang->key) || $request->input('meta_desc_' . $lang->key)) {
@@ -199,6 +200,11 @@ class CategoryController extends Controller
         if ($request->hasFile('image')) {
             $cover_image = Common::editImage($request, 'image', $this->path, $this->image_big_w, $this->image_big_h, $this->image_thumb_w, $this->image_thumb_h, $category);
             $category->image = $cover_image;
+        }
+        $second_image = $category->second_image;
+        if ($request->hasFile('second_image')) {
+            $second_image = Common::editImage($request, 'second_image', $this->path, $this->image_big_w, $this->image_big_h, $this->image_thumb_w, $this->image_thumb_h, $category);
+            $category->second_image = $second_image;
         }
         $category->parent_id = $request->parent_id;
         $category->slug = make_slug($request->title_en);

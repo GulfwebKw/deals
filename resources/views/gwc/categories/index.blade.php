@@ -4,17 +4,19 @@
     @if(count($resources))
         <div class="kt-list-timeline">
             <div class="kt-list-timeline__items">
-                <div class="kt-list-timeline__item">
-                    <span class="kt-list-timeline__badge"></span>
+                <div class="font-weight-bold kt-list-timeline__item">
                     <span class="kt-list-timeline__text">{{__('adminMessage.categoryname')}}</span>
 
                     <span class="kt-list-timeline__time">{{__('adminMessage.image')}}</span>
+                    <span class="kt-list-timeline__time text-center">Second image</span>
 
                     <span class="kt-list-timeline__time text-center">{{__('adminMessage.active')}}</span>
                     <span class="kt-list-timeline__time">{{__('adminMessage.sorting')}}</span>
                     <span class="kt-list-timeline__time">{{__('adminMessage.actions')}}</span>
                 </div>
-                @foreach($resources as $category)
+            </div>
+            @foreach($resources as $category)
+                <div class="kt-list-timeline__items">
                     <div class="kt-list-timeline__item">
                         <span class="kt-list-timeline__badge"></span>
                         <span class="kt-list-timeline__text"><h5>{{$category->title . '( '. $category->translate('ar')->title . ' )'}}</h5></span>
@@ -24,7 +26,15 @@
                             @endif
                                                         </span>
                         <span class="kt-list-timeline__time">
-                                                        <span class="kt-switch"><label><input value="{{$category->id}}" {{!empty($category->is_active)?'checked':''}} type="checkbox"  id="category" class="change_status"><span></span></label></span>
+                                                        @if($category->second_image)
+                                <img width="30" src="{{$category->second_image}}" alt="">
+                            @endif
+                                                        </span>
+                        <span class="kt-list-timeline__time">
+                                                        <span class="kt-switch"><label><input value="{{$category->id}}"
+                                                                                              {{!empty($category->is_active)?'checked':''}} type="checkbox"
+                                                                                              id="category"
+                                                                                              class="change_status"><span></span></label></span>
                                                         </span>
                         <span class="kt-list-timeline__time">{{$category->display_order}}</span>
                         <span class="kt-list-timeline__time">
@@ -61,7 +71,8 @@
 
 
                             <!--Delete modal -->
- <div class="modal fade" id="kt_modal_{{$category->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ <div class="modal fade" id="kt_modal_{{$category->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
 								<div class="modal-dialog" role="document">
 									<div class="modal-content">
 										<div class="modal-header">
@@ -73,20 +84,22 @@
 											<h6 class="modal-title text-left">{!!__('adminMessage.alertDeleteMessage')!!}</h6>
 										</div>
 										<div class="modal-footer">
-											<button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('adminMessage.no')}}</button>
-											<button type="button" class="btn btn-danger"  onClick="Javascript:window.location.href='{{url('gwc/category/delete/'.$category->id)}}'">{{__('adminMessage.yes')}}</button>
+											<button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">{{__('adminMessage.no')}}</button>
+											<button type="button" class="btn btn-danger"
+                                                    onClick="Javascript:window.location.href='{{url('gwc/category/delete/'.$category->id)}}'">{{__('adminMessage.yes')}}</button>
 										</div>
 									</div>
 								</div>
 							</div>
                                                         </span>
                     </div>
-                    <div class="kt-separator kt-separator--space-sm kt-separator--border-dashed"></div>
                     @if(count($category->childrenRecursive) > 0)
                         @include('gwc.partials.IndexCategory',['categories' => $category->childrenRecursive, 'level'=>0])
                     @endif
-                @endforeach
-            </div>
+                    <div class="kt-separator kt-separator--space-sm kt-separator--border-dashed"></div>
+                </div>
+            @endforeach
         </div>
     @else
         <div class="text-center">No Record(s) Found</div>

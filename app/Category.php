@@ -56,10 +56,17 @@ class Category extends Eloquent
 
     public function getImageAttribute($value)
     {
-         if ($value)
-        return '/uploads/categories/'.$value;
+        if ($value)
+            return '/uploads/categories/' . $value;
         else
-         return null;
+            return null;
+    }
+    public function getSecondImageAttribute($value)
+    {
+        if ($value)
+            return '/uploads/categories/' . $value;
+        else
+            return null;
     }
 
     public function failerMessage($ids , $model = null){

@@ -52,18 +52,41 @@
 
             <div class="form-group">
                 <div class="row">
-                    <div class="col-md-6">
-                            <label>parent</label>
-                            <select name="parent_id" class="form-control">
-                                <option value="">None</option>
-                                @foreach($resources as $resource)
-                                    <option value="{{ $resource->id }}">{{ $resource->title }}</option>
-                            @if(count($resource->childrenRecursive) > 0)
-                                @include('gwc.partials.category',['categories' => $resource->childrenRecursive, 'level'=>0])
-                            @endif
-                                @endforeach
-                            </select>
+                    <div class="col-auto">
+                        <div class="form-group row">
+                            <!-- is active? -->
+                            <div class="col-md-4">
+                                <label>{{__('adminMessage.isactive')}}</label>
+                                <div>
+                                    @component('gwc.components.createIsActive') @endcomponent
+                                </div>
+                            </div>
+                            <!-- display order -->
+                            <div class="col-md-4">
+                                <label>{{__('adminMessage.displayorder')}}</label>
+                                @component('gwc.components.createDisplayOrder', [
+                                    'lastOrder' => $lastOrder
+                                ]) @endcomponent
+                            </div>
+                            <div class="col-md-4">
+                                <label>parent</label>
+                                <select name="parent_id" class="form-control">
+                                    <option value="">None</option>
+                                    @foreach($resources as $resource)
+                                        <option value="{{ $resource->id }}">{{ $resource->title }}</option>
+                                        @if(count($resource->childrenRecursive) > 0)
+                                            @include('gwc.partials.category',['categories' => $resource->childrenRecursive, 'level'=>0])
+                                        @endif
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
                     </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
                     <div class="col-lg-6">
                         <!-- image -->
                         @php $label = "Image"; @endphp
@@ -73,25 +96,14 @@
                             'name' => $field,
                         ]) @endcomponent
                     </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-auto">
-                        <div class="form-group row">
-                            <!-- is active? -->
-                            <label class="col-3 col-form-label">{{__('adminMessage.isactive')}}</label>
-                            <div class="col-3">
-                                @component('gwc.components.createIsActive') @endcomponent
-                            </div>
-                            <!-- display order -->
-                            <label class="col-3 col-form-label">{{__('adminMessage.displayorder')}}</label>
-                            <div class="col-3">
-                                @component('gwc.components.createDisplayOrder', [
-                                    'lastOrder' => $lastOrder
-                                ]) @endcomponent
-                            </div>
-                        </div>
+                    <div class="col-lg-6">
+                        <!-- image -->
+                        @php $label = "Second Image"; @endphp
+                        @php $field = 'second_image'; @endphp
+                        @component('gwc.components.createImageUpload', [
+                            'label' => $label,
+                            'name' => $field,
+                        ]) @endcomponent
                     </div>
                 </div>
             </div>

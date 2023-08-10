@@ -5,11 +5,11 @@
        in_array($category->id, $notSelectable->toArray())) disabled @endif
     value="{{ $category->id }}"
             @if(isset($parent_id)
- and is_array($parent_id->toArray()) ?
- in_array($category->id, $parent_id->toArray())
-  : $category->id==$parent_id
+ and ( ( !  is_int($parent_id) and
+ in_array($category->id, $parent_id->toArray())) or
+  ( is_int($parent_id) and $category->id==$parent_id )  )
   )
-            selected @endif>
+                selected @endif>
         @for ($i = 0; $i <= $level; $i++)
             -
         @endfor

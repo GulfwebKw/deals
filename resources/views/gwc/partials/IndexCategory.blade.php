@@ -14,10 +14,18 @@
                 @endif
          </span>
             <span class="kt-list-timeline__time">
-         <span class="kt-switch"><label><input value="{{$child->id}}" {{!empty($child->is_active)?'checked':''}} type="checkbox"  id="category" class="change_status"><span></span></label></span>
+                                                        @if($child->second_image)
+                    <img width="30" src="{{$child->second_image}}" alt="">
+                @endif
+                                                        </span>
+
+            <span class="kt-list-timeline__time">
+         <span class="kt-switch"><label><input value="{{$child->id}}"
+                                               {{!empty($child->is_active)?'checked':''}} type="checkbox" id="category"
+                                               class="change_status"><span></span></label></span>
          </span>
             <span class="kt-list-timeline__time">{{$child->display_order}}</span>
-                <span class="kt-list-timeline__time">
+            <span class="kt-list-timeline__time">
                                                     <span style="overflow: visible; position: relative; width: 80px;">
                             <div class="dropdown">
                                 <a href="javascript:;" class="btn btn-sm btn-clean btn-icon btn-icon-md"
@@ -50,8 +58,9 @@
                         </span>
 
 
-                    <!--Delete modal -->
- <div class="modal fade" id="kt_modal_{{$child->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <!--Delete modal -->
+ <div class="modal fade" id="kt_modal_{{$child->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
 								<div class="modal-dialog" role="document">
 									<div class="modal-content">
 										<div class="modal-header">
@@ -63,17 +72,18 @@
 											<h6 class="modal-title text-left">{!!__('adminMessage.alertDeleteMessage')!!}</h6>
 										</div>
 										<div class="modal-footer">
-											<button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('adminMessage.no')}}</button>
-											<button type="button" class="btn btn-danger"  onClick="Javascript:window.location.href='{{url('gwc/category/delete/'.$child->id)}}'">{{__('adminMessage.yes')}}</button>
+											<button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">{{__('adminMessage.no')}}</button>
+											<button type="button" class="btn btn-danger"
+                                                    onClick="Javascript:window.location.href='{{url('gwc/category/delete/'.$child->id)}}'">{{__('adminMessage.yes')}}</button>
 										</div>
 									</div>
 								</div>
 							</div>
                                                         </span>
         </div>
-        <div class="kt-separator kt-separator--space-sm kt-separator--border-dashed"></div>
-                    @if(count($child->childrenRecursive) > 0)
-                        @include('gwc.partials.IndexCategory',['categories' => $child->childrenRecursive, 'level'=>($level+1)])
-                    @endif
+        @if(count($child->childrenRecursive) > 0)
+            @include('gwc.partials.IndexCategory',['categories' => $child->childrenRecursive, 'level'=>($level+1)])
+        @endif
     @endforeach
 </div>

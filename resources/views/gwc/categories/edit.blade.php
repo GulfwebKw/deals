@@ -53,21 +53,38 @@
             </div>
             <div class="form-group">
                 <div class="row">
-                    <div class="col-lg-8">
+                    <div class="col-lg-12">
                         <div class="form-group row">
                             <!-- is active? -->
-                            <label class="col-3 col-form-label">{{__('adminMessage.isactive')}}</label>
-                            <div class="col-3">
+                            <div class="col-md-4">
+                                <label>{{__('adminMessage.isactive')}}</label>
+                                <div>
                                 @component('gwc.components.editIsActive', [
 									'value' => $resource->is_active
 								]) @endcomponent
+                                </div>
                             </div>
                             <!-- display order -->
-                            <label class="col-3 col-form-label">{{__('adminMessage.displayorder')}}</label>
-                            <div class="col-3">
+                            <div class="col-md-4">
+                                <label>{{__('adminMessage.displayorder')}}</label>
                                 @component('gwc.components.editDisplayOrder', [
                                     'lastOrder' => $resource->display_order
                                 ]) @endcomponent
+                            </div>
+
+                            <div class="col-md-4">
+                                <label>parent</label>
+                                <select name="parent_id" class="form-control">
+                                    <option value="">None</option>
+                                    @foreach($categories as $category)
+                                        <option @if(in_array($category->id, $childrenIds->toArray())) disabled @endif  value="{{ $category->id }}" @if($category->id == $resource->parent_id) selected @endif>
+                                            {{ $category->title }}
+                                        </option>
+                                        @if(count($category->childrenRecursive)>0)
+                                            @include('gwc.partials.Editcategory',['categories' => $category->childrenRecursive, 'parent_id'=>$resource->parent_id, 'notSelectable'=>$childrenIds, 'level'=>0,'category_id'=>$resource->category_id])
+                                        @endif
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -77,21 +94,7 @@
             <!-- title -->
             <div class="form-group">
                 <div class="row">
-                    <div class="col-md-5">
-                            <label>parent</label>
-                            <select name="parent_id" class="form-control">
-                                    <option value="">None</option>
-                                @foreach($categories as $category)
-                                    <option @if(in_array($category->id, $childrenIds->toArray())) disabled @endif  value="{{ $category->id }}" @if($category->id == $resource->parent_id) selected @endif>
-                                        {{ $category->title }}
-                                    </option>
-                                @if(count($category->childrenRecursive)>0)
-                                        @include('gwc.partials.Editcategory',['categories' => $category->childrenRecursive, 'parent_id'=>$resource->parent_id, 'notSelectable'=>$childrenIds, 'level'=>0,'category_id'=>$resource->category_id])
-                                    @endif
-                                @endforeach
-                            </select>
-                    </div>
-                    <div class="col-lg-5">
+                    <div class="col-lg-4">
                         <!-- image -->
                         @php $label = "Image"; @endphp
                         @php $field = 'image'; @endphp
@@ -102,6 +105,18 @@
                     </div>
                     <div class="col-md-2">
                         <img src="{{$resource->image}}" alt="" style="max-width:100%">
+                    </div>
+                    <div class="col-lg-4">
+                        <!-- image -->
+                        @php $label = "Second Image"; @endphp
+                        @php $field = 'second_image'; @endphp
+                        @component('gwc.components.createImageUpload', [
+                            'label' => $label,
+                            'name' => $field,
+                        ]) @endcomponent
+                    </div>
+                    <div class="col-md-2">
+                        <img src="{{$resource->second_image}}" alt="" style="max-width:100%">
                     </div>
                 </div>
             </div>

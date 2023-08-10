@@ -165,8 +165,8 @@
                                 @foreach($categories as $category)
                                     <li>
                                         <div class="col3">
-                                            <img src="{{asset('uploads/categories/'.$category->image)}}">
-                                            <img src="{{asset('uploads/categories/'.$category->image)}}">
+                                            <img src="{{asset($category->image)}}">
+                                            <img src="{{asset($category->second_image)}}">
                                         </div>
                                         <h4>{{optional($category->translate($lang))->title}}
                                         </h4>
