@@ -51,11 +51,11 @@
 <script src="{{asset('/front_assets/assets/js/jquery-parallax.js')}}"></script>
 {{--<script src="{{asset('/front_assets/js/TweenMax.min.js')}}"></script>--}}
 <script src="{{asset('/front_assets/assets/js/aos.js')}}"></script>
-{{--<script>--}}
-{{--    AOS.init({--}}
-{{--        easing: 'ease-in-out-sine'--}}
-{{--    });--}}
-{{--</script>--}}
+<script>
+    AOS.init({
+        easing: 'ease-in-out-sine'
+    });
+</script>
 <script src="{{asset('/front_assets/assets/js/jquery.superslides.js')}}" type="text/javascript" charset="utf-8"></script>
 <script>
     $('#slides').superslides({
@@ -160,54 +160,7 @@
 
 
 </script>
-<script>
-    function easeOutBounce (x) {
-        var base = -Math.cos(x * (0.5 * Math.PI)) + 1;
-        var rate = Math.pow(base,1.5);
-        var rateR = Math.pow(1 - x, 2);
-        var progress = -Math.abs(Math.cos(rate * (2.5 * Math.PI) )) + 1;
-        return (1- rateR) + (progress * rateR);
-    }
 
-    var timing,
-        timingProps = {
-            type: 'delayed',
-            duration: 200,
-            start: 'autostart',
-            pathTimingFunction: Vivus.LINEAR,
-            animTimingFunction: Vivus.LINEAR
-        };
-
-
-
-
-    // function timingTest (buttonEl, property, type) {
-    //     var activeSibling = buttonEl.parentNode.querySelector('button.active');
-    //     activeSibling.classList.remove('active');
-    //     buttonEl.classList.add('active');
-    //
-    //     timingProps.type = (property === 'type') ? type : timingProps.type;
-    //     timingProps.pathTimingFunction = (property === 'path') ? Vivus[type] : timingProps.pathTimingFunction;
-    //     timingProps.animTimingFunction = (property === 'anim') ? Vivus[type] : timingProps.animTimingFunction;
-    //
-    //     timing && timing.stop().destroy();
-    //     timing = new Vivus('timing-example', timingProps);
-    // }
-
-    var hi = new Vivus('hi-there', {type: 'scenario-sync', duration: 20, start: 'autostart', dashGap: 20, forceRender: false},
-            function () {
-                if (window.console) {
-                    console.log('Animation finished. [log triggered from callback]');
-                }
-            }),
-        obt1 = new Vivus('obturateur1', {type: 'delayed', duration: 300}),
-        obt2 = new Vivus('obturateur2', {type: 'delayed', duration: 300}),
-        obt3 = new Vivus('obturateur3', {type: 'delayed', duration: 300}),
-        obt4 = new Vivus('obturateur4', {type: 'delayed', duration: 500}),
-        obt5 = new Vivus('obturateur5', {type: 'delayed', duration: 200}),
-        obt6 = new Vivus('obturateur6', {type: 'delayed', duration: 800}),
-        pola = new Vivus('polaroid', {type: 'scenario-sync', duration: 30, forceRender: false});
-</script>
 <!-- Sticky nav -->
 <script>
     $(window).scroll(function() {

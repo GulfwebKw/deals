@@ -58,9 +58,6 @@
                     <div class="menu">
                         <div class="lang">
                             <a href="{{'/set-locale/'. ($lang=='en'?'ar':'en')}}">{{$lang=='en'?'العربیه':'English'}}</a>
-                            @if((Auth::guard('freelancer')->check() || Auth::guard('admin')->check()))
-                            <a href="{{auth()->guard('freelancer')?'/freelancer':'/gwc/home'}}">{{$lang=='en'?'profile':'الملف الشخصي'}}</a>
-                                @endif
                         </div>
 
                         <nav id="navigation" class="main-nav ">
@@ -71,12 +68,15 @@
                                 <li><a href="#s1">{{$lang=='en'?'About US':'من نحن؟'}}</a></li>
                                 <li><a href="#s2">{{$lang=='en'?'Features':'مميزات'}}</a></li>
                                 <li><a href="#s3">{{$lang=='en'?'How It Works':'كيف يعمل'}}</a></li>
-                                <li><a href="#s4">{{$lang=='en'?'Benefits':''}}</a></li>
-                                @if(!(Auth::guard('freelancer')->check() || Auth::guard('admin')->check()))
-
-                                <li><a href="{{route('login.index')}}">{{$lang=='en'?'Login/SignUp':'الفوائد'}}</a></li>
+                                <li><a href="#s4">{{$lang=='en'?'Benefits':'الفوائد'}}</a></li>
+                                @if(Auth::guard('freelancer')->check())
+                                    <li><a href="{{route('packages')}}">{{$lang=='en'?'Profile':'الملف الشخصي'}}</a></li>
+                                @elseif(Auth::guard('admin')->check())
+                                    <li><a href="/gwc/home">{{$lang=='en'?'Admin Area':'منطقة الإدارة'}}</a></li>
+                                @else
+                                <li><a href="{{route('login.index')}}">{{$lang=='en'?'Login/SignUp':'تسجيل الدخول'}}</a></li>
                                 @endif
-                                <li><a href="#s6">{{$lang=='en'?'Contact Us':'تسجيل الدخول'}}</a></li>
+                                <li><a href="#s6">{{$lang=='en'?'Contact Us':'تواصل معنا'}}</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -203,7 +203,7 @@
                                         @foreach($sliders as $key=>$slider)
                                             <li>
                                                 <div class="number">
-                                                    <h1>{{$slider->display_number}}</h1>
+                                                    <h1>{{ sprintf("%02d", $slider->step) }}</h1>
                                                 </div>
                                                 <div class="step">
                                                     <h4>{{$slider->display_number . '. ' . optional($slider->translate($lang))->title}}</h4>
@@ -227,15 +227,19 @@
                             <article class="benefits-box">
                                 <div class="benefits-box-left right" data-delighter="start:0.8"></div>
                                 <div class="benefits-box-right">
-                                    <h5 class="left" data-delighter="start:0.8">{{$lang=='en'?'BENEFITS':'الفوائد'}}</h5>
-                                    <h2 class="left" data-delighter="start:0.8">
-                                        {{getSingle('benefits')['title_'. $lang]}}
-                                    </h2>
                                     <div class="left" data-delighter="start:0.8">
-                                        {!! getSingle('benefits')['details_'. $lang] !!}
+                                        <h5>{{$lang=='en'?'BENEFITS':'الفوائد'}}</h5>
+                                        <h2>
+                                            {{getSingle('benefits')['title_'. $lang]}}
+                                        </h2>
+                                        <div>
+                                            {!! getSingle('benefits')['details_'. $lang] !!}
+                                        </div>
                                     </div>
-                                    <h2 class="left" data-delighter="start:0.8">{{$lang=='en'?'Expansion':'التوسع'}}</h2>
-                                    <div class="left" data-delighter="start:0.8"> {!! getSingle('expansion')['details_'. $lang]!!} </div>
+                                    <div class="left" data-delighter="start:0.8">
+                                        <h2>{{$lang=='en'?'Expansion':'التوسع'}}</h2>
+                                        <div> {!! getSingle('expansion')['details_'. $lang]!!} </div>
+                                    </div>
                                 </div>
                             </article>
                         </section>
