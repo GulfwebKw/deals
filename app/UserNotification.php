@@ -18,6 +18,7 @@ class UserNotification extends Model
         'reminder' => 'img/history_n.png',
         'reschedule' => 'img/history_n.png',
         'newMessage' => 'img/deals_n.png',
+        'sendQuotation' => 'img/deals_n.png',
         'cancellationMySelf' => 'img/close_n.png',
         'cancellationMeeting' => 'img/close_n.png',
         'cancellationMeetingByFreelancer' => 'img/close_n.png',
@@ -63,6 +64,11 @@ class UserNotification extends Model
         'newMessage' => [
             'en' => '<p>You have a new message from <strong>:name</strong>.</p>',
             'ar' => '<p>لديك رسالة جديدة من <strong>:name</strong>.</p>',
+        ],
+
+        'sendQuotation' => [
+            'en' => '<p>Hello, you have received new quotation.</p>',
+            'ar' => '<p>مرحباً، لديك عرض سعر جديد.</p>',
         ],
     ];
 

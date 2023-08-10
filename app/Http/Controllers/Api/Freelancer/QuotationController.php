@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\Freelancer;
 
 use App\Http\Controllers\Admin\Common;
+use App\UserNotification;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Carbon;
@@ -117,6 +118,7 @@ class QuotationController extends Controller
                 'userRead' => 0,
                 'freelancerRead' => 1,
             ]);
+            UserNotification::add($request->user_id, $user->id, ['sendQuotation', "", ""], 'sendQuotation', ['quotation_id' => $qutation->id]);
             DB::commit();
             return $this->apiResponse(200, ['data' => ['quotation' => $qutation], 'message' => [trans('api.sendQuotation')]]);
         } catch (\Exception $e){}
