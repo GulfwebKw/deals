@@ -20,8 +20,18 @@
                     <td>
                         {{$p}}
                     </td>
-                    <td><img class="p-1" src="{!! $resource->image !!}"
-                                                                     width="40"></td>
+                    <td>
+                        <a href="{{ asset($resource->image) }}" target="_blank">
+                            @if( file_exists(public_path($resource->image)) and mime_content_type(public_path($resource->image)) and strstr(mime_content_type(public_path($resource->image)) , "video/") )
+                                <video style="width: 80px ;border-radius: 1px">
+                                    <source src="{{ $resource->image }}" type="{{ mime_content_type(public_path($resource->image)) }}">
+                                </video>
+                            @else
+                                <img class="p-1" src="{!! $resource->image !!}"
+                                     width="40">
+                            @endif
+                        </a>
+                    </td>
                     <td>
                         {!! $resource->name !!}
                     </td>
