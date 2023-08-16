@@ -307,7 +307,6 @@ class PaymentController
             if ($data['variable4'] == 'package') {
                 $order = order::find($data['variable1']);
                 if ( $order->status == null ) {
-                    $this->packageBooking($order->package_id, $data['variable3']);
                     $order->status = $decryptedResponse->status;
                     $order->payment_id = $data['paymentId'];
                     $order->result = $data['resultCode'];
