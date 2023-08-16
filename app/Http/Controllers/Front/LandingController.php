@@ -46,12 +46,14 @@ class LandingController extends Controller
         if ( $request->has('resend') ){
             $otp = rand(10000, 99999);
             $this->sendOtp($otp, $request->phonenumber,  $request->email, 'sms');
+            \Illuminate\Support\Facades\Log::info('validation code for : '. $request->phonenumber . ' or '. $request->email . ' is '.$otp  );
             $request->merge(['codeValidation' => Hash::make($otp . " : ".$request->phonenumber ." : ".$request->email )]);
             return redirect()->back()->withInput()->with('success', 'Validation code resend to your mobile.');
         }
         if ( ! $request->has('code') ){
             $otp = rand(10000, 99999);
             $this->sendOtp($otp, $request->phonenumber,  $request->email, 'sms');
+            \Illuminate\Support\Facades\Log::info('validation code for : '. $request->phonenumber . ' or '. $request->email . ' is '.$otp  );
             $request->merge(['codeValidation' => Hash::make($otp . " : ".$request->phonenumber ." : ".$request->email )]);
             return redirect()->back()->withInput()->with('success', 'Validation code send to your mobile.');
         } elseif ( ! Hash::check($request->code . " : ".$request->phonenumber ." : ".$request->email  , $request->codeValidation) )
@@ -90,7 +92,7 @@ class LandingController extends Controller
     {
         if (Auth::guard('freelancer')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
             // if successful, then redirect to their intended location
-                return redirect('/freelancer');
+            return redirect('/freelancer');
         }
         return redirect()->back()->withInput($request->only('username', 'remember'));
     }
