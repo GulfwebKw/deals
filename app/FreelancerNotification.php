@@ -72,8 +72,8 @@ class FreelancerNotification extends Model
             'ar' => '<p>تمت إعادة جدولة حجزك باستخدام <strong>:name</strong> في <strong>:time</strong> في <strong>:date</strong> بواسطة :name في <strong>:newDate</strong> في <strong>:newTime</strong>. </p>',
         ],
         'billPaid' => [
-            'en' => '<p><strong>:name</strong> is paid a bill of <strong>:amount</strong> towards <strong>:description</strong>.</p>',
-            'ar' => '<p><strong>:name</strong> يدفع فاتورة <strong>:amount</strong> تجاه <strong>:description</strong>.</p>',
+            'en' => '<p>Your bill payment of  <strong>:amountKWD</strong> with <strong>:name</strong> for <strong>ل:description</strong> is successful.</p>',
+            'ar' => '<p>تمت عملية دفع فاتورتك بقيمة <strong>:amount</strong> دينار كويتي مع <strong>:name</strong> <strong>ل:description</strong> بنجاح.</p>',
         ],
         'workshopBooked' => [
             'en' => '<p>A workshop has been booked by a <strong>:name</strong>.</p>',

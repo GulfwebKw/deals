@@ -57,8 +57,8 @@ class UserNotification extends Model
             'ar' => "<p> موعدك مع <strong>:name</strong> في <strong>:time</strong> في <strong>:date</strong> تم <strong> إلغاؤه </strong> بواسطة :name. ابحث عن مترجم آخر الآن! </p>",
         ],
         'newBill' => [
-            'en' => "<p>Your invoice for <strong>:name</strong> totaling <strong>:price</strong> KD is now available. Kindly ensure timely settlement before the <strong>:date</strong></p>",
-            'ar' => "<p>الفاتورة الخاصة بك عن <strong>:name</strong> المجموع <strong>:price</strong> دينار كويتي متاح الآن. يرجى التأكد من التسوية في الوقت المناسب قبل <strong>:date</strong></p>",
+            'en' => "<p>You have received a billing statement of <strong>:priceKWD</strong>. Check your inbox.</p>",
+            'ar' => "<p>لقد تلقيت فاتورة بقيمة <strong>:price</strong> دينار كويتي. يرجى التحقق من صندوق الوارد الخاص بك</p>",
         ],
 
         'newMessage' => [
