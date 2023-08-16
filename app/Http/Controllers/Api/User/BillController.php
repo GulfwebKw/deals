@@ -53,7 +53,11 @@ class BillController extends Controller
         if (!$freelancer->is_active or
             $freelancer->offline or
             \Illuminate\Support\Carbon::now()->gte($freelancer->expiration_date)) {
-            return $this->apiResponse(200, ['data' => ['bill' => $bill, 'Url' => "" , 'siteUrl' => "" , 'token' => "" , "can_pay" => false], 'message' => [trans('api.FreelancerDeactivate')]]);
+            return $this->apiResponse(200, ['data' => ['bill' => $bill, 'Url' => "" , 'siteUrl' => "" , 'token' => "" , "can_pay" => false , 'why_not' => [
+                'is_active' => !$freelancer->is_active,
+                'is_offline' => $freelancer->offline,
+                'package_expire' => \Illuminate\Support\Carbon::now()->gte($freelancer->expiration_date),
+            ]], 'message' => [trans('api.FreelancerDeactivate')]]);
         }
         $today = Carbon::createFromFormat('Y-m-d H:i:s', Date('Y-m-d').' 00:00:00');
         if ( $bill->payment_status == "waiting" and  $bill->expire_at->gte($today) ){
@@ -71,7 +75,10 @@ class BillController extends Controller
 
             // check the response and validate it
             if ($hesabeCheckoutResponseModel->status == false && $hesabeCheckoutResponseModel->code != Constants::SUCCESS_CODE) {
-                return $this->apiResponse(200, ['data' => ['bill' => $bill , 'Url' => "", 'siteUrl' => "" , 'token' => "" , "can_pay" => false], 'message' => [trans('api.canNotMakeLink')]]);
+                return $this->apiResponse(200, ['data' => ['bill' => $bill , 'Url' => "", 'siteUrl' => "" , 'token' => "" , "can_pay" => false, 'why_not' => [
+                    'payment_status' => $hesabeCheckoutResponseModel->status ,
+                    'payment_code' => $hesabeCheckoutResponseModel->code,
+                ]], 'message' => [trans('api.canNotMakeLink')]]);
             }
 
             $token = $hesabeCheckoutResponseModel->response['data'];
@@ -84,7 +91,11 @@ class BillController extends Controller
             ], 'message' => [trans('api.billMade')]]);
         }
             
-        return $this->apiResponse(200, ['data' => ['bill' => $bill, 'Url' => "" , 'siteUrl' => "" , 'token' => "" , "can_pay" => false], 'message' => [trans('api.success')]]);
+        return $this->apiResponse(200, ['data' => ['bill' => $bill, 'Url' => "" , 'siteUrl' => "" , 'token' => "" , "can_pay" => false,
+            'why_not' => [
+                'bill_status' => $bill->payment_status ,
+                'bill_expire' => $bill->expire_at->gte($today),
+            ]], 'message' => [trans('api.success')]]);
     }
 
 
