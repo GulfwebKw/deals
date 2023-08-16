@@ -149,7 +149,7 @@ class Freelancer extends Authenticatable
     }
 
     public function highlights(){
-        return $this->hasMany(FreelancerHighlight::class , 'freelancer_id');
+        return $this->hasMany(FreelancerHighlight::class , 'freelancer_id')->latest();
     }
 
     public function areas()
