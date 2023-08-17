@@ -66,6 +66,7 @@ class Controller extends BaseController
                 $xmldata = simplexml_load_string($xml);
                 $jsondata = json_encode($xmldata);
                 $json = json_decode($jsondata, true);
+                \Illuminate\Support\Facades\Log::info('send otp sms: '. $otp . '  '. $mobile . '  '.$email . '  ' .$type , [$json]  );
                 return $json['Message'];
             } else {
                 if ( intval($otp) == $otp )
@@ -79,9 +80,11 @@ class Controller extends BaseController
                     'email_from' => $settings->from_email,
                     'email_from_name' => $settings->from_name
                 ]));
+                \Illuminate\Support\Facades\Log::info('send otp email: '. $otp . '  '. $mobile . '  '.$email . '  ' .$type  );
                 return "ok";
             }
         } catch ( \Exception $exception){
+            \Illuminate\Support\Facades\Log::info('send otp Exception: '. $otp . '  '. $mobile . '  '.$email . '  ' .$type , [$exception->getMessage()]  );
             return  $exception->getMessage();
         }
     }
