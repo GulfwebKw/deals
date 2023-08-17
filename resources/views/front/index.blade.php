@@ -276,7 +276,7 @@
                                 <div class="logo-btm main-nav "><a href="index-2.html"> <img
                                                 src="{{asset('/uploads/settings/'.$settings->logo)}}"> </a></div>
                                 <h6>Get in touch</h6>
-                                <h3 style="padding-bottom: 20px;"><a href="mailto:info@dealsco.app">{{$settings->email}}</a></h3>
+                                <h3 style="padding-bottom: 20px;"><a href="mailto:{{$settings->email}}">{{$settings->email}}</a></h3>
 
                                 <p>Phone : {{$settings->phone}}</p>
                                 <div class="social-media ">
