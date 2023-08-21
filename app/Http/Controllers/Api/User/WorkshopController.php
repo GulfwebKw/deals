@@ -30,7 +30,7 @@ class WorkshopController extends Controller
         $resources['data'] = $this->deleteTranslations($resources['data']);
         return $this->apiResponse(200, ['data' => ['workshops' => $resources], 'message' => []]);
     }
-
+    
     public function getHighlightWorkShops(Request $request)
     {
         $settings = Settings::where("keyname", "setting")->first();

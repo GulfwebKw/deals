@@ -117,6 +117,32 @@ class HighlightsController extends Controller
         return $this->apiResponse(200, ['data' => [], 'message' => [trans('api.success')]]);
     }
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function destroyOneImage($highlight_id , $id)
+    {
+        $user = Auth::user();
+        $highlight = $user->highlights()->findOrFail($highlight_id);
+        $image = $highlight->images()->findOrFail($id);
+        $web_image_path = "/uploads/highlights/" . $image->image;
+        $web_image_paththumb = "/uploads/highlights/thumb/" . $image->image;
+
+        if (File::exists(public_path($web_image_path))) {
+            File::delete(public_path($web_image_path));
+        }
+        if (File::exists(public_path($web_image_paththumb))) {
+            File::delete(public_path($web_image_paththumb));
+        }
+        $image->delete();
+        if ( $highlight->images()->count() == 0 )
+            $highlight->delete();
+        return $this->apiResponse(200, ['data' => [], 'message' => [trans('api.success')]]);
+    }
+
     public function deleteImage($highlight){
         $images = $highlight->images()->get();
         if ( $images != null)
@@ -133,3 +159,4 @@ class HighlightsController extends Controller
             }
     }
 }
+ 

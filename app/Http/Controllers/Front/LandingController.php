@@ -92,7 +92,7 @@ class LandingController extends Controller
     {
         if (Auth::guard('freelancer')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
             // if successful, then redirect to their intended location
-            return redirect('/freelancer');
+                return redirect('/freelancer');
         }
         return redirect()->back()->withInput($request->only('username', 'remember'));
     }

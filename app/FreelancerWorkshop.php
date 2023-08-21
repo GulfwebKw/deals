@@ -12,7 +12,7 @@ class FreelancerWorkshop extends Eloquent
     public $translationModel = 'App\FreelancerWorkshopTranslation';
     public $translatedAttributes = ['name', 'description'];
     protected $guarded = ['id'];
-
+    
 
     protected static function boot()
     {
