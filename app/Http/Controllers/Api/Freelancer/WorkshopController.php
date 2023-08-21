@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\webPushController;
 use App\Http\Controllers\Common;
 use App\PushDevices;
 use App\Settings;
+use App\UserNotification;
 use App\WebPushMessage;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -132,7 +133,23 @@ class WorkshopController extends Controller
             $workshop->delete();
             return $this->apiResponse(200, ['data' => [], 'message' => [trans('api.freelancer.cancellation.workshop')]]);
         } else {
-            return $this->apiResponse(400, ['data' => [], 'message' => [trans('api.freelancer.cancellation.workshopBooked')]]);
+            DB::beginTransaction();
+            try {
+                foreach ($workshop->orders as $order) {
+                    $order->payment_status = 'freelancer_cancel';
+                    $order->save();
+                    UserNotification::add($order->user_id, $order->freelancer_id, ['cancellationWorkshopByFreelancer', $user->name, $workshop->date], 'cancellationWorkshopByFreelancer', ['workshop_id' => $workshop->id , 'order_id' => $order->id]);
+                }
+                $workshop->reserved = 0 ;
+                $workshop->available = $workshop->total_persons ;
+                $workshop->is_active = false;
+                $workshop->save();
+            } catch ( \Exception $exception){
+                DB::rollBack();
+                return $this->apiResponse(500, ['data' => [], 'message' => [$exception->getMessage()]]);
+            }
+            DB::commit();
+            return $this->apiResponse(200, ['data' => [], 'message' => [trans('api.freelancer.cancellation.workshop')]]);
         }
     }
 

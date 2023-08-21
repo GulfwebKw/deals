@@ -32,6 +32,8 @@
                         $payStatus ='<span class="kt-badge kt-badge--inline kt-badge--warning"><b>Waiting</b></span>';
                     } elseif($resource->payment_status=="cancel"){
                         $payStatus ='<span class="kt-badge kt-badge--inline kt-badge--danger"><b>Cancel</b></span>';
+                    } elseif($resource->payment_status=="freelancer_cancel"){
+                        $payStatus ='<span class="kt-badge kt-badge--inline kt-badge--danger"><b>Cancel By Freelancer</b></span>';
                     }
                 @endphp
                 <tr class="search-body">
