@@ -177,6 +177,8 @@ Route::namespace('Admin')->prefix('gwc')->middleware('admin')->group(function ()
     Route::get('workshop-orders', 'AdminOrdersController@workShopOrders');
     Route::get('workshop-orders/{id}/view', 'AdminOrdersController@workShopOrdersDetails');
 
+    Route::get('make-workshop-orders', 'AdminOrdersController@makeWorkShopOrders');
+
     Route::get('book-details/{type}/{id}' , 'AdminOrdersController@book_details' );
 
     Route::resource('freelancers/{id}/address', 'AdminFreelancerAddressController');

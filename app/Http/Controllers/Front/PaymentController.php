@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Front;
 
 use App\Freelancer;
 use App\FreelancerNotification;
+use App\FreelancerWorkshop;
+use App\Http\Controllers\Admin\webPushController;
 use App\Order;
 use App\Package;
 use App\payment\Helpers\ModelBindingHelper;
@@ -11,8 +13,10 @@ use App\payment\Lib\HesabeCrypt;
 use App\payment\Misc\Constants;
 use App\payment\Misc\PaymentHandler;
 use App\payment\Models\HesabeCheckoutResponseModel;
+use App\PushDevices;
 use App\QuotationOrder;
 use App\UserOrder;
+use App\WebPushMessage;
 use App\WorkshopOrder;
 use App\Bill;
 use Carbon\Carbon;
@@ -268,6 +272,21 @@ class PaymentController
                     $order->error = $decryptedResponse->message;
                     $order->save();
                 }
+            } elseif ($data['variable4'] == 'create_workshop') {
+                $order = FreelancerWorkshop::find($data['variable1']);
+                if ( $order->is_approved == "pending_payment" ) {
+                    $order->is_approved == "pending";
+                    $order->payment_id = $data['paymentId'];
+                    $order->result = $data['resultCode'];
+                    $order->error = $decryptedResponse->message;
+                    $order->save();
+                    $OTPTokens = PushDevices::where('device' , 'admin')->get()->pluck('token')->unique();
+                    $WebPushs = new WebPushMessage;
+                    $WebPushs->title = 'Deals';
+                    $WebPushs->message = 'New workshop pending for approve.';
+                    $WebPushs->action_url = asset('gwc/workshops/approval');
+                    webPushController::sendWebPushy($OTPTokens, $WebPushs );
+                }
             } elseif ($data['variable4'] == 'workshop') {
                 $order = WorkshopOrder::find($data['variable1']);
                 if ( $order->payment_status == "waiting" ) {
@@ -326,6 +345,14 @@ class PaymentController
             } elseif ($data['variable4'] == 'workshop') {
                 $order = WorkshopOrder::find($data['variable1']);
                 if ( $order->payment_status == "waiting" ) {
+                    $order->payment_id = $data['paymentId'];
+                    $order->result = $data['resultCode'];
+                    $order->error = $decryptedResponse->message;
+                    $order->save();
+                }
+            } elseif ($data['variable4'] == 'create_workshop') {
+                $order = FreelancerWorkshop::find($data['variable1']);
+                if ( $order->is_approved == "pending_payment" ) {
                     $order->payment_id = $data['paymentId'];
                     $order->result = $data['resultCode'];
                     $order->error = $decryptedResponse->message;

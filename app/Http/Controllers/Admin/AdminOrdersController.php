@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\City;
+use App\FreelancerWorkshop;
 use App\Http\Resources\MyMeetingResource;
 use App\Http\Resources\MyServicesResource;
 use App\Http\Resources\MyWorkShopsResource;
@@ -391,6 +392,36 @@ class AdminOrdersController extends Controller
         $this->data['subheader2'] = 'Workshop Order List';
         $resources = $resources->orderByDesc('id')->paginate($this->settings->item_per_page_back);
         return view('gwc.workshop-order.index', [
+            'data' => $this->data,
+            'settings' => $this->settings,
+            'resources' => $resources
+        ]);
+    }
+
+    public function makeWorkShopOrders(Request $request)
+    {
+        //get all orders
+        $resources = FreelancerWorkshop::with('freelancer')->when($request->query('q') , function($query) use($request) {
+
+            $search = $request->query('q');
+            $query->where(function ($quer) use ($search) {
+                $quer->whereHas('workshop.translation', function ($q) use ($search) {
+                    $q->Where('name', 'like', '%' . $search . '%');
+                });
+            });
+        })->when($request->kt_daterangepicker_range , function ($query) use($request){
+            $dates = explode(' - ',$request->kt_daterangepicker_range);
+            $dates[0] = date('Y-m-d',strtotime($dates[0]));
+            $dates[1] = date('Y-m-d',strtotime($dates[1]));
+            $query->whereBetween('created_at',$dates);
+        })->when($request->freelancer_id , function ($query) use($request){
+            $query->where('freelancer_id',$request->freelancer_id );
+        })->when($request->id , function ($query) use($request){
+            $query->where('id',$request->id );
+        });
+        $this->data['subheader2'] = 'Make Workshop Order List';
+        $resources = $resources->orderByDesc('id')->paginate($this->settings->item_per_page_back);
+        return view('gwc.workshop-order.make-index', [
             'data' => $this->data,
             'settings' => $this->settings,
             'resources' => $resources

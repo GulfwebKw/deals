@@ -180,6 +180,7 @@ Route::middleware(['auth:api_freelancer' , 'isFreelancerHasActivePackage'])->pre
     Route::get('notification', 'NotificationController@index');
     Route::get('status', 'NotificationController@status');
     Route::apiResource('workshop', 'WorkshopController');
+    Route::get('workshop-price', 'WorkshopController@generatePriceList');
     Route::PUT('profile', 'ProfileController@update');
     Route::get('profile', 'ProfileController@profile');
     Route::post('sendOTP', 'ProfileController@sendOTPToUser');
