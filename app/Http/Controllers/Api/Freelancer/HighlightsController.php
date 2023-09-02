@@ -159,3 +159,4 @@ class HighlightsController extends Controller
             }
     }
 }
+ 

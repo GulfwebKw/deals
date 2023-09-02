@@ -58,6 +58,13 @@
                                                 <span class="kt-nav__link-text">Reserved</span>
                                             </a>
                                         </li>
+                                        <li class="kt-nav__item">
+                                            <a href="{{url('gwc/make-workshop-orders?id=' . $resource->id )}}"
+                                               class="kt-nav__link">
+                                                <i class="kt-nav__link-icon fas fa-file-invoice-dollar"></i>
+                                                <span class="kt-nav__link-text">Workshop Invoice</span>
+                                            </a>
+                                        </li>
                                         @if(auth()->guard('admin')->user()->can($data['editPermission']))
                                             <li class="kt-nav__item">
                                                 <a href="{{url($data['url'] . $resource->id . '/edit')}}"

@@ -22,6 +22,7 @@ class UserNotification extends Model
         'cancellationMySelf' => 'img/close_n.png',
         'cancellationMeeting' => 'img/close_n.png',
         'cancellationMeetingByFreelancer' => 'img/close_n.png',
+        'cancellationWorkshopByFreelancer' => 'img/close_n.png',
     ];
     private static $descriptionValue = [
         'waitingList' => [
@@ -55,6 +56,10 @@ class UserNotification extends Model
         'cancellationMeetingByFreelancer' => [
             'en' => "<p>Your appointment with <strong>:name</strong> on the <strong>:time</strong> on <strong>:date</strong> was <strong>Cancelled</strong> by the :name. Search for another freelancer now!</p>",
             'ar' => "<p> موعدك مع <strong>:name</strong> في <strong>:time</strong> في <strong>:date</strong> تم <strong> إلغاؤه </strong> بواسطة :name. ابحث عن مترجم آخر الآن! </p>",
+        ],
+        'cancellationWorkshopByFreelancer' => [
+            'en' => "<p>Your workshop with <strong>:name</strong> on <strong>:date</strong> was <strong>Cancelled</strong> by the :name.</p>",
+            'ar' => "<p> ورشة عمل مع <strong>:name</strong> في <strong>:date</strong> تم <strong> إلغاؤه </strong> بواسطة :name.</p>",
         ],
         'newBill' => [
             'en' => "<p>You have received a billing statement of <strong>:priceKWD</strong>. Check your inbox.</p>",

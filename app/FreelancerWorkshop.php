@@ -11,8 +11,23 @@ class FreelancerWorkshop extends Eloquent
     use translatable;
     public $translationModel = 'App\FreelancerWorkshopTranslation';
     public $translatedAttributes = ['name', 'description'];
+
+    protected $hidden = [
+        'payment_id',
+        'error',
+        'result',
+        'order_track',
+    ];
+
     protected $guarded = ['id'];
 
+
+    public static $cost = [
+        30 => 10 , // 1 to 30 person : 10KD
+        70 => 20 , // 31 to 70 person : 20KD
+        100 => 30 , // 71 to 100 person : 30KD
+        'more' => 40 // more than 100 : 40KD
+    ];
 
     protected static function boot()
     {

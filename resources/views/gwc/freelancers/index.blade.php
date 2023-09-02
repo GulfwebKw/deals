@@ -144,6 +144,14 @@
                                                     <span class="kt-nav__link-text">{{__('adminMessage.workshop')}}</span>
                                                 </a>
                                             </li>
+
+                                            <li class="kt-nav__item">
+                                                <a href="{{url('gwc/make-workshop-orders?freelancer_id=' . $resource->id )}}"
+                                                   class="kt-nav__link">
+                                                    <i class="kt-nav__link-icon fas fa-file-invoice-dollar"></i>
+                                                    <span class="kt-nav__link-text">Workshops Invoice</span>
+                                                </a>
+                                            </li>
                                           <li class="kt-nav__item">
                                                 <a href="{{url($data['url'] .  $resource->id . '/messages')}}"
                                                    class="kt-nav__link">

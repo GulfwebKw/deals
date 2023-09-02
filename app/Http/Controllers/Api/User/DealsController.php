@@ -56,9 +56,13 @@ class DealsController extends Controller
 
         $datas = array_merge($data_workshops, $data_service, $data_Meeting, $userNotifications);
         usort($datas, function ($a, $b) {
-            $t1 = strtotime($a['date']);
-            $t2 = strtotime($b['date']);
-            return $t1 - $t2;
+            // $t1 = strtotime($a['date']);
+            // $t2 = strtotime($b['date']);
+            // return $t1 - $t2;
+            
+            $t1 = strtotime($a['created_at']);
+            $t2 = strtotime($b['created_at']);
+            return $t2 - $t1;
         });
         return $this->apiResponse(200, ['data' => ['deals' => $datas], 'message' => []]);
     }

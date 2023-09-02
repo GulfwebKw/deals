@@ -46,6 +46,13 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <ul class="kt-nav">
+                                        <li class="kt-nav__item">
+                                            <a href="{{url('gwc/make-workshop-orders?id=' . $resource->id )}}"
+                                               class="kt-nav__link">
+                                                <i class="kt-nav__link-icon fas fa-file-invoice-dollar"></i>
+                                                <span class="kt-nav__link-text">Workshop Invoice</span>
+                                            </a>
+                                        </li>
                                         @if(auth()->guard('admin')->user()->can($data['approvedPermission']))
                                             <li class="kt-nav__item">
                                                 <a href="{{route('approvedWorkshop' , $resource->id )}}"
