@@ -186,6 +186,7 @@ Route::middleware(['auth:api_freelancer' , 'isFreelancerHasActivePackage'])->pre
     Route::get('subscription', 'ProfileController@subscription');
     Route::apiResource('quotation', 'QuotationController');
     Route::apiResource('highlight', 'HighlightsController');
+    Route::delete('highlight-image/{highlight_id}/{id}', 'HighlightsController@destroyOneImage');
     Route::apiResource('bill', 'BillController');
     Route::get('areas', 'AddressController@getAreas');
     Route::post('areas', 'AddressController@areas');
