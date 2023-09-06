@@ -275,7 +275,7 @@ class PaymentController
             } elseif ($data['variable4'] == 'create_workshop') {
                 $order = FreelancerWorkshop::withoutGlobalScopes()->find($data['variable1']);
                 if ( $order->is_approved == "pending_payment" ) {
-                    $order->is_approved == "pending";
+                    $order->is_approved = "pending";
                     $order->payment_id = $data['paymentId'];
                     $order->result = $data['resultCode'];
                     $order->error = $decryptedResponse->message;
