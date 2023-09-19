@@ -20,7 +20,7 @@ return [
 	'copyrights'            =>'حقوق النشر &copy; '.date('Y').' Al Rayah Delivery Co. جميع الحقوق محفوظة.',
     'copyright1'            =>'حقوق النشر &copy; ' . date('Y') . ' ',
     'copyright2'            =>'كل الحقوق محفوظة.',
-    'welcomeEmail'          =>'مرحباً بك، سيتم تفعيل حسابك بعد موافقة المشرفين.',
+    'welcomeEmail'          =>'مرحباً بك في موقع Deals<br>تم تسجيلك بنجاح و سيتم تفعيل حسابك بعد موافقة الادارة.<br><br>'.asset(''),
 	'english'               =>'English',
 	'arabic'                =>'العربية',
 	'home'                  =>'الرئيسية', 
