@@ -17,6 +17,11 @@ class FreelancerWorkshop extends Eloquent
         'error',
         'result',
         'order_track',
+        'is_delete',
+    ];
+
+    protected $casts = [
+        'is_delete' => 'boolean',
     ];
 
     protected $guarded = ['id'];

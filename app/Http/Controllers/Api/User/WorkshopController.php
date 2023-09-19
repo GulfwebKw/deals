@@ -22,7 +22,7 @@ class WorkshopController extends Controller
         $pageNumber = $request->hasHeader('per-page') ? (int) $request->header('per-page') : $settings->item_per_page_back ;
 //        config(['translatable.locale'  => request()->header('accept-language')]);
         config(['translatable.locale'  => 'en']);
-        $resources = FreelancerWorkshop::with('freelancer' , 'area.city.country')->where('is_active' , 1 )->whereHas('freelancer' , function($query) {
+        $resources = FreelancerWorkshop::with('freelancer' , 'area.city.country')->where('is_active' , 1 )->where('is_delete' , false)->whereHas('freelancer' , function($query) {
             $query->where('is_active' , 1 )
                 ->where('offline' , 0 )
                 ->whereDate('expiration_date' , '>=', \Illuminate\Support\Carbon::now());
@@ -37,7 +37,7 @@ class WorkshopController extends Controller
         $pageNumber = $request->hasHeader('per-page') ? (int) $request->header('per-page') : $settings->item_per_page_back ;
 //        config(['translatable.locale'  => request()->header('accept-language')]);
         config(['translatable.locale'  => 'en']);
-        $resources = FreelancerWorkshop::with('freelancer' , 'area.city.country')->where('is_active' , 1 )->where('available' , '>' , 0 )->where('date', '>=', Date('Y-m-d'))->whereHas('freelancer' , function($query) {
+        $resources = FreelancerWorkshop::with('freelancer' , 'area.city.country')->where('is_delete' , false)->where('is_active' , 1 )->where('available' , '>' , 0 )->where('date', '>=', Date('Y-m-d'))->whereHas('freelancer' , function($query) {
             $query->where('is_active' , 1 )->where('offline' , 0 );
         }  )->orderByDesc('id')->paginate($pageNumber)->toArray();
         $resources['data'] = $this->deleteTranslations($resources['data']);

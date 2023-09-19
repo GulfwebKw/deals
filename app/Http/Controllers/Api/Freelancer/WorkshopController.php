@@ -53,7 +53,7 @@ class WorkshopController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $workshop = $user->workshops()->with('area.city.country')->orderByDesc('id')->get()->toArray();
+        $workshop = $user->workshops()->where('is_delete' , false)->with('area.city.country')->orderByDesc('id')->get()->toArray();
         $workshop = $this->deleteTranslations($workshop);
         return $this->apiResponse(200, ['data' => ['workshop' => $workshop], 'message' => []]);
     }
@@ -141,7 +141,7 @@ class WorkshopController extends Controller
     public function show($id)
     {
         $user = Auth::user();
-        $workshop = $user->workshops()->with('area.city.country')->findOrFail($id);
+        $workshop = $user->workshops()->where('is_delete' , false)->with('area.city.country')->findOrFail($id);
         $workshopArray = $this->deleteTranslations([$workshop->toArray()])[0];
 
         if ( $workshop->is_approved == "pending_payment" ) {
@@ -216,7 +216,7 @@ class WorkshopController extends Controller
             'total_persons'=>'required|numeric',
         ]);
         $user = Auth::user();
-        $workshop = $user->workshops()->findOrFail($id);
+        $workshop = $user->workshops()->where('is_delete' , false)->findOrFail($id);
         if ($request->hasFile('file')) {
             $cover_image = Common::uploadImage($request, 'file', 'workshop', 0, 0, 0, 0);
             $request->merge([
@@ -252,6 +252,7 @@ class WorkshopController extends Controller
                     UserNotification::add($order->user_id, $order->freelancer_id, ['cancellationWorkshopByFreelancer', $user->name, $workshop->date], 'cancellationWorkshopByFreelancer', ['workshop_id' => $workshop->id , 'order_id' => $order->id]);
                 }
                 $workshop->reserved = 0 ;
+                $workshop->is_delete = true ;
                 $workshop->available = $workshop->total_persons ;
                 $workshop->is_active = false;
                 $workshop->save();
