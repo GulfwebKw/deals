@@ -242,7 +242,7 @@ class WorkshopController extends Controller
         $workshop = $user->workshops()->findOrFail($id);
         if ( $workshop->reserved == 0 ) {
             $workshop->delete();
-            return $this->apiResponse(200, ['data' => [], 'message' => [trans('api.freelancer.cancellation.workshop')]]);
+            return $this->apiResponse(200, ['data' => [], 'message' => [trans('api.freelancer.delete.workshop')]]);
         } else {
             DB::beginTransaction();
             try {
@@ -261,7 +261,7 @@ class WorkshopController extends Controller
                 return $this->apiResponse(500, ['data' => [], 'message' => [$exception->getMessage()]]);
             }
             DB::commit();
-            return $this->apiResponse(200, ['data' => [], 'message' => [trans('api.freelancer.cancellation.workshop')]]);
+            return $this->apiResponse(200, ['data' => [], 'message' => [trans('api.freelancer.delete.workshop')]]);
         }
     }
 

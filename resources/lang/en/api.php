@@ -30,6 +30,9 @@ return [
         ],
         'reschedule' => [
             'service' => 'Your service rescheduling is successful',
+        ],
+        'delete' => [
+            'workshop' => 'Your workshop has been deleted successfully.',
         ]
     ],
     'models' => [
