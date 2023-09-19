@@ -25,7 +25,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('front_assets/assets/css/slick-theme.css')}}">
     <link rel="stylesheet" href="{{asset('front_assets/assets/css/normalize.css')}}">
     @yield('main')
-    <link type="text/css" rel="stylesheet" href="{{asset('front_assets/assets/css/'.($lang=='en'?'responsive.css':'responsive-ar.css'))}}" />
+    <link type="text/css" rel="stylesheet" href="{{asset('front_assets/assets/css/'.($lang=='en'?'responsive.css':'responsive-ar.css'))}}?v1" />
     <link rel="stylesheet" href="{{asset('front_assets/assets/css/menu.css')}}">
     <link href="https://fonts.googleapis.com/css?family=Cairo:300,400,600,700" rel="stylesheet">
 
