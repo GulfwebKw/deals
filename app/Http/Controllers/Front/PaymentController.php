@@ -6,6 +6,7 @@ use App\Freelancer;
 use App\FreelancerNotification;
 use App\FreelancerWorkshop;
 use App\Http\Controllers\Admin\webPushController;
+use App\Mail\SendGrid;
 use App\Order;
 use App\Package;
 use App\payment\Helpers\ModelBindingHelper;
@@ -15,6 +16,7 @@ use App\payment\Misc\PaymentHandler;
 use App\payment\Models\HesabeCheckoutResponseModel;
 use App\PushDevices;
 use App\QuotationOrder;
+use App\Settings;
 use App\UserOrder;
 use App\WebPushMessage;
 use App\WorkshopOrder;
@@ -239,7 +241,7 @@ class PaymentController
             if ($data['variable4'] == 'package') {
                 $order = order::find($data['variable1']);
                 if ( $order->status == null ) {
-                    $this->packageBooking($order->package_id, $data['variable3']);
+                    $freelancer = $this->packageBooking($order->package_id, $data['variable3']);
                     $order->status = $decryptedResponse->status;
                     $order->payment_id = $data['paymentId'];
                     $order->result = $data['resultCode'];
@@ -247,6 +249,16 @@ class PaymentController
                     $order->order_status = 'paid';
                     $order->error = $decryptedResponse->message;
                     $order->save();
+                    $settings = Settings::where("keyname", "setting")->first();
+                    $data = [
+                        'dear' => trans('webMessage.dear') . ' ' . $freelancer->name,
+                        'footer' => trans('webMessage.email_footer'),
+                        'message' => view('website.pageSections.transactionResult', compact('order'))->render(),
+                        'subject' => 'Payment details of '.$settings->name_en ,
+                        'email_from' => env('MAIL_USERNAME' , $settings->from_email),
+                        'email_from_name' => $settings->from_name
+                    ];
+                    \Illuminate\Support\Facades\Mail::to($freelancer->email)->send(new SendGrid($data));
                 }
             } elseif ($data['variable4'] == 'service') {
                 $order = UserOrder::find($data['variable1']);
@@ -379,6 +391,7 @@ class PaymentController
         $freelancer->package_id = $package_id;
         $freelancer->expiration_date = Carbon::now()->addDays($package->duration)->toDateString();
         $freelancer->save();
+        return $freelancer;
     }
 
     public function serviceBooking()

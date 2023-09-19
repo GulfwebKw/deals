@@ -22,8 +22,17 @@ class LandingController extends Controller
 {
     public function test()
     {
-        $service = FreelancerServices::where(['id'=>20, 'freelancer_id'=>20])->first();
-        return $this->apiResponse(200, ['data' => ['service' => $service], 'message' => 'success']);
+        $settings = Settings::where("keyname", "setting")->first();
+        $order = \App\Order::inRandomOrder()->first();
+        $data = [
+            'dear' => trans('webMessage.dear') . ' erfan' ,
+            'footer' => trans('webMessage.email_footer'),
+            'message' => view('website.pageSections.transactionResult', compact('order'))->render(),
+            'subject' => 'Payment details of '.$settings->name_en ,
+            'email_from' => env('MAIL_USERNAME' , $settings->from_email),
+            'email_from_name' => $settings->from_name
+        ];
+        \Illuminate\Support\Facades\Mail::to('adib@gulfclick.net')->send(new SendGrid($data));
 
     }
 
