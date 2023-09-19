@@ -18,6 +18,9 @@ return [
 	'dir'                   =>'rtl',
 	/*Dont edit end*/
 	'copyrights'            =>'حقوق النشر &copy; '.date('Y').' Al Rayah Delivery Co. جميع الحقوق محفوظة.',
+    'copyright1'            =>'حقوق النشر &copy; ' . date('Y') . ' ',
+    'copyright2'            =>'كل الحقوق محفوظة.',
+    'welcomeEmail'          =>'مرحباً بك، سيتم تفعيل حسابك بعد موافقة المشرفين.',
 	'english'               =>'English',
 	'arabic'                =>'العربية',
 	'home'                  =>'الرئيسية', 

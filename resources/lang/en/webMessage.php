@@ -20,6 +20,7 @@ return [
 	'copyrights'            =>'Copyright &copy; '.date('Y').' Al Rayah Delivery Co.  All Rights Reserved.',
 	'copyright1'            =>'Copyright &copy; ' . date('Y') . ' ',
 	'copyright2'            =>' All Rights Reserved.',
+    'welcomeEmail'          =>'Welcome, your account will be activated after approval by admins.',
 	'english'               =>'English',
 	'arabic'                =>'العربية',
 	'home'                  =>'Home', 

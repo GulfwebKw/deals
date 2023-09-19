@@ -6,6 +6,7 @@ use App\Category;
 use App\Freelancer;
 use App\FreelancerServices;
 use App\HowItWork;
+use App\Mail\SendGrid;
 use App\Package;
 use App\Rate;
 use App\Settings;
@@ -85,6 +86,15 @@ class LandingController extends Controller
         $freelancer->bill_commission_type = $settings->bill_commission_type;
         $freelancer->rate_id = $rate->id;
         $freelancer->save();
+        $data = [
+            'dear' => trans('webMessage.dear') . ' ' . $freelancer->name,
+            'footer' => trans('webMessage.email_footer'),
+            'message' => trans('webMessage.welcomeEmail'),
+            'subject' => 'Welcome to '.$settings->name_en ,
+            'email_from' => env('MAIL_USERNAME' , $settings->from_email),
+            'email_from_name' => $settings->from_name
+        ];
+        \Illuminate\Support\Facades\Mail::to($freelancer->email)->send(new SendGrid($data));
         return redirect('/')->with('success', 'Registration Successfully Done');
     }
 
