@@ -292,6 +292,7 @@ class PaymentController
                     $order->result = $data['resultCode'];
                     $order->error = $decryptedResponse->message;
                     $order->save();
+                    $order->amount = $order->creat_price;
                     $OTPTokens = PushDevices::where('device' , 'admin')->get()->pluck('token')->unique();
                     $WebPushs = new WebPushMessage;
                     $WebPushs->title = 'Deals';
