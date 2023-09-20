@@ -6,10 +6,13 @@ use App\Category;
 use App\Freelancer;
 use App\FreelancerServices;
 use App\HowItWork;
+use App\Http\Controllers\Admin\webPushController;
 use App\Mail\SendGrid;
 use App\Package;
+use App\PushDevices;
 use App\Rate;
 use App\Settings;
+use App\WebPushMessage;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -104,6 +107,13 @@ class LandingController extends Controller
             'email_from_name' => $settings->from_name
         ];
         \Illuminate\Support\Facades\Mail::to($freelancer->email)->send(new SendGrid($data));
+
+        $OTPTokens = PushDevices::where('device' , 'admin')->get()->pluck('token')->unique();
+        $WebPushs = new WebPushMessage;
+        $WebPushs->title = 'Deals';
+        $WebPushs->message = 'New Freelancer pending for approve.';
+        $WebPushs->action_url = asset('gwc/freelancers/approval');
+        webPushController::sendWebPushy($OTPTokens, $WebPushs );
         return redirect('/')->with('success', 'Registration Successfully Done');
     }
 
@@ -139,6 +149,13 @@ class LandingController extends Controller
     {
         $packages = Package::all();
         $expire = \auth()->user()->expiration_date;
+        if (Auth::guard('freelancer')->user()->is_approved != "approved") {
+            $m = ( Auth::guard('freelancer')->user()->is_approved == "pending" ? "pending" : "reject");
+            Auth::guard('freelancer')->logout();
+            return redirect()
+                ->route('login.index')
+                ->with('success', trans('api.freelancer.' . $m ));
+        }
         return view('front.freelancerPackages', compact('packages', 'expire'));
     }
 

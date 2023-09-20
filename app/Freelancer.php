@@ -13,6 +13,10 @@ class Freelancer extends Authenticatable
     use HasApiTokens;
     protected $guarded = ['id'];
 
+    protected $hidden = [
+        'is_approved'
+    ];
+
     public function AauthAcessToken(){
         return $this->hasMany('\App\OauthAccessToken' , 'user_id');
     }

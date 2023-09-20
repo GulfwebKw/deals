@@ -134,6 +134,11 @@ Route::namespace('Admin')->prefix('gwc')->middleware('admin')->group(function ()
     Route::get('freelancers/ajax/{id}', 'FreeLancersController@updateStatusAjax');
     Route::get('freelancers/offline/ajax/{id}', 'FreeLancersController@updateOfflineStatusAjax');
 
+    Route::get('freelancers-approval', 'FreeLancersController@approval');
+    Route::get('freelancers-approval/{id}/approved', 'FreeLancersController@approved')->name('approvedFreeLancer');
+    Route::get('freelancers-approval/{id}/reject', 'FreeLancersController@reject')->name('rejectFreeLancer');
+
+
     Route::get('freelancer/{freelancer_id}/services', 'FreeLancerServicesController@index')->name('services.index');;
     Route::get('freelancer/{freelancer_id}/services/create', 'FreeLancerServicesController@create');
     Route::post('freelancer/{freelancer_id}/services', 'FreeLancerServicesController@store')->name('services.store');

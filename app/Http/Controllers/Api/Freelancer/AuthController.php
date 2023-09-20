@@ -37,6 +37,16 @@ class AuthController extends Controller
                 'message' => [trans('api.PackageExpired')]
             ], 204);
         }
+        if ($user->is_approved != "approved") {
+            $user->pushNotification()->delete();
+            $user->AauthAcessToken()->delete();
+            return response()->json([
+                'status' => 403,
+                'data' => [],
+                'message' => [trans('api.freelancer.' . ( $user->is_approved == "pending" ? "pending" : "reject") )]
+            ], 401);
+        }
+
         if (  $request->has('token')  )
             $user->pushNotification()->create([
                 'device' => $request->has('device') ? $request->device : 'unknown',

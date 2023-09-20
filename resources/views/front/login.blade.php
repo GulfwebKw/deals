@@ -16,6 +16,9 @@
             <div id="login-row" class="row pt-130 justify-content-center align-items-center">
                 <div id="login-column" class="col-md-6">
                     <div id="login-box" class="col-md-12">
+                        @if(Session::has('success'))
+                            <p class="alert  alert-info">{{ Session::get('success') }}</p>
+                        @endif
                         <form id="login-form" class="form" action="{{route('login.store')}}" method="post">
                             @csrf
                             <div class="form-group">
@@ -40,19 +43,4 @@
         </div>
     </div>
 
-@stop
-
-@section('script')
-    <script type="text/javascript">
-        if(!localStorage.getItem("language")){
-            localStorage.setItem("language", "en");
-        }
-        language =  localStorage.getItem("language");
-        if(language=="en"){
-            $('#landing-page').prop('href','https://dev.dealsco.app?lang=en');
-        }
-        if(language=="ar"){
-            $('#landing-page').prop('href','https://dev.dealsco.app?lang=ar');
-        }
-    </script>
 @stop

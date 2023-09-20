@@ -33,7 +33,9 @@ return [
         ],
         'delete' => [
             'workshop' => 'Your workshop has been deleted successfully.',
-        ]
+        ],
+        'pending' => 'Please wait until we review your information',
+        'reject' => 'Unfortunately, your information was not verified.',
     ],
     'models' => [
         "Aboutus" => "The requested information was not found.",

@@ -53,6 +53,8 @@ class FreeLancersController extends Controller
         $this->data['createPermission'] = $this->path . '-create';
         $this->data['editPermission'] = $this->path . '-edit';
         $this->data['deletePermission'] = $this->path . '-delete';
+        $this->data['approvedPermission'] = 'freelancers' . '-approved';
+        $this->data['rejectPermission'] = 'freelancers' . '-reject';
         $this->data['url'] = '/gwc/' . $this->path . '/';
         $this->data['imageFolder'] = '/uploads/' . $this->path;
         $this->data['storeRoute'] = $this->path . '.store';
@@ -454,5 +456,45 @@ class FreeLancersController extends Controller
             'resources' => $resources
         ]);
     }
+
+
+
+
+    public function approval(Request $request)
+    {
+        $count = Freelancer::where('is_approved' , 'pending')->count();
+        $this->title = "Pending Freelancer";
+        $this->data['headTitle'] = $this->title;
+        $this->data['portletTitle'] = $this->title;
+        $this->data['subheader2'] = $this->title . ' List ( Pending: '.$count.' item)';
+        $this->data['listTitle'] = 'List ' . $this->title;
+        $resources =   Freelancer::when($request->query('q') , function($query) use($request) {
+            $search =  $request->query('q');
+            $query->Where('name' , 'like' , '%'.$search.'%');
+        })->where('is_approved' , 'pending')->orderByDesc('id')->paginate($this->settings->item_per_page_back);
+
+        return view('gwc.freelancers.approval', [
+            'data' => $this->data,
+            'settings' => $this->settings,
+            'resources' => $resources,
+        ]);
+    }
+
+    public function approved($id)
+    {
+        $resource =   Freelancer::query()->find($id);
+        if ( $resource )
+            $resource->update(['is_approved' => 'approved']);
+        return redirect()->back()->with('message-success', 'Freelancer approved successfully.');
+    }
+
+    public function reject($id)
+    {
+        $resource =   Freelancer::query()->find($id);
+        if ( $resource )
+            $resource->update(['is_approved' =>  'reject']);
+        return redirect()->back()->with('message-success', 'Freelancer reject successfully.');
+    }
+
 
 }

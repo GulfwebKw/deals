@@ -28,6 +28,13 @@ class IsActiveUserApi
                     'message' => ['Account is inactive!']
                 ], 401);
             }
+            if ($freelancer->is_approved != "approved") {
+                return response()->json([
+                    'status' => 401,
+                    'data' => [],
+                    'message' => [trans('api.freelancer.' . ( $freelancer->is_approved == "pending" ? "pending" : "reject") )]
+                ], 401);
+            }
         }
         if (Auth::guard('user')->check()) {
             $user = Auth::guard('user')->user();
