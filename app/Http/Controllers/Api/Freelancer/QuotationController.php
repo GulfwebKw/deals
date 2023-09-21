@@ -83,7 +83,10 @@ class QuotationController extends Controller
                 }
                 if ( isset($service['base64File']) ) {
                     $cover_image = $this->saveBase64($service['base64File'] ,$i);
-                    $service['attachment'] =  '/uploads/services/'.$cover_image;
+                    if ( filesize( public_path('uploads/services/'.$cover_image) ) > 500 )
+                        $service['attachment'] =  '/uploads/services/'.$cover_image;
+                    else
+                        unlink( public_path('uploads/services/'.$cover_image) );
                 }
                 unset($service['base64File']);
                 $qutation->services()->create($service);
