@@ -10,6 +10,7 @@ use App\FreelancerQuotation;
 use App\FreelancerUserMessage;
 use App\Http\Controllers\Controller;
 use App\language;
+use App\Mail\SendGrid;
 use App\Meeting;
 use App\Order;
 use App\Quotation;
@@ -485,6 +486,17 @@ class FreeLancersController extends Controller
         $resource =   Freelancer::query()->find($id);
         if ( $resource )
             $resource->update(['is_approved' => 'approved']);
+
+        $settings = Settings::where("keyname", "setting")->first();
+        $data = [
+            'dear' => trans('webMessage.dear') . ' ' . $resource->name,
+            'footer' => trans('webMessage.email_footer'),
+            'message' => 'Your account in Deals has been successfully verified.<br>Please purchase the desired package through the website and then enter your profile and services in the application.',
+            'subject' => 'Your account has been verified - Deals' ,
+            'email_from' => env('MAIL_USERNAME' , $settings->from_email),
+            'email_from_name' => $settings->from_name
+        ];
+        \Illuminate\Support\Facades\Mail::to($resource->email)->send(new SendGrid($data));
         return redirect()->back()->with('message-success', 'Freelancer approved successfully.');
     }
 
@@ -493,6 +505,17 @@ class FreeLancersController extends Controller
         $resource =   Freelancer::query()->find($id);
         if ( $resource )
             $resource->update(['is_approved' =>  'reject']);
+
+        $settings = Settings::where("keyname", "setting")->first();
+        $data = [
+            'dear' => trans('webMessage.dear') . ' ' . $resource->name,
+            'footer' => trans('webMessage.email_footer'),
+            'message' => 'Your account has not been verified in Deals.',
+            'subject' => 'Deals verification' ,
+            'email_from' => env('MAIL_USERNAME' , $settings->from_email),
+            'email_from_name' => $settings->from_name
+        ];
+        \Illuminate\Support\Facades\Mail::to($resource->email)->send(new SendGrid($data));
         return redirect()->back()->with('message-success', 'Freelancer reject successfully.');
     }
 
