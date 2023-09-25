@@ -28,15 +28,6 @@ class AuthController extends Controller
             return $this->apiResponse(403,['data'=>[], 'message'=>[trans('api.incorrectLogin')]]);
 
         $user =  Auth::guard('freelancer')->user();
-        if (  \Illuminate\Support\Carbon::now()->gte($user->expiration_date) ) {
-            $user->pushNotification()->delete();
-            $user->AauthAcessToken()->delete();
-            return response()->json([
-                'status' => 204,
-                'data' => [],
-                'message' => [trans('api.PackageExpired')]
-            ], 204);
-        }
         if ($user->is_approved != "approved") {
             $user->pushNotification()->delete();
             $user->AauthAcessToken()->delete();
@@ -44,6 +35,15 @@ class AuthController extends Controller
                 'status' => 403,
                 'data' => [],
                 'message' => [trans('api.freelancer.' . ( $user->is_approved == "pending" ? "pending" : "reject") )]
+            ], 401);
+        }
+        if (  \Illuminate\Support\Carbon::now()->gte($user->expiration_date) ) {
+            $user->pushNotification()->delete();
+            $user->AauthAcessToken()->delete();
+            return response()->json([
+                'status' => 204,
+                'data' => [],
+                'message' => [trans('api.PackageExpired')]
             ], 401);
         }
 
