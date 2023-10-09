@@ -79,7 +79,7 @@ class HighlightsController extends Controller
         $this->validate($request, [
             "title" => "required",
             'file'=>'required|array|max:'.Settings::getOne('highlightNum' , 5 ),
-            'file.*'=>'file|image',
+            'file.*'=>'file|mimes:jpg,png,jpeg,gif,svg',
         ]);
 
         $user = Auth::user();
@@ -87,8 +87,8 @@ class HighlightsController extends Controller
         try {
             $highlight = $user->highlights()->findOrFail($id);
             $highlight->update(['title' => $request->title]);
-            $this->deleteImage($highlight);
-            $highlight->images()->delete();
+//            $this->deleteImage($highlight);
+//            $highlight->images()->delete();
             foreach ( $request->file as $i => $file ){
                 $cover_image = Common::uploadImage($request, 'file.'.$i , 'highlights', 0, 0, 0, 0);
                 $highlight->images()->create(['image' => '/uploads/highlights/'.$cover_image]);
