@@ -5,7 +5,7 @@
 @stop
 @section('content')
     <div class="text-center text-white" style="padding-top: 30px;text-align: center">
-        <a href="../index9ed2.html?lang=en" id="landing-page"><img
+        <a href="/" id="landing-page"><img
                     src="{{'/uploads/settings/'. getSetting('setting')->logo}}" img class="img-fluid"></a>
 
     </div>
