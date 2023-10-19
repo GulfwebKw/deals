@@ -1,0 +1,123 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #0c1e2c;
+    height: 100vh;
+}
+
+#login .container #login-row #login-column #login-box
+{
+    max-width: 100%;
+    margin: auto auto 50px auto;
+    border: 2px solid #fec524;
+    background-color: #fff;
+    padding: 30px 40px 50px;
+}
+.pt-5{
+    margin-bottom: 60px;
+}
+label.text-info {
+    font-weight: 700;
+}
+.text-info {
+
+    color: #0c1e2c !important;
+}
+.text-info.remember {
+    margin-top: 5px;
+    font-size: 14px;
+    color: #0c1e2c !important;
+}
+.register-here{
+    text-align: center;
+    margin: auto;
+    margin-top: -14px;
+    font-size: 14px;
+}
+h3.text-center.text-info {
+    margin-bottom: 30px;
+}
+.btn-info {
+    width: 100%;
+    color: #fff;
+    background-color: #fec524;
+    border-color: #fec524;
+
+}
+.btn-info:hover{
+    background-color: #fec524;
+    border-color: #fec524;
+}
+#login .container #login-row #login-column #login-box #login-form {
+    /* padding: 0px 20px 0px; */
+    padding: 0px 0px 0px!important;
+}
+#login .container #login-row #login-column #login-box #login-form #register-link {
+
+}
+#register .container #register-row #register-column #register-box #register-form {
+    padding: 0px 20px 0px;
+}
+#register-row {
+    margin-bottom: 5%;
+}
+
+#register .container #register-row #register-column #register-box
+
+{
+    max-width: 80%;
+    margin: auto;
+    height: 100%;
+    border: 2px solid #fec524;
+    background-color: #fff;
+    padding: 30px 40px 30px;
+}
+.error{
+    color: red;
+    font-size: 12px;
+}
+
+.form-control.error{
+   border: 1px solid red;
+}
+.btn-submit{
+    background-color: #fec524;
+    padding: 10px 20px;
+    border-radius: 13px;
+}
+#lastname_ar-error{
+    direction:rtl;
+    float: right;
+}
+#firstname_ar-error{
+    direction:rtl;
+    float: right;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+#login-link{
+    margin-top:10px;
+}
+
+
+
+
+
+@media (max-width: 767px){
+    #login img {
+        width: 200px;
+    }
+
+    #login .container #login-row #login-column #login-box{
+        margin-bottom: 50px!important;
+        padding: 25px;
+    }
+
+    #login .pt-5{
+        margin-bottom: 35px!important
+    }
+
+}

@@ -90,7 +90,7 @@ Route::namespace('Admin')->prefix('gwc')->middleware('admin')->group(function ()
     Route::get('workshops/approval', 'WorkShopController@approval');
     Route::get('workshop/approval/{id}/approved', 'WorkShopController@approved')->name('approvedWorkshop');
     Route::get('workshop/approval/{id}/reject', 'WorkShopController@reject')->name('rejectWorkshop');
-
+    
     Route::resource('freelancers/{freelancer_id}/highlights', 'AdminFreelancerHighlightController');
     Route::get('freelancers/{freelancer_id}/highlights/delete/{highlight_id}', 'AdminFreelancerHighlightController@destroy');
 

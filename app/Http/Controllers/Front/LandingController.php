@@ -25,16 +25,16 @@ class LandingController extends Controller
 {
     public function test()
     {
-        $settings = Settings::where("keyname", "setting")->first();
-        $order = \App\Order::inRandomOrder()->first();
-        $data = [
-            'dear' => trans('webMessage.dear') . ' erfan' ,
-            'footer' => trans('webMessage.email_footer'),
-            'message' => trans('webMessage.buyPackageEmail').'Date : ' .$order->created_at->format('Y-m-d') . '<br>Transaction Status : Successful<br>Trasaction Track Id : '.$order->order_track.'<br>Payment Method : Knet<br>Amount : KD '.$order->amount,
-            'subject' => 'Payment details of '.$settings->name_en ,
-            'email_from' => env('MAIL_USERNAME' , $settings->from_email),
-            'email_from_name' => $settings->from_name
-        ];
+                    $settings = Settings::where("keyname", "setting")->first();
+                    $order = \App\Order::inRandomOrder()->first();
+                    $data = [
+                        'dear' => trans('webMessage.dear') . ' erfan' ,
+                        'footer' => trans('webMessage.email_footer'),
+                        'message' => trans('webMessage.buyPackageEmail').'Date : ' .$order->created_at->format('Y-m-d') . '<br>Transaction Status : Successful<br>Trasaction Track Id : '.$order->order_track.'<br>Payment Method : Knet<br>Amount : KD '.$order->amount,
+                        'subject' => 'Payment details of '.$settings->name_en ,
+                        'email_from' => env('MAIL_USERNAME' , $settings->from_email),
+                        'email_from_name' => $settings->from_name
+                    ];
         \Illuminate\Support\Facades\Mail::to('adib@gulfclick.net')->send(new SendGrid($data));
 
     }

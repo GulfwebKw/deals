@@ -1,0 +1,56 @@
+
+
+
+.box {
+
+}
+
+a {
+  color: inherit;
+}
+
+.delighter.splash {
+  transition: all 2s ease-out;
+}
+.delighter.splash.ended {
+  background: #fff;
+}
+.delighter.right { transform:translate(-100%); opacity:0; transition: all .75s ease-out; }
+.delighter.right.started { transform:none; opacity:1; }
+
+.delighter.left { transform:translate(100%); opacity:0; transition: all .75s ease-out; }
+.delighter.left.started { transform:none; opacity:1; }
+
+.delighter.bottom { transform:translatey(300%); opacity:0; transition: all .75s ease-out; }
+.delighter.bottom.started { transform:none; opacity:1; }
+
+.delighter li { opacity: 0; transform: translatey(400%); transition: all .7s ease-out; }
+.delighter.started li { opacity: 1; transform: none; transition: all .7s ease-out .1s;}
+.delighter.started li:nth-child(1) { transition: all .7s ease-out .1s; }
+.delighter.started li:nth-child(2) { transition: all .7s ease-out .2s; }
+.delighter.started li:nth-child(3) { transition: all .7s ease-out .3s; }
+.delighter.started li:nth-child(4) { transition: all .7s ease-out .4s; }
+.delighter.started li:nth-child(5) { transition: all .7s ease-out .5s; }
+.delighter.started li:nth-child(6) { transition: all .7s ease-out .6s; }
+.delighter.started li:nth-child(7) { transition: all .7s ease-out .7s; }
+.delighter.started li:nth-child(8) { transition: all .7s ease-out .8s; }
+.delighter.started li:nth-child(9) { transition: all .7s ease-out .9s; }
+.delighter.started li:nth-child(10) { transition: all .7s ease-out 1s; }
+
+.delighter pre {
+  display: block; transition: all 2s ease-out; opacity: 0;
+  padding: 20px 0;
+  width: 1px; overflow: hidden;
+}
+.delighter.started pre {
+  max-width: 99999px; width: 100%; opacity: 1;
+}
+.delighter .box { transition: all 1s ease-out; }
+.delighter .box:nth-child(1) { transform: translate(-20%, 0); }
+.delighter .box:nth-child(2) { transform: translate(20%, 0%); }
+.delighter .box:nth-child(3) { transform: translate(20%, 0%); }
+
+.delighter.started .box:nth-child(1) { transform: translate(0, 0); }
+.delighter.started .box:nth-child(2) { transform: translate(0%, 0%); }
+.delighter.started .box:nth-child(3) { transform: translate(0%, 0%); }
+

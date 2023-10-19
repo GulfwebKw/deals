@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="23px" height="25px" viewBox="0 0 23 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 57.1 (83088) - https://sketch.com -->
+    <title>IC_EVENT</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="iPhone-XS-Copy-9" transform="translate(-57.000000, -364.000000)">
+            <g id="IC_EVENT" transform="translate(40.000000, 348.000000)">
+                <circle id="Oval" cx="28" cy="28" r="28"></circle>
+                <g id="Group-48" transform="translate(17.000000, 16.000000)">
+                    <g id="Group-46" transform="translate(7.000000, 7.000000)">
+                        <g id="Group-45">
+                            <polygon id="Path-13" stroke="#FFFFFF" fill="#FFB733" points="0 16.5098877 15.3621826 16.5098877 15.3621826 1.91186523 0 1.91186523"></polygon>
+                            <rect id="Rectangle" stroke="#FFFFFF" fill="#FFB733" x="2.79736328" y="0" width="2" height="4"></rect>
+                            <rect id="Rectangle" stroke="#FFFFFF" fill="#FFB733" x="10.7973633" y="0" width="2" height="4"></rect>
+                            <path d="M0,5.5814209 L15.3621826,5.5814209" id="Path-14" stroke="#FFFFFF"></path>
+                            <circle id="Oval" fill="#FFFFFF" cx="7.79736328" cy="11" r="3"></circle>
+                            <polyline id="Path-16" stroke="#FFB733" stroke-width="0.5" transform="translate(7.678345, 11.097595) rotate(-11.000000) translate(-7.678345, -11.097595) " points="6.07434082 11 6.71582031 11.9578857 9.28234863 10.2373047"></polyline>
+                        </g>
+                    </g>
+                    <g id="Group-47">
+                        <rect id="Rectangle" stroke="#FFB733" fill="#FFFFFF" x="2.5" y="16.5" width="5" height="7"></rect>
+                        <path d="M0.5,16.5 L9.5,16.5 L9.5,9 C9.5,7.61928813 8.38071187,6.5 7,6.5 L3,6.5 C1.61928813,6.5 0.5,7.61928813 0.5,9 L0.5,16.5 Z" id="Rectangle" stroke="#FFB733" fill="#FFFFFF"></path>
+                        <circle id="Oval" stroke="#FFB733" fill="#FFFFFF" cx="5" cy="3" r="2.5"></circle>
+                        <path d="M2.80456543,16.8406982 L2.80456543,11.5" id="Path-12" stroke="#FFB733"></path>
+                        <path d="M5,23.3406982 L5,18" id="Path-12-Copy" stroke="#FFB733"></path>
+                        <path d="M7,16.8406982 L7,11.5" id="Path-12" stroke="#FFB733"></path>
+                        <path d="M2.5,23.3406982 L7.56738281,23.3406982 L7.56738281,16.5711496 L9.26646205,16.5711496 C9.26646205,10.6595052 9.26646205,7.70368304 9.26646205,7.70368304 C9.26646205,7.70368304 8.84430804,7.34291295 8,6.62137277 L5.88323103,6.37751116 L3.16908482,6.62137277 L1.68736049,7 L0.580915179,8.01827567 L0.36593192,9.64146205 L0.580915179,16.2108765 L2.5,16.5711496 L2.5,23.3406982 Z" id="Path-2"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
