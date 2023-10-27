@@ -5,10 +5,12 @@ namespace App\Console;
 use App\Console\Commands\expiredWaitingList;
 use App\Console\Commands\sendMessageNotification;
 use App\Freelancer;
+use App\Mail\SendGrid;
 use App\Meeting;
 use App\FreelancerWorkshop;
 use App\OTP;
 use App\PushDevices;
+use App\Settings;
 use App\UserNotification;
 use App\FreelancerNotification;
 use App\Console\Commands\clearUnpayService;
@@ -106,6 +108,40 @@ WHERE
                 FreelancerNotification::add(null,$Freelancer->id,['subscription'],'subscription');
             }
         })->daily()->at('05:30');
+
+        $schedule->call(function () {
+            $Freelancers = Freelancer::query()->whereDate('expiration_date', now()->addWeek())->get();
+            $settings = Settings::where("keyname", "setting")->first();
+            foreach ($Freelancers as $freelancer) {
+                $data = [
+                    'dear' => trans('webMessage.dear',[],'en') . ' ' . $freelancer->name,
+                    'footer' => trans('webMessage.email_footer',[],'en'),
+                    'message' => '<p>Reminder! your subscriptions with Deals App is due in one week. If you would like to renew visit the website <a href="http://www.dealsco.app">www.dealsco.app</a>.</p>',
+                    'subject' => 'Reminder! subscriptions with '.$settings->name_en.' App is due.' ,
+                    'email_from' => env('MAIL_USERNAME' , $settings->from_email),
+                    'email_from_name' => $settings->from_name
+                ];
+                \Illuminate\Support\Facades\Mail::to($freelancer->email)->send(new SendGrid($data));
+            }
+        })->daily()->at('06:00');
+
+        $schedule->call(function () {
+            $from = Carbon::now()->subMinutes(10);
+            $to = Carbon::now();
+            $Freelancers = Freelancer::query()->whereBetween('expiration_date', [$from, $to])->get();
+            $settings = Settings::where("keyname", "setting")->first();
+            foreach ($Freelancers as $freelancer) {
+                $data = [
+                    'dear' => trans('webMessage.dear',[],'en') . ' ' . $freelancer->name,
+                    'footer' => trans('webMessage.email_footer',[],'en'),
+                    'message' => '<p>Your Package has been expired. If you would like to renew visit the website <a href="http://www.dealsco.app">www.dealsco.app</a>.</p>',
+                    'subject' => 'subscriptions with '.$settings->name_en.' App has been expired!' ,
+                    'email_from' => env('MAIL_USERNAME' , $settings->from_email),
+                    'email_from_name' => $settings->from_name
+                ];
+                \Illuminate\Support\Facades\Mail::to($freelancer->email)->send(new SendGrid($data));
+            }
+        })->everyTenMinutes();
 
         $schedule->call(new clearUnpayWorkshop())->everyThirtyMinutes();
         $schedule->call(new clearUnpayService())->everyThirtyMinutes();
