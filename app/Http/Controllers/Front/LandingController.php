@@ -35,7 +35,7 @@ class LandingController extends Controller
         //     'email_from' => env('MAIL_USERNAME' , $settings->from_email),
         //     'email_from_name' => $settings->from_name
         // ];
-        // \Illuminate\Support\Facades\Mail::to('persionhost@gmail.com')->send(new SendGrid($data));
+        // \Illuminate\Support\Facades\Mail::to('ost@gmail.com')->send(new SendGrid($data));
 
     }
 
