@@ -29,7 +29,7 @@ Route::get('terms-conditions', 'Api\GeneralController@termsConditions');
 Route::get('refund-policy', 'Api\GeneralController@refundPolicy');
 Route::get('privacy-policy', 'Api\GeneralController@privacyPolicy');
 Route::get('login-help', 'Api\GeneralController@LoginHelp');
-Route::get('faq', 'Api\GeneralController@faq');
+Route::get('faq', 'Api\GeneralController@faq')->middleware(['auth:api']);
 
 Route::prefix('user')->namespace('Api\User')->group(function () {
     Route::post('login', 'AuthController@login');
