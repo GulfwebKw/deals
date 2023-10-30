@@ -24,7 +24,11 @@ class AuthController extends Controller
             return $this->apiResponse(422,['data'=>[], 'message'=>$validator->errors()->all()]);
         }
 
-        if(!auth('freelancer')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember))
+        $variable = 'phone';
+        if(filter_var($request->email, FILTER_VALIDATE_EMAIL))
+            $variable = 'email';
+
+        if(!auth('freelancer')->attempt([$variable => $request->email, 'password' => $request->password], $request->remember))
             return $this->apiResponse(403,['data'=>[], 'message'=>[trans('api.incorrectLogin')]]);
 
         $user =  Auth::guard('freelancer')->user();
