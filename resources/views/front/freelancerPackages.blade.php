@@ -164,6 +164,30 @@
 
         <div class="container">
             <div class="subscription-page mt-4">
+                <form method="POST">
+                    @csrf
+                    <div class="row">
+                        <div class="col-md-12 subscription-box mb-4 p-2 " style="display: flex;align-items: center;">
+                            <label style="margin-top: 5px;">Discount:</label>
+                            <input type="text" class="form-control @if($errors->has('discount_code')) is-invalid @endif"
+                                   name="discount_code" style="max-width: 220px; margin-right: 10px; margin-left: 15px;"
+                                   placeholder="Please enter discount code"
+                                   value="{{ old('discount_code' , request()->get('discount_code')) }}">
+                            <input type="submit" value="Apply" class="btn btn-outline-info">
+
+                            @if($errors->any())
+                                <div class="invalid-feedback ml-5" style="display: block">
+                                    {{ implode('', $errors->all(':message')) }}
+                                </div>
+                            @endif
+                            @if(isset($success))
+                                <div class="invalid-feedback ml-5" style="display: block;color: #28a745;">
+                                    {{ $success }}
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+                </form>
                 <div class="row ">
                     @foreach($packages as $package)
                         <div class="col-md-4">
@@ -180,8 +204,19 @@
                                             @endif
 
                                         </div>
-                                        <p class="kd-month">
-                                            KD {{number_format($package->price, 2, '.', '')}} <!-- <span class="per-month">/per-month</span> --></p>
+                                        @if(isset($discount))
+                                            <input type="hidden" name="discount_id" value="{{$discount->id}}">
+                                            <p class="kd-month" style="color: red;margin: 0;line-height: 15px;text-decoration-line: line-through;margin-top: 25px;">
+                                                KD {{number_format($package->price, 2, '.', '')}} <!-- <span class="per-month">/per-month</span> -->
+                                            </p>
+                                            <p class="kd-month">
+                                                KD {{number_format($discount->convertPrice($package->price), 2, '.', '')}} <!-- <span class="per-month">/per-month</span> -->
+                                            </p>
+                                        @else
+                                            <p class="kd-month">
+                                                KD {{number_format($package->price, 2, '.', '')}} <!-- <span class="per-month">/per-month</span> -->
+                                            </p>
+                                        @endif
                                         @if($package->id ==auth()->user()->package_id && isset($expire) && $expire >= Carbon::now()->toDateString())
                                             <p class="expiration">Expiration Date: {{$expire}}</p>
                                         @endif

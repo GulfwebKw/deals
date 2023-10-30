@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\Discount;
 use App\Freelancer;
 use App\FreelancerNotification;
 use App\FreelancerWorkshop;
@@ -63,13 +64,37 @@ class PaymentController
      */
     public function formSubmit(Request $request)
     {
+        $discount = Discount::query()->find($request->get('discount_id' , 0));
+        if ( $discount and ! $discount->is_active )
+            return redirect()->back()->withInput()->withErrors('Discount code is invalid!');
+        if ( $discount and ! $discount->hasExpired )
+            return redirect()->back()->withInput()->withErrors('Discount code is expired!');
         $package = Package::find($request->id);
         //creating the order
         $order = new Order();
         $order->order_track = substr(time(), 5, 4) . rand(1000, 9999);
         $order->package_id = $package->id;
         $order->freelancer_id = Auth::id();
-        $order->amount = $package->price;
+        $order->amount = $discount ? $discount->convertPrice($package->price)  : $package->price;
+        if ( $order->amount <= 0 ) {
+            $freelancer = $this->packageBooking($order->package_id, $order->freelancer_id);
+            $order->payment_status = 'paid';
+            $order->order_status = 'paid';
+            $order->save();
+            $discount->used = $discount->used + 1;
+            $discount->save();
+            $settings = Settings::where("keyname", "setting")->first();
+            $data = [
+                'dear' => trans('webMessage.dear') . ' ' . $freelancer->name,
+                'footer' => trans('webMessage.email_footer'),
+                'message' => trans('webMessage.buyPackageEmail').'Date : ' .$order->created_at->format('Y-m-d') . '<br>Transaction Status : Successful<br>Trasaction Track Id : '.$order->order_track.'<br>Payment Method : Knet<br>Amount : KD '.$order->amount,
+                'subject' => 'Payment details of '.$settings->name_en ,
+                'email_from' => env('MAIL_USERNAME' , $settings->from_email),
+                'email_from_name' => $settings->from_name
+            ];
+            \Illuminate\Support\Facades\Mail::to($freelancer->email)->send(new SendGrid($data));
+            return redirect()->back();
+        }
         $order->order_status = "pending";
         $order->payment_status = "notpaid";
         $order->save();

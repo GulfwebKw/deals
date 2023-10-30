@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Category;
+use App\Discount;
 use App\Freelancer;
 use App\FreelancerServices;
 use App\HowItWork;
@@ -157,6 +158,27 @@ class LandingController extends Controller
                 ->with('success', trans('api.freelancer.' . $m ));
         }
         return view('front.freelancerPackages', compact('packages', 'expire'));
+    }
+
+    public function packagesWithDiscount(Request $request)
+    {
+        /** @var Discount $discount */
+        $discount = Discount::query()->where('code' , $request->discount_code)->first();
+        if ( ! $discount or ! $discount->is_active )
+            return redirect()->back()->withInput()->withErrors('Discount code is invalid!');
+        if ( ! $discount->hasExpired )
+            return redirect()->back()->withInput()->withErrors('Discount code is expired!');
+        $success = "Discount code applied.";
+        $packages = Package::all();
+        $expire = \auth()->user()->expiration_date;
+        if (Auth::guard('freelancer')->user()->is_approved != "approved") {
+            $m = ( Auth::guard('freelancer')->user()->is_approved == "pending" ? "pending" : "reject");
+            Auth::guard('freelancer')->logout();
+            return redirect()
+                ->route('login.index')
+                ->with('success', trans('api.freelancer.' . $m ));
+        }
+        return view('front.freelancerPackages', compact('packages', 'expire' , 'discount' , 'success'));
     }
 
     public function logOut()

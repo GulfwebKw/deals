@@ -57,6 +57,7 @@ Route::post('/register', 'Front\LandingController@register')->name('register.sto
 
 Route::middleware(['auth:freelancer'])->namespace('Front')->prefix('freelancer')->group(function () {
     Route::get('/', 'LandingController@packages')->name('packages');
+    Route::post('/', 'LandingController@packagesWithDiscount')->name('packagesWithDiscount');
     Route::get('/logout', 'LandingController@logOut')->name('logout');
     Route::post('payment', 'PaymentController@formSubmit')->name('payment');
 

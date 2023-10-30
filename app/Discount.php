@@ -14,6 +14,8 @@ use phpDocumentor\Reflection\Types\Self_;
  * @property string $code
  * @property int $count
  * @property int $used
+ * @property int $remain
+ * @property bool $hasExpired
  * @property int $price
  * @property int $percent
  * @property Carbon $valid_from
