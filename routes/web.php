@@ -26,14 +26,14 @@ Route::get('test', 'Front\LandingController@test');
 Route::get('uploads/{name?}/{type?}/{file?}' , function($name = null , $type = null , $file = null ) {
     $curl = curl_init();
     curl_setopt_array($curl, array(
-      CURLOPT_URL => 'https://picsum.photos/seed/'.$name.'-'. $type . "-" .$file.'/450/210',
-      CURLOPT_RETURNTRANSFER => true,
-      CURLOPT_ENCODING => '',
-      CURLOPT_MAXREDIRS => 10,
-      CURLOPT_TIMEOUT => 0,
-      CURLOPT_FOLLOWLOCATION => true,
-      CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-      CURLOPT_CUSTOMREQUEST => 'GET',
+        CURLOPT_URL => 'https://picsum.photos/seed/'.$name.'-'. $type . "-" .$file.'/450/210',
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'GET',
     ));
     $response = curl_exec($curl);
     curl_close($curl);
@@ -90,7 +90,7 @@ Route::namespace('Admin')->prefix('gwc')->middleware('admin')->group(function ()
     Route::get('workshops/approval', 'WorkShopController@approval');
     Route::get('workshop/approval/{id}/approved', 'WorkShopController@approved')->name('approvedWorkshop');
     Route::get('workshop/approval/{id}/reject', 'WorkShopController@reject')->name('rejectWorkshop');
-    
+
     Route::resource('freelancers/{freelancer_id}/highlights', 'AdminFreelancerHighlightController');
     Route::get('freelancers/{freelancer_id}/highlights/delete/{highlight_id}', 'AdminFreelancerHighlightController@destroy');
 
@@ -161,7 +161,7 @@ Route::namespace('Admin')->prefix('gwc')->middleware('admin')->group(function ()
 
     Route::get('freelancers/{id}/quotation', 'FreeLancersController@FreelancerQuotation');
     Route::get('freelancers/{id}/quotation/{quotation_id}', 'FreeLancersController@FreelancerQuotationDetails');
-    
+
 
     Route::get('freelancers/{id}/payments', 'FreeLancersController@FreelancerPayments');
 
@@ -174,7 +174,7 @@ Route::namespace('Admin')->prefix('gwc')->middleware('admin')->group(function ()
     Route::post('freelancer/{freelancer_id}/workshop/{workshop_id}', 'FreeLancerWorkShopController@update')->name('workshop.update');
     Route::get('freelancer/{freelancer_id}/workshop/{workshop_id}', 'FreeLancerWorkShopController@show');
     Route::get('freelancer/{freelancer_id}/workshop/delete/{workshop_id}', 'FreeLancerWorkShopController@destroy')->name('workshop.destroy');
-    
+
     Route::get('workshop/ajax/{id}', 'FreeLancerWorkShopController@changeHighlightStatus')->name('workshop.destroy');
     Route::get('freelancer_workshops/ajax/{id}', 'WorkShopController@changeActiveStatus')->name('workshop.destroy');
     Route::post('filter-freelancer-by-category', 'FreeLancersController@filterByCategory');
@@ -191,7 +191,7 @@ Route::namespace('Admin')->prefix('gwc')->middleware('admin')->group(function ()
 
     Route::resource('workshops', 'WorkShopController');
     Route::get('workshops/{id}/view', 'WorkShopController@details');
-    Route::get('packages/delete/{id}', 'WorkShopController@destroy');
+    Route::get('workshops/delete/{id}', 'WorkShopController@destroy');
 
     Route::get('services', 'ServiceController@index');
 
@@ -201,6 +201,11 @@ Route::namespace('Admin')->prefix('gwc')->middleware('admin')->group(function ()
     Route::get('packages/ajax/{id}', 'PackagesController@updateStatusAjax');
     Route::resource('packages', 'PackagesController');
     Route::get('packages/delete/{id}', 'PackagesController@destroy');
+
+    Route::get('discount/ajax/{id}', 'DiscountsController@updateStatusAjax');
+    Route::resource('discount', 'DiscountsController');
+    Route::get('discount/delete/{id}', 'DiscountsController@destroy');
+    Route::get('discount/get/code', 'DiscountsController@getCode');
 
 //single pages
     Route::resource('/singlepages', 'AdminSinglePagesController');
@@ -274,8 +279,8 @@ Route::namespace('Admin')->prefix('gwc')->middleware('admin')->group(function ()
     //sms settings
     Route::get('sms', 'AdminSmsController@index');
     Route::post('/sms', 'AdminSmsController@update')->name('sms.update');
-    
-Route::get('download/quotation/download', 'FreeLancersController@FreelancerQuotationDownload')->name('download.quotation');
+
+    Route::get('download/quotation/download', 'FreeLancersController@FreelancerQuotationDownload')->name('download.quotation');
     //subjects
     Route::resource('/subjects', 'AdminSubjectsController');
     Route::get('/subjects/ajax/{id}', 'AdminSubjectsController@updateStatusAjax');
@@ -337,7 +342,7 @@ Route::get('download/quotation/download', 'FreeLancersController@FreelancerQuota
 
 
     Route::get('/download/{id}', 'DownloadController@downloadFile')->name('message.download');
-    
+
     Route::get('bills', 'BillController@index')->name('order.bill');
 
 });
