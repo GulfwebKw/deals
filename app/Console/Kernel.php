@@ -116,7 +116,7 @@ WHERE
                 $data = [
                     'dear' => trans('webMessage.dear',[],'en') . ' ' . $freelancer->name,
                     'footer' => trans('webMessage.email_footer',[],'en'),
-                    'message' => '<p>Reminder! your subscriptions with Deals App is due in one week. If you would like to renew visit the website <a href="http://www.dealsco.app">www.dealsco.app</a>.</p>',
+                    'message' => '<p>Reminder! your subscriptions with Deerha App is due in one week. If you would like to renew visit the website <a href="'.asset('').'">'.asset('').'</a>.</p>',
                     'subject' => 'Reminder! subscriptions with '.$settings->name_en.' App is due.' ,
                     'email_from' => env('MAIL_USERNAME' , $settings->from_email),
                     'email_from_name' => $settings->from_name
@@ -134,7 +134,7 @@ WHERE
                 $data = [
                     'dear' => trans('webMessage.dear',[],'en') . ' ' . $freelancer->name,
                     'footer' => trans('webMessage.email_footer',[],'en'),
-                    'message' => '<p>Your Package has been expired. If you would like to renew visit the website <a href="http://www.dealsco.app">www.dealsco.app</a>.</p>',
+                    'message' => '<p>Your Package has been expired. If you would like to renew visit the website <a href="'.asset('').'">'.asset('').'</a>.</p>',
                     'subject' => 'subscriptions with '.$settings->name_en.' App has been expired!' ,
                     'email_from' => env('MAIL_USERNAME' , $settings->from_email),
                     'email_from_name' => $settings->from_name

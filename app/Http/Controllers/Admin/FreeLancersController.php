@@ -491,8 +491,8 @@ class FreeLancersController extends Controller
         $data = [
             'dear' => trans('webMessage.dear') . ' ' . $resource->name,
             'footer' => trans('webMessage.email_footer'),
-            'message' => 'Your account in Deals has been successfully verified.<br>Please purchase the desired package through the website and then enter your profile and services in the application.',
-            'subject' => 'Your account has been verified - Deals' ,
+            'message' => 'Your account in Deerha has been successfully verified.<br>Please purchase the desired package through the website and then enter your profile and services in the application.',
+            'subject' => 'Your account has been verified - Deerha' ,
             'email_from' => env('MAIL_USERNAME' , $settings->from_email),
             'email_from_name' => $settings->from_name
         ];
@@ -510,8 +510,8 @@ class FreeLancersController extends Controller
         $data = [
             'dear' => trans('webMessage.dear') . ' ' . $resource->name,
             'footer' => trans('webMessage.email_footer'),
-            'message' => 'Your account has not been verified in Deals.',
-            'subject' => 'Deals verification' ,
+            'message' => 'Your account has not been verified in Deerha.',
+            'subject' => 'Deerha verification' ,
             'email_from' => env('MAIL_USERNAME' , $settings->from_email),
             'email_from_name' => $settings->from_name
         ];

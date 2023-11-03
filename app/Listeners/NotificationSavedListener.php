@@ -45,6 +45,6 @@ class NotificationSavedListener
         $OTPS = $user->pushNotification()->get();
         $OTPTokens = $OTPS->pluck('token')->unique();
         foreach ( $OTPTokens as $OTPToken)
-            Common::sendMobilePush($isUser , $settingInfo,$OTPToken, 'Deals', $notification->description_en );
+            Common::sendMobilePush($isUser , $settingInfo,$OTPToken, 'Deerha', $notification->description_en );
     }
 }

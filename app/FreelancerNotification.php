@@ -40,7 +40,7 @@ class FreelancerNotification extends Model
             'ar' => "<p>تذكير! لديك موعد مع <strong>:name</strong> في <strong>:time</strong> في <strong>:date</strong>.</p>",
         ],
         'subscription' => [
-            'en' => '<p>Reminder! your subscriptions with Deals App is due in two days. If you would like to renew visit the website <a href="http://www.dealsco.app">www.dealsco.app</a>.</p>',
+            'en' => '<p>Reminder! your subscriptions with Deerha App is due in two days. If you would like to renew visit the website <a href="http://www.dealsco.app">www.dealsco.app</a>.</p>',
             'ar' => '<p>تذكير! اشتراكك مع تطبيق ديلز سيتم انتهاؤه خلال يومين. اذا كنت ترغب في تجديد الاشتراك قم بزيارة موقعنا <a href="http://www.dealsco.app">www.dealsco.app</a></p>',
         ],
         'bookingService' => [
