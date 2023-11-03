@@ -124,7 +124,7 @@ WHERE
                 \Illuminate\Support\Facades\Mail::to($freelancer->email)->send(new SendGrid($data));
             }
         })->daily()->at('06:00');
-
+        
         $schedule->call(function () {
             $from = Carbon::now()->subMinutes(10);
             $to = Carbon::now();
