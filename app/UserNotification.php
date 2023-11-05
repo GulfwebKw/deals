@@ -31,7 +31,7 @@ class UserNotification extends Model
         ],
         'cancellationWithPay' => [
             'en' => "<p>Your booking with <strong>:name</strong> on the <strong>:time</strong> on <strong>:date</strong> was <strong>Cancelled</strong>. For new service booking search for another freelancer now! Meanwhile, :webSiteNameEn team will contact you soon for the refund.</p>",
-            'ar' => "<p>تم إلغاء الخدمة المحجوزة مسبقاً مع <strong>:name</strong> في الساعة <strong>:time</strong> في تاريخ <strong>:date</strong>. لحجز خدمة جديدة قم بالبحث عن مقدم خدمة آخر الآن! سوف يقوم فريق ديلز بالتواصل معكم لاسترداد المبلغ في أقرب وقت.</p>",
+            'ar' => "<p>تم إلغاء الخدمة المحجوزة مسبقاً مع <strong>:name</strong> في الساعة <strong>:time</strong> في تاريخ <strong>:date</strong>. لحجز خدمة جديدة قم بالبحث عن مقدم خدمة آخر الآن! سوف يقوم فريق :webSiteNameAr بالتواصل معكم لاسترداد المبلغ في أقرب وقت.</p>",
         ],
         'cancellation' => [
             'en' => "<p>Your booking with <strong>:name</strong> on the <strong>:time</strong> on <strong>:date</strong> was <strong>Cancelled</strong>. For new service booking search for another freelancer now!</p>",
@@ -156,10 +156,11 @@ class UserNotification extends Model
     }
 
     public static function description($message , $name = null , $date = null , $data = [] , $newDate = null , $name2=null){
-        $find = [':webSiteNameEn' ,':webSiteNameAr',':name' , ':time' , ':date' , ':dateTime' , ':newTime' , ':newDate' , ':newDateTime' , ':name2'];
+        $find = [':webSiteNameEn' ,':webSiteNameAr' ,':webSiteURL',':name' , ':time' , ':date' , ':dateTime' , ':newTime' , ':newDate' , ':newDateTime' , ':name2'];
         $replace = [
             websiteName(),
             websiteName(false),
+            config('app.url'),
             (is_array($name) ? implode(' ',$name) : $name),
             Carbon::parse($date)->format('H:i A'),
             Carbon::parse($date)->format('j\<\s\u\p\>S\<\/\s\u\p\> M. Y'),

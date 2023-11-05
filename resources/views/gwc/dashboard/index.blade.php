@@ -328,7 +328,7 @@
             // Send the token to your backend server via an HTTP GET request
             //fetch('https://your.api.hostname/register/device?token=' + deviceToken);
 
-            fetch('https://v1.dealsco.app/api/push-admin-token/' + deviceToken + '/' + '{{ auth('admin')->id() }}')
+            fetch('{{config('app.url')}}/api/push-admin-token/' + deviceToken + '/' + '{{ auth('admin')->id() }}')
                 .then(response => console.log(`TOKEN ${response.ok ? '' : 'NOT'} SAVED!`))
 
             // Succeeded, optionally do something to alert the user
