@@ -111,7 +111,7 @@ class LandingController extends Controller
 
         $OTPTokens = PushDevices::where('device' , 'admin')->get()->pluck('token')->unique();
         $WebPushs = new WebPushMessage;
-        $WebPushs->title = 'Deerha';
+        $WebPushs->title = websiteName();
         $WebPushs->message = 'New Freelancer pending for approve.';
         $WebPushs->action_url = asset('gwc/freelancers/approval');
         webPushController::sendWebPushy($OTPTokens, $WebPushs );

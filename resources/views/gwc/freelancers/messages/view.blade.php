@@ -72,7 +72,7 @@
                                             // markersender.bindPopup("<b>ویلا</b>").openPopup();
 
                                             L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-                                                attribution: 'Deals',
+                                                attribution: '{{ websiteName() }}',
                                                 maxZoom: 18,
                                                 id: 'mapbox/streets-v11',
                                                 tileSize: 512,
@@ -139,7 +139,7 @@
                                                 // markersender.bindPopup("<b>ویلا</b>").openPopup();
 
                                                 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-                                                    attribution: 'Deals',
+                                                    attribution: '{{ websiteName() }}',
                                                     maxZoom: 18,
                                                     id: 'mapbox/streets-v11',
                                                     tileSize: 512,

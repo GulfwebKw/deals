@@ -30,7 +30,7 @@ class UserNotification extends Model
             'ar' => "<p>يوجد موعد <strong>متاح </strong>مع <strong>:name</strong> في تاريخ <strong>:date</strong>. قم بزيارة صفحة :name الآن لحجز الموعد المتاح.</p>",
         ],
         'cancellationWithPay' => [
-            'en' => "<p>Your booking with <strong>:name</strong> on the <strong>:time</strong> on <strong>:date</strong> was <strong>Cancelled</strong>. For new service booking search for another freelancer now! Meanwhile, Deerha team will contact you soon for the refund.</p>",
+            'en' => "<p>Your booking with <strong>:name</strong> on the <strong>:time</strong> on <strong>:date</strong> was <strong>Cancelled</strong>. For new service booking search for another freelancer now! Meanwhile, :webSiteNameEn team will contact you soon for the refund.</p>",
             'ar' => "<p>تم إلغاء الخدمة المحجوزة مسبقاً مع <strong>:name</strong> في الساعة <strong>:time</strong> في تاريخ <strong>:date</strong>. لحجز خدمة جديدة قم بالبحث عن مقدم خدمة آخر الآن! سوف يقوم فريق ديلز بالتواصل معكم لاسترداد المبلغ في أقرب وقت.</p>",
         ],
         'cancellation' => [
@@ -46,7 +46,7 @@ class UserNotification extends Model
             'ar' => "<p> تمت إعادة جدولة حجزك باستخدام <strong>:name</strong> في <strong>:time</strong> في <strong>:date</strong> بواسطة :name في <strong>:newDate</strong> في <strong>:newTime</strong>. </p>",
         ],
         'cancellationMySelf' => [
-            'en' => "<p>Your booking with <strong>:name</strong> on the <strong>:time</strong> on <strong>:date</strong> was <strong>Cancelled</strong> by the :name. Deerha team will contact you soon for the refund.</p>",
+            'en' => "<p>Your booking with <strong>:name</strong> on the <strong>:time</strong> on <strong>:date</strong> was <strong>Cancelled</strong> by the :name. :webSiteNameEn team will contact you soon for the refund.</p>",
             'ar' => "<p>حجزك مع <strong>:name</strong> في <strong>:time</strong> في <strong>:date</strong> بواسطة :name. سيتصل بك فريق الصفقات قريبًا لاسترداد الأموال.</p>",
         ],
         'cancellationMeeting' => [
@@ -156,8 +156,10 @@ class UserNotification extends Model
     }
 
     public static function description($message , $name = null , $date = null , $data = [] , $newDate = null , $name2=null){
-        $find = [':name' , ':time' , ':date' , ':dateTime' , ':newTime' , ':newDate' , ':newDateTime' , ':name2'];
+        $find = [':webSiteNameEn' ,':webSiteNameAr',':name' , ':time' , ':date' , ':dateTime' , ':newTime' , ':newDate' , ':newDateTime' , ':name2'];
         $replace = [
+            websiteName(),
+            websiteName(false),
             (is_array($name) ? implode(' ',$name) : $name),
             Carbon::parse($date)->format('H:i A'),
             Carbon::parse($date)->format('j\<\s\u\p\>S\<\/\s\u\p\> M. Y'),

@@ -20,7 +20,7 @@ return [
 	'copyrights'            =>'Copyright &copy; '.date('Y').' Al Rayah Delivery Co.  All Rights Reserved.',
 	'copyright1'            =>'Copyright &copy; ' . date('Y') . ' ',
 	'copyright2'            =>' All Rights Reserved.',
-    'welcomeEmail'          =>'Welcome to the Deerha website<br>You have successfully registered and your account will be activated after administration approval.<br><br>'.asset(''),
+    'welcomeEmail'          =>'Welcome to the '.websiteName().' website<br>You have successfully registered and your account will be activated after administration approval.<br><br>'.asset(''),
     'buyPackageEmail'       =>'The payment was completed successfully<br>Thank you<br><br>Payment information:<br>',
 	'english'               =>'English',
 	'arabic'                =>'العربية',

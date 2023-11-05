@@ -39,14 +39,11 @@
             <header>
                 <div class="social-media-top">
                     <ul class="media_top">
-                        <!--
-                           <li data-aos="fade-right">
-                              <a href="https://www.facebook.com/deals.deals.3363" target="_blank"> <i class="fa fa-facebook "></i></a></li> -->
                         <li data-aos="fade-up"
-                            data-aos-anchor-placement="bottom-bottom"><a href="https://twitter.com/dealskwt_"
+                            data-aos-anchor-placement="bottom-bottom"><a href="{{$settings->social_twitter}}"
                                                                          target="_blank"> <i class="fa fa-twitter"></i></a>
                         </li>
-                        <li data-aos="fade-left"><a href="https://www.instagram.com/dealskwt/" target="_blank">
+                        <li data-aos="fade-left"><a href="{{$settings->social_instagram}}" target="_blank">
                                 <i class="fa fa-instagram"></i></a>
                         </li>
                     </ul>
@@ -245,28 +242,28 @@
                         </section>
                     </section>
                 </section>
-                <!--
-                   <section id="s5" class="main-cont" >
-                     <section class="partner-sec">
-                       <section class="container">
-                         <article class="partners " data-delighter="start:0.8">
-                           <h2>partners</h2>
-                           <ul>
-                             <li> <a href="#"><img src="https://dev.dealsco.app/assets/images/partners1.jpg"> </a> </li>
-                             <li> <a href="#"><img src="https://dev.dealsco.app/assets/images/partners2.jpg"> </a> </li>
-                             <li> <a href="#"><img src="https://dev.dealsco.app/assets/images/partners3.jpg"> </a> </li>
-                             <li> <a href="#"><img src="https://dev.dealsco.app/assets/images/partners4.jpg"> </a> </li>
-                             <li> <a href="#"><img src="https://dev.dealsco.app/assets/images/partners3.jpg"> </a> </li>
-                             <li> <a href="#"><img src="https://dev.dealsco.app/assets/images/partners2.jpg"> </a> </li>
-                             <li> <a href="#"><img src="https://dev.dealsco.app/assets/images/partners3.jpg"> </a> </li>
-                             <li> <a href="#"><img src="https://dev.dealsco.app/assets/images/partners1.jpg"> </a> </li>
-                             <li> <a href="#"><img src="https://dev.dealsco.app/assets/images/partners3.jpg"> </a> </li>
-                             <li> <a href="#"><img src="https://dev.dealsco.app/assets/images/partners1.jpg"> </a> </li>
-                           </ul>
-                         </article>
-                       </section>
-                     </section>
-                   </section> -->
+
+{{--                   <section id="s5" class="main-cont" >--}}
+{{--                     <section class="partner-sec">--}}
+{{--                       <section class="container">--}}
+{{--                         <article class="partners " data-delighter="start:0.8">--}}
+{{--                           <h2>partners</h2>--}}
+{{--                           <ul>--}}
+{{--                             <li> <a href="#"><img src="/assets/images/partners1.jpg"> </a> </li>--}}
+{{--                             <li> <a href="#"><img src="/assets/images/partners2.jpg"> </a> </li>--}}
+{{--                             <li> <a href="#"><img src="/assets/images/partners3.jpg"> </a> </li>--}}
+{{--                             <li> <a href="#"><img src="/assets/images/partners4.jpg"> </a> </li>--}}
+{{--                             <li> <a href="#"><img src="/assets/images/partners3.jpg"> </a> </li>--}}
+{{--                             <li> <a href="#"><img src="/assets/images/partners2.jpg"> </a> </li>--}}
+{{--                             <li> <a href="#"><img src="/assets/images/partners3.jpg"> </a> </li>--}}
+{{--                             <li> <a href="#"><img src="/assets/images/partners1.jpg"> </a> </li>--}}
+{{--                             <li> <a href="#"><img src="/assets/images/partners3.jpg"> </a> </li>--}}
+{{--                             <li> <a href="#"><img src="/assets/images/partners1.jpg"> </a> </li>--}}
+{{--                           </ul>--}}
+{{--                         </article>--}}
+{{--                       </section>--}}
+{{--                     </section>--}}
+{{--                   </section> --}}
 
 
                 <section id="s6" class="main-cont">
@@ -282,8 +279,6 @@
                                 <div class="social-media ">
                                     <br>
                                     <ul class="media">
-                                        <!--                                     <li data-aos="fade-right"> <a href="https://www.facebook.com/deals.deals.3363" target="_blank"> <i class="fa fa-facebook "></i></a></li>
-                                           -->
                                         <li data-aos="fade-up"
                                             data-aos-anchor-placement="bottom-bottom">
                                             <a href="{{$settings->social_twitter}}" target="_blank"> <i

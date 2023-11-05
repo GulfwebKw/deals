@@ -40,8 +40,8 @@ class FreelancerNotification extends Model
             'ar' => "<p>تذكير! لديك موعد مع <strong>:name</strong> في <strong>:time</strong> في <strong>:date</strong>.</p>",
         ],
         'subscription' => [
-            'en' => '<p>Reminder! your subscriptions with Deerha App is due in two days. If you would like to renew visit the website <a href="http://www.dealsco.app">www.dealsco.app</a>.</p>',
-            'ar' => '<p>تذكير! اشتراكك مع تطبيق ديلز سيتم انتهاؤه خلال يومين. اذا كنت ترغب في تجديد الاشتراك قم بزيارة موقعنا <a href="http://www.dealsco.app">www.dealsco.app</a></p>',
+            'en' => '<p>Reminder! your subscriptions with :webSiteNameEn App is due in two days. If you would like to renew visit the website <a href="http://www.dealsco.app">:webSiteNameEn</a>.</p>',
+            'ar' => '<p>تذكير! اشتراكك مع تطبيق ديلز سيتم انتهاؤه خلال يومين. اذا كنت ترغب في تجديد الاشتراك قم بزيارة موقعنا <a href="http://www.dealsco.app">:webSiteNameAr</a></p>',
         ],
         'bookingService' => [
             'en' => '<p>Hey, there is new service booking.</p>',
@@ -168,8 +168,10 @@ class FreelancerNotification extends Model
     }
 
     public static function description($message , $name = null , $date = null , $data = [] , $newDate = null , $name2 = null ){
-        $find = [':name' , ':time' , ':date' , ':dateTime' , ':newTime' , ':newDate' , ':newDateTime' , ':name2'];
+        $find = [':webSiteNameEn' ,':webSiteNameAr' ,':name' , ':time' , ':date' , ':dateTime' , ':newTime' , ':newDate' , ':newDateTime' , ':name2'];
         $replace = [
+            websiteName(),
+            websiteName(false),
             (is_array($name) ? implode(' ',$name) : $name),
             Carbon::parse($date)->format('H:i A'),
             Carbon::parse($date)->format('j\<\s\u\p\>S\<\/\s\u\p\> M. Y'),

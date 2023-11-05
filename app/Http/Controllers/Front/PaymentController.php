@@ -320,7 +320,7 @@ class PaymentController
                     $order->amount = $order->creat_price;
                     $OTPTokens = PushDevices::where('device' , 'admin')->get()->pluck('token')->unique();
                     $WebPushs = new WebPushMessage;
-                    $WebPushs->title = 'Deerha';
+                    $WebPushs->title = websiteName();
                     $WebPushs->message = 'New workshop pending for approve.';
                     $WebPushs->action_url = asset('gwc/workshops/approval');
                     webPushController::sendWebPushy($OTPTokens, $WebPushs );

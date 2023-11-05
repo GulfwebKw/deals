@@ -64,7 +64,7 @@ class sendMessageNotification extends Command
             $OTPS = $user->pushNotification()->get();
             $OTPTokens = $OTPS->pluck('token')->unique();
             foreach ( $OTPTokens as $OTPToken)
-                Common::sendMobilePush(true , $settingInfo,$OTPToken, 'Deerha', 'You have '.number_format($userM->sum).' unread messages.' );
+                Common::sendMobilePush(true , $settingInfo,$OTPToken, websiteName(), 'You have '.number_format($userM->sum).' unread messages.' );
 
         }
         $users = FreelancerUserMessage::query()
@@ -92,7 +92,7 @@ class sendMessageNotification extends Command
                 ->update(['isPushSend' => 1] );
             
             foreach ( $OTPTokens as $OTPToken)
-                Common::sendMobilePush(false , $settingInfo,$OTPToken, 'Deerha', 'You have '.number_format($userM->sum).' unread messages.' );
+                Common::sendMobilePush(false , $settingInfo,$OTPToken, websiteName(), 'You have '.number_format($userM->sum).' unread messages.' );
 
         }
         Log::info('finish sending' , []);
