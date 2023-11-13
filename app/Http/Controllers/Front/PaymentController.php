@@ -81,8 +81,10 @@ class PaymentController
             $order->payment_status = 'paid';
             $order->order_status = 'paid';
             $order->save();
-            $discount->used = $discount->used + 1;
-            $discount->save();
+            if ( optional($discount)->id > 0 ) {
+                $discount->used = $discount->used + 1;
+                $discount->save();
+            }
             $settings = Settings::where("keyname", "setting")->first();
             $data = [
                 'dear' => trans('webMessage.dear') . ' ' . $freelancer->name,
