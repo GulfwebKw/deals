@@ -73,16 +73,22 @@ class GeneralController extends Controller
         return $this->apiResponse(200, ['data' => ['resources' => $resources], 'message' => []]);
     }
 
-    public function faq()
+    public function faq($type = null)
     {
-        $lang = request()->header('accept-language');
+        $lang = request()->header('accept-language' , 'en');
         $resources = Faq::where('is_active', 1)
             ->orderBy('display_order')
-            ->when(Auth::check() , function($query) {
-                if ( Auth::user() instanceof Freelancer )
+            ->when($type != null , function($query) use ($type) {
+                if ( strtolower($type) == "freelancer" )
                     $query->where('active_for' , '!=' , 'User');
-                if ( Auth::user() instanceof User )
+                else
                     $query->where('active_for' , '!=' , 'Freelancer');
+            } , function($query) {
+                $query->when(Auth::guard('api_freelancer')->check() , function($query) {
+                    $query->where('active_for' , '!=' , 'User');
+                } , function($query) {
+                    $query->where('active_for' , '!=' , 'Freelancer');
+                });
             })->get()->map(function ($q) use ($lang){
                 return[
                     'question'=> $q['question_'.$lang],
