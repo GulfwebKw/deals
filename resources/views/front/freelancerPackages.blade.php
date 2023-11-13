@@ -176,12 +176,12 @@
                             <input type="submit" value="Apply" class="btn btn-outline-info">
 
                             @if($errors->any())
-                                <div class="invalid-feedback ml-5" style="display: block">
+                                <div class="invalid-feedback ml-5" style="display: block;font-size: 100%;">
                                     {{ implode('', $errors->all(':message')) }}
                                 </div>
                             @endif
                             @if(isset($success))
-                                <div class="invalid-feedback ml-5" style="display: block;color: #28a745;">
+                                <div class="invalid-feedback ml-5" style="display: block;font-size: 100%;">
                                     {{ $success }}
                                 </div>
                             @endif
@@ -223,7 +223,7 @@
                                         <p class="month-plan">{{$package->duration_title}}</p>
                                         @if(Carbon::now()->toDateString() > $expire)
                                             <div class="text-left">
-                                                <button class="btn btn-success">BUY</button>
+                                                <button class="btn btn-primary">BUY</button>
                                             </div>
                                         @endif
                                         @if($package->description)
