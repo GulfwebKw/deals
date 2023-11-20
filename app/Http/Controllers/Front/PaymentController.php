@@ -25,6 +25,7 @@ use App\Bill;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 
 /**
@@ -263,7 +264,7 @@ class PaymentController
         $responseData = $request->data;
         $decryptedResponse = $this->getPaymentResponse($responseData);
         $data = $decryptedResponse->response;
-
+        Log::info('callback success' , ['request'=> $request->all() , 'data' => $data]);
         if ($data['resultCode'] == 'CAPTURED') {
             if ($data['variable4'] == 'package') {
                 $order = order::find($data['variable1']);
