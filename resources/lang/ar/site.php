@@ -74,6 +74,6 @@ return [
     'login' => 'تسجيل الدخول من هنا',
     'signup' => 'اشتراك',
     'remember_me' => 'تذكرنى',
-    'register' => 'سجل هنا',
-    'submit' => 'يقدم',
+    'register' => 'التسجیل',
+    'submit' => 'ارسال',
 ];
