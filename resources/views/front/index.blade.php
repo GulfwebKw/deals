@@ -139,7 +139,7 @@
                                              data-aos-easing="linear"
                                              data-aos-duration="1500">
                                         <div class="phone-right"><img
-                                                    src="{{asset('front_assets/assets/images/phone-right.png')}}"></div>
+                                                    src="{{asset('/uploads/singlepages/'.optional(explode(',' ,getSingle('about')['images']))[0])}}"></div>
                                     </article>
                                 </article>
                             </section>
