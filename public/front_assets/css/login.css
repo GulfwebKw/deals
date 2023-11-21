@@ -32,7 +32,7 @@ label.text-info {
     text-align: center;
     margin: auto;
     margin-top: -14px;
-    font-size: 14px;
+    font-size: 18px;
 }
 h3.text-center.text-info {
     margin-bottom: 30px;
@@ -84,6 +84,9 @@ h3.text-center.text-info {
     background-color: #fec524;
     padding: 10px 20px;
     border-radius: 13px;
+}
+.btn-md{
+    font-size: 20px;
 }
 #lastname_ar-error{
     direction:rtl;
