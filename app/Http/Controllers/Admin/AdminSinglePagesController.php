@@ -192,7 +192,7 @@ class AdminSinglePagesController extends Controller
             if (isset($resource->images)){
                 $img = explode(",", $resource->images);
                 $merge = array_merge($img, $request->images);
-                $implode = implode(',', $merge);
+                $implode = implode(',', array_values(array_filter($merge)));
             }
         }
 

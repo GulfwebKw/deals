@@ -155,7 +155,7 @@ class FreeLancerCalenderController extends Controller
             }else{
             $images = $request->images;
             }
-        $services->images = implode(",", $images);
+        $services->images = implode(",", array_values(array_filter($images)));
             $services->save();
         }
             if ($request->hasFile('image')) {

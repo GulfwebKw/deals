@@ -111,7 +111,7 @@ class ServiceController extends Controller
                 rename(public_path('uploads/junk/' . $image), public_path('uploads/' . $this->path . '/' . $image));
             }
             $images = array_merge($request->images, explode(',', $workshop->images));
-            $workshop->images = implode(",", $images);
+            $workshop->images = implode(",", array_values(array_filter($images)));
             $workshop->save();
         }
         $workshop->update([
