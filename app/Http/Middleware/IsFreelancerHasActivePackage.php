@@ -24,10 +24,10 @@ class IsFreelancerHasActivePackage
             $freelancer->pushNotification()->delete();
             $freelancer->AauthAcessToken()->delete();
             return response()->json([
-                'status' => 204,
+                'status' => 401,
                 'data' => [],
                 'message' => [trans('api.PackageExpired')]
-            ], 204);
+            ], 401);
         }
         return response()->json([
             'status' => 401,

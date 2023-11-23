@@ -45,10 +45,10 @@ class AuthController extends Controller
             $user->pushNotification()->delete();
             $user->AauthAcessToken()->delete();
             return response()->json([
-                'status' => 204,
+                'status' => 201,
                 'data' => [],
                 'message' => [trans('api.PackageExpired')]
-            ], 401);
+            ], 201);
         }
 
         if (  $request->has('token')  )
