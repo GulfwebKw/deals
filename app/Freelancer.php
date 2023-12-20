@@ -16,6 +16,9 @@ class Freelancer extends Authenticatable
     protected $hidden = [
         'is_approved'
     ];
+    protected $casts = [
+        'username_changed_at' => 'datetime'
+    ];
 
     public function AauthAcessToken(){
         return $this->hasMany('\App\OauthAccessToken' , 'user_id');

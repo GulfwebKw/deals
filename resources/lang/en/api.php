@@ -183,4 +183,5 @@ return [
     'activeWorkshops' =>'you have active order in workshops!',
     'activeMeetings' =>'you have active order in meetings!',
     'hasOrder' =>'you have active order in this service!',
+    'usernamePerYear' =>'Username can be changed once a year!',
 ];

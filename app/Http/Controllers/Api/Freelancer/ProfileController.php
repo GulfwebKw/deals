@@ -81,10 +81,20 @@ class ProfileController extends Controller
             $this->validate($request, [
                 'birthday' => 'nullable|date',
                 'email' => 'required|email|unique:freelancers,email,'.Auth::id(),
+                'username' => 'nullable|string|unique:freelancers,username,'.Auth::id(),
             ]);
         }
         /* @var  \App\Freelancer $user */
         $user = Auth::user();
+
+        if ( $request->hasAny('username') and $request->get('username' ) != $user->username ){
+            if ( $user->username_changed_at != null and now()->subYear()->lt($user->username_changed_at) ){
+                return $this->apiResponse(422, ['data' => [], 'message' => [trans('api.usernamePerYear')]]);
+            }
+            $request->merge([ 'username_changed_at' => now()]);
+        } else {
+            $request->merge([ 'username' => $user->username]);
+        }
         if ($request->hasFile('file')) {
             $cover_image = Common::uploadImage($request, 'file', 'freelancer', 0, 0, 0, 0);
             $request->merge([
