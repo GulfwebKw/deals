@@ -158,6 +158,9 @@ Route::prefix('freelancer')->namespace('Api\Freelancer')->group(function () {
 
 });
 
+Route::middleware(['auth:api_freelancer'])->prefix('freelancer')->namespace('Api\Freelancer')->group(function () {
+    Route::get('request/login', 'AuthController@requestLogin');
+});
 Route::middleware(['auth:api_freelancer' , 'isFreelancerHasActivePackage'])->prefix('freelancer')->namespace('Api\Freelancer')->group(function () {
     Route::post('logout','AuthController@logoutApi');
     Route::apiResource('service', 'ServiceController');

@@ -54,6 +54,7 @@ Route::get('/login', 'Front\LandingController@loginPage')->name('login.index')->
 Route::post('/login', 'Front\LandingController@login')->name('login.store')->middleware('guest');
 Route::get('/register', 'Front\LandingController@registerPage')->name('register.index')->middleware('guest');
 Route::post('/register', 'Front\LandingController@register')->name('register.store')->middleware('guest');
+Route::get('/request/login/{id}/{time}/{hash}', 'Front\LandingController@loginRequest')->name('login.from.app');
 
 Route::middleware(['auth:freelancer'])->namespace('Front')->prefix('freelancer')->group(function () {
     Route::get('/', 'LandingController@packages')->name('packages');

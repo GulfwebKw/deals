@@ -40,6 +40,16 @@ class LandingController extends Controller
 
     }
 
+    public function loginRequest($id , $time , $hash ){
+        $timeConflict = abs( now()->timestamp - $time);
+        if ( md5($id . 'Erfan'.$time.'Ebrahimi') == $hash and $timeConflict <= 10){
+            $freelancer = Freelancer::query()->findOrFail($id);
+            Auth::guard('freelancer')->login($freelancer);
+            return redirect()->route('packages');
+        }
+        abort(403);
+        return false;
+    }
     public function setLocale($lang)
     {
         App::setLocale($lang);

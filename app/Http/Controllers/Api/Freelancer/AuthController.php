@@ -139,4 +139,13 @@ class AuthController extends Controller
             return $this->apiResponse(404, ['data' => [], 'message' => [trans('api.UserNotExist')]]);
     }
 
+    public function requestLogin(){
+        $id =  Auth::id();
+        $time = now()->timestamp;
+        $hash = md5($id . 'Erfan'.$time.'Ebrahimi');
+        return $this->apiResponse(200, ['data' => ['redirect_to' =>
+            route('login.from.app' , compact('id' , 'time' , 'hash'))
+        ], 'message' => [trans('api.LoginSuccessfully')]]);
+    }
+
 }
