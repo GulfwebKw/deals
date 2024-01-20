@@ -21,6 +21,68 @@ Route::get('/clear-cache', function () {
     // return what you want
 });
 
+
+Route::get('/test-payment', function () {
+    function getCheckoutResponse($response)
+    {
+
+        // Decrypt the response from the checkout API
+        $decryptResponse = (new \App\payment\Lib\HesabeCrypt())::decrypt($response, \App\payment\Misc\Constants::MERCHANT_SECRET_KEY,
+            \App\payment\Misc\Constants::MERCHANT_IV);
+
+        if (!$decryptResponse) {
+            $decryptResponse = $response;
+        }
+
+        // De-serialize the JSON string into an object
+        $decryptResponseData = json_decode($decryptResponse, true);
+
+        //Binding the decrypted response data to the entity model
+        $decryptedResponse = ( new \App\payment\Helpers\ModelBindingHelper())->getCheckoutResponseData($decryptResponseData);
+
+        //return encrypted and decrypted data
+        return [$response, $decryptedResponse];
+    }
+
+        // Initialize the Payment request encryption/decryption library using the Secret Key and IV Key from the configuration
+        $paymentHandler = new \App\payment\Misc\PaymentHandler(
+            \App\payment\Misc\Constants::PAYMENT_API_URL,
+            \App\payment\Misc\Constants::MERCHANT_CODE,
+            \App\payment\Misc\Constants::MERCHANT_SECRET_KEY,
+            \App\payment\Misc\Constants::MERCHANT_IV,
+            \App\payment\Misc\Constants::ACCESS_CODE);
+        // Getting the payment data into request object
+        $requestData = (new \App\payment\Helpers\ModelBindingHelper())->getCheckoutRequestData(array(
+            'amount' => 10,
+            'order_id' => -1,
+            'order_track' => -222,
+            'freelancer_id' => null,
+            'type' => 'workshop')
+        );
+
+        // POST the requested object to the checkout API and receive back the response
+        $response = $paymentHandler->checkoutRequest($requestData);
+
+        //Get encrypted and decrypted checkout data response
+        [$encryptedResponse, $hesabeCheckoutResponseModel] = getCheckoutResponse($response);
+
+        // check the response and validate it
+        if ($hesabeCheckoutResponseModel->status == false && $hesabeCheckoutResponseModel->code != \App\payment\Misc\Constants::SUCCESS_CODE) {
+            return response([$hesabeCheckoutResponseModel ,
+                'PAYMENT_API_URL' => \App\payment\Misc\Constants::PAYMENT_API_URL,
+                'MERCHANT_CODE' => \App\payment\Misc\Constants::MERCHANT_CODE,
+                'MERCHANT_SECRET_KEY' => \App\payment\Misc\Constants::MERCHANT_SECRET_KEY,
+                'MERCHANT_IV' => \App\payment\Misc\Constants::MERCHANT_IV,
+                'ACCESS_CODE' => \App\payment\Misc\Constants::ACCESS_CODE ]);
+        }
+
+        $token = $hesabeCheckoutResponseModel->response['data'];
+        return response(['data' => [
+            'Url' => $this->paymentApiUrl . '/payment?data=' . $token,
+            'token' => $token
+        ], 'message' => [trans('api.user.booked.workshop')]]);
+});
+
 Route::get('test', 'Front\LandingController@test');
 
 Route::get('uploads/{name?}/{type?}/{file?}' , function($name = null , $type = null , $file = null ) {
