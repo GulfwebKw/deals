@@ -25,6 +25,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
 class BookingController extends Controller
@@ -419,9 +420,11 @@ class BookingController extends Controller
 
         } catch(ModelNotFoundException $exception)  {
             DB::rollBack();
+            Log::info('Workshop book error v1!' , ['message' => $exception->getMessage(),'file' => $exception->getFile(),'line' => $exception->getLine()] );
             return $this->apiResponse(404, ['data' => [ 'model' =>$exception->getModel() , 'ids' => $exception->getIds() ], 'message' => [$exception->getMessage()]]);
         } catch ( \Exception $exception){
             DB::rollBack();
+            Log::info('Workshop book error v2!' , ['message' => $exception->getMessage(),'file' => $exception->getFile(),'line' => $exception->getLine()] );
             return $this->apiResponse(500, ['data' => [$exception->getMessage()], 'message' => [trans('api.notOrderNow')]]);
         }
     }
