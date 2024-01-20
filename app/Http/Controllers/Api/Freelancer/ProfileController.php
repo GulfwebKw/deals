@@ -6,6 +6,7 @@ use App\Freelancer;
 use App\Http\Controllers\Admin\Common;
 use App\Meeting;
 use App\ServiceUserOrders;
+use App\Settings;
 use App\User;
 use App\WorkshopOrder;
 use Carbon\Carbon;
@@ -41,6 +42,7 @@ class ProfileController extends Controller
             'access_token' => $token,
             'token_type' => 'Bearer',
             'expires_at' => Carbon::now()->toDateTimeString(),
+            'subscribe_active' => Settings::where("keyname", "setting")->first()->subscribe_active_in_app,
             'user' => $user,
         ], 'message' => [trans('api.success')]]);
 
@@ -130,6 +132,7 @@ class ProfileController extends Controller
             'access_token' => $token,
             'token_type' => 'Bearer',
             'expires_at' => Carbon::now()->toDateTimeString(),
+            'subscribe_active' => Settings::where("keyname", "setting")->first()->subscribe_active_in_app,
             'user' => $user,
         ], 'message' => [trans('api.success')]]);
         //return $this->apiResponse(200, ['data' => [], 'message' => []]);

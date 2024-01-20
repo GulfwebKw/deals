@@ -26,6 +26,13 @@
                             'value' => $resource->is_lang
                         ]) @endcomponent
 
+                        <!-- is language active -->
+                        @component('gwc.components.isLanguageActive', [
+                            'label' => 'Show Subscribe In App',
+                            'name' => 'subscribe_active_in_app',
+                            'value' => $resource->subscribe_active_in_app
+                        ]) @endcomponent
+
                         <br><br>
 
                         <!-- logo -->

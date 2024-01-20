@@ -97,6 +97,7 @@ class AdminSettingsController extends Controller
         $favicon = Common::editImage($request, 'favicon', $this->path, $this->image_big_w, $this->image_big_h, $this->image_thumb_w, $this->image_thumb_h, $resource);
 
         $resource->is_lang = !empty($request->input('is_lang')) ? $request->input('is_lang') : '0';
+        $resource->subscribe_active_in_app = !empty($request->input('subscribe_active_in_app')) ? $request->input('subscribe_active_in_app') : '0';
 
         $resource->logo = $logo;
         $resource->email_logo = $emailLogo;

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\Freelancer;
 
 use App\Freelancer;
 use App\Http\Controllers\Controller;
+use App\Settings;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -67,6 +68,7 @@ class AuthController extends Controller
             'expires_at' => Carbon::parse(
                 $tokenResult->token->expires_at
             )->toDateTimeString(),
+            'subscribe_active' => Settings::where("keyname", "setting")->first()->subscribe_active_in_app,
             'user' => $user,
         ], 'message' => [trans('api.LoginSuccessfully')]]);
     }
