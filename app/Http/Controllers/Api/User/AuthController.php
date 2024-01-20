@@ -217,7 +217,7 @@ class AuthController extends Controller
             'last_name' => 'required|string|max:255',
             'mobile' => 'required|numeric|unique:users',
             'email' => 'email|unique:users|max:255|nullable',
-            'gender' => 'required|string|max:255',
+            'gender' => 'nullable|string|max:255',
             'password' => 'required|string|max:255',
             'password_confirmation' => 'required_with:password|same:password'
 
@@ -228,7 +228,7 @@ class AuthController extends Controller
         $user = User::Create([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
-            'gender' => $request->gender,
+            'gender' => @$request->gender,
             'email' => $request->email,
             'mobile' => $request->mobile,
             'password' => Hash::make($request->password),
@@ -336,7 +336,7 @@ class AuthController extends Controller
             'last_name' => 'required|string',
             'mobile' => 'required|string',
             'email' => 'required|string',
-            'gender' => 'required|string',
+            'gender' => 'nullable|string',
         ]);
         if ($validator->fails()) {
             return $this->apiResponse(422, ['data' => [], 'message' => $validator->errors()->all()]);
@@ -350,7 +350,7 @@ class AuthController extends Controller
         $resource->last_name = $request->last_name;
         $resource->mobile = $request->mobile;
         $resource->email = $request->email;
-        $resource->gender = $request->gender;
+        $resource->gender = @$request->gender;
         $resource->birthday = $request->birthday;
         $resource->is_active = !empty($request->input('is_active')) ? '1' : '0';
         $resource->image = $cover_image;

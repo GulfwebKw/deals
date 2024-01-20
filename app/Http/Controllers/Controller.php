@@ -44,6 +44,7 @@ class Controller extends BaseController
             if ( $type == 'sms' ) {
                 $sms = new Sms();
                 $sms = $sms->getConfig();
+                
                 $client = new Client(); //GuzzleHttp\Client
 
                 $res = $client->get('http://smsbox.com/smsgateway/services/messaging.asmx/Http_SendSMS', [
@@ -84,6 +85,7 @@ class Controller extends BaseController
                 return "ok";
             }
         } catch ( \Exception $exception){
+            // dd($exception);
             \Illuminate\Support\Facades\Log::info('send otp Exception: '. $otp . '  '. $mobile . '  '.$email . '  ' .$type , [$exception->getMessage()]  );
             return  $exception->getMessage();
         }

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>{{getSetting('setting')['name_'. $lang]}}@hasSection('subTitle') - @yield('subTitle')@endif</title>
+    <title>{{getSetting('setting')['name_'. $lang]}}</title>
     <meta name="description" content="{{getSetting('setting')['seo_description_'. $lang]}}">
     <meta name="keywords" content="{{getSetting('setting')['seo_keywords_'. $lang]}}">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
