@@ -39,13 +39,13 @@ class ModelBindingHelper
         $this->hesabeCheckoutRequestModel->variable2 = $request['order_track'];
         $this->hesabeCheckoutRequestModel->variable3 = $request['freelancer_id'];
         $this->hesabeCheckoutRequestModel->variable4 = $request['type'];
-        $this->hesabeCheckoutRequestModel->currency = config('services.knet_test.currency');
-        $this->hesabeCheckoutRequestModel->paymentType = config('services.knet_test.paymentType');
+        $this->hesabeCheckoutRequestModel->currency = 'KWD';
+        $this->hesabeCheckoutRequestModel->paymentType = '1';
         $this->hesabeCheckoutRequestModel->orderReferenceNumber = Carbon::now()->toDateTimeString();
-        $this->hesabeCheckoutRequestModel->version = config('services.knet_test.version');
-        $this->hesabeCheckoutRequestModel->merchantCode = config('services.knet_test.merchantCode');
-        $this->hesabeCheckoutRequestModel->responseUrl = config('services.knet_test.responseUrl');
-        $this->hesabeCheckoutRequestModel->failureUrl = config('services.knet_test.failureUrl');
+        $this->hesabeCheckoutRequestModel->version = '2.0';
+        $this->hesabeCheckoutRequestModel->merchantCode = \App\payment\Misc\Constants::MERCHANT_CODE;
+        $this->hesabeCheckoutRequestModel->responseUrl = route('payment.success');
+        $this->hesabeCheckoutRequestModel->failureUrl = route('payment.fail');
        
         return $this->hesabeCheckoutRequestModel;
     }

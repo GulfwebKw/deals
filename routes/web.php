@@ -78,7 +78,7 @@ Route::get('/test-payment', function () {
 
         $token = $hesabeCheckoutResponseModel->response['data'];
         return response(['data' => [
-            'Url' => $this->paymentApiUrl . '/payment?data=' . $token,
+            'Url' => \App\payment\Misc\Constants::PAYMENT_API_URL  . '/payment?data=' . $token,
             'token' => $token
         ], 'message' => [trans('api.user.booked.workshop')]]);
 });
